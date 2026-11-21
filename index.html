@@ -8,6 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* =========================================================================
+       [CSS-01] VARIABEL WARNA & TEMA UTAMA (LIGHT & DARK MODE)
+       Edit di sini jika ingin mengubah skema warna utama, aksen, atau border.
+       ========================================================================= */
     :root {
       --primary: #1e40af;
       --primary-dark: #1e3a8a;
@@ -56,12 +60,14 @@
     }
 
     .container {
-      max-width: 1220px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 0 18px;
     }
 
-    /* Header */
+    /* =========================================================================
+       [CSS-02] LAYOUT UTAMA & HEADER HERO (BANNER ATAS)
+       ========================================================================= */
     .hero {
       background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #047857 100%);
       color: #ffffff;
@@ -103,7 +109,7 @@
     .hero p {
       font-size: 0.92rem;
       color: #e2e8f0;
-      max-width: 780px;
+      max-width: 820px;
     }
 
     .hero-actions {
@@ -112,7 +118,9 @@
       gap: 8px;
     }
 
-    /* Buttons */
+    /* =========================================================================
+       [CSS-03] KOMPONEN TOMBOL (BUTTONS)
+       ========================================================================= */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -174,7 +182,9 @@
       font-weight: 700;
     }
 
-    /* Navigation Tabs */
+    /* =========================================================================
+       [CSS-04] NAVIGASI TAB MENU UTAMA (TAB 1 S.D. TAB 5)
+       ========================================================================= */
     .tabs {
       display: flex;
       flex-wrap: wrap;
@@ -215,7 +225,9 @@
       display: block;
     }
 
-    /* Cards & Forms */
+    /* =========================================================================
+       [CSS-05] KARTU KONTEN, GRID RESPONSIF & INPUT FORMULIR
+       ========================================================================= */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -255,6 +267,12 @@
       gap: 14px;
     }
 
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
     .form-group {
       display: flex;
       flex-direction: column;
@@ -265,6 +283,11 @@
       font-size: 0.84rem;
       font-weight: 700;
       color: var(--text);
+    }
+
+    .helper-text {
+      font-size: 0.76rem;
+      color: var(--muted);
     }
 
     input, select, textarea {
@@ -307,7 +330,9 @@
       margin-bottom: 14px;
     }
 
-    /* Tables */
+    /* =========================================================================
+       [CSS-06] TABEL DATA (DIREKTORI GURU, KALDIK & REKAP)
+       ========================================================================= */
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--border);
@@ -353,7 +378,16 @@
       color: #166534;
     }
 
-    /* A4 Preview Document */
+    .badge-amber {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    /* =========================================================================
+       [CSS-07] PRATINJAU KERTAS A4 & FORMAT CETAK (PRINT / SAVE AS PDF)
+       PENTING: Pengaturan @media print mengatur tampilan saat dicetak ke PDF.
+       Jika hasil PDF terpotong atau margin kurang pas, edit di bagian @media print.
+       ========================================================================= */
     .a4-preview-wrapper {
       background: #cbd5e1;
       padding: 18px;
@@ -368,11 +402,11 @@
       margin: 0 auto;
       background: #ffffff;
       color: #000000;
-      padding: 16mm 18mm;
+      padding: 14mm 16mm;
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
       font-family: 'Times New Roman', Times, serif;
-      font-size: 11.5pt;
-      line-height: 1.45;
+      font-size: 11pt;
+      line-height: 1.4;
     }
 
     .a4-sheet h2, .a4-sheet h3 {
@@ -380,40 +414,67 @@
       color: #000000;
     }
 
+    .a4-sheet h3 {
+      font-size: 11pt;
+      margin: 12px 0 6px;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
     .a4-sheet table {
       width: 100%;
       border-collapse: collapse;
-      margin: 10px 0 14px;
-      font-size: 10.5pt;
+      margin: 6px 0 12px;
+      font-size: 10pt;
+    }
+
+    .a4-sheet tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
 
     .a4-sheet th {
       background: #e2e8f0;
       color: #000000;
       border: 1px solid #000000;
-      padding: 6px 8px;
+      padding: 5px 7px;
+      text-align: center;
     }
 
     .a4-sheet td {
       border: 1px solid #000000;
-      padding: 6px 8px;
+      padding: 5px 7px;
       background: #ffffff !important;
       color: #000000;
+    }
+
+    .promes-matrix th, .promes-matrix td {
+      padding: 3px 4px;
+      font-size: 8.5pt;
+      text-align: center;
+    }
+
+    .promes-matrix td.left-col {
+      text-align: left;
     }
 
     .kop-surat {
       text-align: center;
       border-bottom: 3px double #000000;
-      padding-bottom: 8px;
-      margin-bottom: 14px;
+      padding-bottom: 7px;
+      margin-bottom: 12px;
+    }
+
+    .ttd-block {
+      margin-top: 22px;
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
 
     .ttd-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 28px;
-      page-break-inside: avoid;
+      gap: 28px;
     }
 
     .toast {
@@ -441,7 +502,7 @@
     @media print {
       @page {
         size: A4;
-        margin: 14mm;
+        margin: 12mm 14mm;
       }
       body {
         background: #ffffff !important;
@@ -471,22 +532,32 @@
         width: 100% !important;
         padding: 0 !important;
       }
+      .a4-sheet tr {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      .ttd-block {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO HEADER -->
+  <!-- =======================================================================
+       [HTML-01] HEADER UTAMA (HERO BANNER & TOMBOL PENGATURAN TAMPILAN)
+       ======================================================================= -->
   <header class="hero">
     <div class="container">
       <div class="hero-top">
         <div>
-          <div class="school-badge">SMK TRIMULIA JAKARTA • KURIKULUM MERDEKA 2026/2027</div>
+          <div class="school-badge">SMK TRIMULIA JAKARTA • SK PEMBAGIAN JAM MENGAJAR TP 2026/2027</div>
           <h1>Portal Generator Perangkat Pembelajaran & Prompting Guru</h1>
-          <p>Sistem Terpadu Penyusunan CP, TP, ATP (Kepka BSKAP No. 046/H/KR/2025), Prota & Promes DKI Jakarta (SK Kadisdik No. 346/2026), Modul Ajar Deep Learning, serta Sinkronisasi Jadwal 31 Guru.</p>
+          <p>Sistem Terpadu Penyusunan CP, TP, ATP (Kepka BSKAP No. 046/H/KR/2025), Prota & Matriks Promes DKI Jakarta (SK Kadisdik No. 346/2026), Modul Ajar Deep Learning, serta Data Resmi 31 Guru SMK TRIMULIA Jakarta.</p>
         </div>
         <div class="hero-actions no-print">
-          <button type="button" class="btn btn-glass" onclick="syncJadwalMaster()">🔄 Sinkron Data 31 Guru</button>
+          <button type="button" class="btn btn-glass" onclick="syncJadwalMaster()">🔄 Sinkron SK 31 Guru</button>
           <button type="button" class="btn btn-glass" id="btnSeniorMode" onclick="toggleSeniorMode()">🔍 Mode Teks Besar</button>
           <button type="button" class="btn btn-glass" id="btnDarkMode" onclick="toggleDarkMode()">🌓 Mode Gelap</button>
         </div>
@@ -495,45 +566,54 @@
   </header>
 
   <main class="container">
-    <!-- NAVIGATION TABS -->
+    <!-- =====================================================================
+         [HTML-02] MENU NAVIGASI TAB (5 HALAMAN UTAMA PORTAL)
+         ===================================================================== -->
     <nav class="tabs no-print" aria-label="Menu Utama Portal">
       <button type="button" class="tab-btn active" data-tab="tab-generator" onclick="switchTab('tab-generator', this)">1. Generator Perangkat & PDF A4</button>
-      <button type="button" class="tab-btn" data-tab="tab-direktori" onclick="switchTab('tab-direktori', this)">2. Direktori 31 Guru & JP</button>
+      <button type="button" class="tab-btn" data-tab="tab-direktori" onclick="switchTab('tab-direktori', this)">2. Direktori 31 Guru & Tendik</button>
       <button type="button" class="tab-btn" data-tab="tab-kaldik" onclick="switchTab('tab-kaldik', this)">3. Prota & Promes DKI 2026/2027</button>
       <button type="button" class="tab-btn" data-tab="tab-drive" onclick="switchTab('tab-drive', this)">4. Repository Drive & Regulasi</button>
       <button type="button" class="tab-btn" data-tab="tab-sheets" onclick="switchTab('tab-sheets', this)">5. Jadwal KBM (Google Sheets)</button>
     </nav>
 
-    <!-- TAB 1: GENERATOR PERANGKAT & PDF A4 -->
+    <!-- =====================================================================
+         [HTML-03] TAB 1: GENERATOR PERANGKAT PEMBELAJARAN & CETAK PDF A4
+         Berisi Langkah 1 (Identitas), Langkah 2 (CP/TP/ATP), Langkah 3 (Aksi),
+         dan Area Pratinjau Kertas A4 (#a4DocumentContent).
+         ===================================================================== -->
     <section id="tab-generator" class="tab-panel active">
-      <!-- LANGKAH 1 -->
+      <!-- [HTML-03A] LANGKAH 1: PILIH GURU, MAPEL, KELAS & ALOKASI JP -->
       <div class="card no-print">
         <div class="card-title">
-          <span>Langkah 1: Pilih Identitas Guru & Mata Pelajaran (Otomatis Terisi dari Jadwal KBM)</span>
-          <span class="badge badge-green" id="syncStatusBadge">31 Guru Tersinkron</span>
+          <span>Langkah 1: Pilih Identitas Guru & Mata Pelajaran (Sesuai SK Pembagian Jam Mengajar 8 Agustus 2026)</span>
+          <span class="badge badge-green" id="syncStatusBadge">31 Guru Resmi SK 2026/2027</span>
         </div>
         <div class="grid-3">
           <div class="form-group">
             <label for="selectGuru">Pilih Nama Guru (31 Guru SMK TRIMULIA)</label>
             <select id="selectGuru" onchange="onSelectGuru()"></select>
+            <span class="helper-text" id="guruTotalJpHint">Beban SK: -</span>
           </div>
           <div class="form-group">
             <label for="selectMapel">Mata Pelajaran Diampu</label>
             <select id="selectMapel" onchange="onSelectMapel()"></select>
+            <span class="helper-text">Pilih 1 mata pelajaran untuk disusun perangkat ajarnya</span>
           </div>
           <div class="form-group">
-            <label for="inputKelas">Kelas / Fase / Rombel</label>
-            <input type="text" id="inputKelas" value="XI / Fase F (XI MP, XI BR, XI TKJ)" oninput="refreshAllOutputs()" />
+            <label for="inputKelas">Kelas / Fase / Rombel Ampuan Mapel</label>
+            <input type="text" id="inputKelas" oninput="refreshAllOutputs()" />
+            <span class="helper-text">Otomatis terisi sesuai kelas mapel terpilih</span>
           </div>
         </div>
 
-        <div class="grid-3" style="margin-top: 12px;">
+        <div class="grid-4" style="margin-top: 12px;">
           <div class="form-group">
-            <label for="inputNip">NIP / NUPTK / Jabatan</label>
-            <input type="text" id="inputNip" value="-" oninput="refreshAllOutputs()" />
+            <label for="inputNip">Tugas Tambahan / Jabatan</label>
+            <input type="text" id="inputNip" oninput="refreshAllOutputs()" />
           </div>
           <div class="form-group">
-            <label for="inputKonsentrasi">Konsentrasi Keahlian / Kelompok Mapel</label>
+            <label for="inputKonsentrasi">Konsentrasi Keahlian / Kelompok</label>
             <select id="inputKonsentrasi" onchange="refreshAllOutputs()">
               <option value="Semua Jurusan (Mata Pelajaran Umum)">Semua Jurusan (Mata Pelajaran Umum)</option>
               <option value="Teknik Komputer dan Jaringan (TKJ)">Teknik Komputer dan Jaringan (TKJ)</option>
@@ -542,18 +622,24 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="selectSemester">Semester & Tahun Pelajaran</label>
+            <label for="selectSemester">Semester Fokus Dokumen</label>
             <select id="selectSemester" onchange="refreshAllOutputs()">
-              <option value="Ganjil TP 2026/2027">Semester Ganjil — TP 2026/2027</option>
-              <option value="Genap TP 2026/2027">Semester Genap — TP 2026/2027</option>
+              <option value="Ganjil">Semester Ganjil</option>
+              <option value="Genap">Semester Genap</option>
+              <option value="Ganjil & Genap (1 Tahun)">Ganjil & Genap (1 Tahun)</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label for="inputTanggalPengesahan">Tanggal Pengesahan Dokumen</label>
+            <input type="text" id="inputTanggalPengesahan" value="Jakarta, 8 Agustus 2026" oninput="refreshAllOutputs()" />
           </div>
         </div>
 
         <div class="grid-3" style="margin-top: 12px;">
           <div class="form-group">
-            <label for="inputJpMinggu">Alokasi JP / Minggu</label>
-            <input type="number" id="inputJpMinggu" min="1" max="40" value="4" oninput="refreshAllOutputs()" />
+            <label for="inputJpMinggu">Alokasi JP Mapel / Minggu (Per Rombel)</label>
+            <input type="number" id="inputJpMinggu" min="1" max="24" value="2" oninput="refreshAllOutputs()" />
+            <span class="helper-text" id="jpPerRombelHint">JP per minggu untuk 1 rombel pada mapel ini</span>
           </div>
           <div class="form-group">
             <label for="inputMingguGanjil">Minggu Efektif Ganjil (Kaldik DKI)</label>
@@ -566,7 +652,7 @@
         </div>
       </div>
 
-      <!-- LANGKAH 2 -->
+      <!-- [HTML-03B] LANGKAH 2: INPUT ELEMEN CP, CP, TP, ATP & SARANA -->
       <div class="card no-print">
         <div class="card-title">
           <span>Langkah 2: Elemen CP, Capaian Pembelajaran (CP), TP & ATP (Kepka BSKAP No. 046/H/KR/2025)</span>
@@ -584,7 +670,7 @@
         </div>
         <div class="grid-2" style="margin-top: 12px;">
           <div class="form-group">
-            <label for="inputTp">Tujuan Pembelajaran (TP) Terukur</label>
+            <label for="inputTp">Tujuan Pembelajaran (TP) Terukur (1 baris = 1 TP)</label>
             <textarea id="inputTp" oninput="refreshAllOutputs()"></textarea>
           </div>
           <div class="form-group">
@@ -592,9 +678,19 @@
             <textarea id="inputAtp" oninput="refreshAllOutputs()"></textarea>
           </div>
         </div>
+        <div class="grid-2" style="margin-top: 12px;">
+          <div class="form-group">
+            <label for="inputPemantik">Pemahaman Bermakna & Pertanyaan Pemantik (Modul Ajar)</label>
+            <textarea id="inputPemantik" oninput="refreshAllOutputs()"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputSarana">Sarana Prasarana, Media & Bahan Praktik Bengkel/Lab</label>
+            <textarea id="inputSarana" oninput="refreshAllOutputs()"></textarea>
+          </div>
+        </div>
       </div>
 
-      <!-- LANGKAH 3 & 4 -->
+      <!-- [HTML-03C] LANGKAH 3: PILIH TAHAP DOKUMEN, CETAK PDF, WORD & PROMPT AI -->
       <div class="card no-print">
         <div class="card-title">
           <span>Langkah 3: Cetak Perangkat PDF A4, Ekspor Word/Excel, Simpan Drive & Prompt AI</span>
@@ -604,11 +700,11 @@
           <div class="form-group">
             <label for="selectTahapDokumen">Pilih Jenis / Tahap Perangkat Pembelajaran</label>
             <select id="selectTahapDokumen" onchange="renderA4Document()">
-              <option value="paket_lengkap">Tahap 1: Paket Lengkap Siap Supervisi (CP + TP + ATP + Prota + Promes + Modul Ajar)</option>
+              <option value="paket_lengkap">Tahap 1: Paket Lengkap Siap Supervisi (CP/TP/ATP + Prota + Matriks Promes + Modul Ajar + Rubrik LKPD)</option>
               <option value="cp_tp_atp">Tahap 2: Analisis CP, Tujuan Pembelajaran (TP) & Alur Tujuan Pembelajaran (ATP)</option>
-              <option value="prota_promes">Tahap 3: Program Tahunan (Prota) & Program Semester (Promes DKI 2026/2027)</option>
-              <option value="modul_ajar">Tahap 4: Modul Ajar / RPP Berbasis Deep Learning & PjBL/TeFa</option>
-              <option value="asesmen_lkpd">Tahap 5: Kisi-Kisi Asesmen, Rubrik Penilaian & LKPD Industri</option>
+              <option value="prota_promes">Tahap 3: Program Tahunan (Prota) & Matriks Program Semester (Promes DKI 2026/2027)</option>
+              <option value="modul_ajar">Tahap 4: Modul Ajar / RPP Lengkap Berbasis Deep Learning & PjBL/TeFa</option>
+              <option value="asesmen_lkpd">Tahap 5: Kisi-Kisi Asesmen, Rubrik Penskoran (1–4) & LKPD Praktik</option>
             </select>
           </div>
           <div class="form-group">
@@ -616,7 +712,7 @@
             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
               <button type="button" class="btn btn-primary btn-lg" onclick="printA4Pdf()">🖨️ Cetak / Simpan PDF A4</button>
               <button type="button" class="btn btn-accent" onclick="downloadWordDoc()">📄 Unduh Word (.doc)</button>
-              <button type="button" class="btn btn-outline" onclick="downloadExcelSchedule()">📊 Unduh Excel (.xls)</button>
+              <button type="button" class="btn btn-outline" onclick="downloadExcelSchedule()">📊 Unduh Excel SK (.xls)</button>
               <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">☁️ Buka Google Drive</a>
             </div>
           </div>
@@ -631,11 +727,11 @@
 
         <div class="form-group">
           <label for="promptOutput">Pratinjau Prompt Otomatis (Siap Tempel ke Gemini / ChatGPT jika ingin memperkaya materi):</label>
-          <textarea id="promptOutput" readonly style="min-height: 135px; font-family: monospace; font-size: 0.84rem;"></textarea>
+          <textarea id="promptOutput" readonly style="min-height: 130px; font-family: monospace; font-size: 0.84rem;"></textarea>
         </div>
       </div>
 
-      <!-- PRATINJAU DOKUMEN A4 -->
+      <!-- [HTML-03D] PRATINJAU LEMBAR A4 SIAP CETAK (TARGET WINDOW.PRINT) -->
       <div class="card">
         <div class="card-title no-print">
           <span>Pratinjau Dokumen Resmi Siap Cetak A4 (SMK TRIMULIA Jakarta)</span>
@@ -647,23 +743,29 @@
       </div>
     </section>
 
-    <!-- TAB 2: DIREKTORI 31 GURU & JP -->
+    <!-- =====================================================================
+         [HTML-04] TAB 2: DIREKTORI RESMI 31 GURU & 10 TENDIK (SK 2026/2027)
+         ===================================================================== -->
     <section id="tab-direktori" class="tab-panel">
       <div class="card">
         <div class="card-title">
-          <span>Direktori Pembagian Jam Mengajar 31 Guru SMK TRIMULIA Jakarta (TP 2026/2027)</span>
-          <button type="button" class="btn btn-accent" onclick="downloadExcelSchedule()">📥 Ekspor Daftar Guru & JP (.xls)</button>
+          <span>Direktori Resmi Pembagian Jam Mengajar 31 Guru & Tenaga Kependidikan SMK TRIMULIA Jakarta (TP 2026/2027)</span>
+          <button type="button" class="btn btn-accent" onclick="downloadExcelSchedule()">📥 Ekspor Daftar SK Guru & Tendik (.xls)</button>
+        </div>
+        <div class="info-box">
+          <strong>Rekapitulasi Resmi SK Pembagian Jam Mengajar (Jakarta, 8 Agustus 2026):</strong><br />
+          • Total Jam Mengajar Tatap Muka (31 Guru): <strong>514 JP/Minggu</strong> • Tugas Tambahan (Wakasek, Kaprog, Walas, Pembina OSIS, Guru BK): <strong>55 JP/Minggu</strong> • Total Keseluruhan: <strong>569 JP/Minggu</strong>.
         </div>
         <div class="grid-2" style="margin-bottom: 12px;">
           <div class="form-group">
-            <label for="searchGuruInput">Cari Nama Guru, Mata Pelajaran, atau Kelas</label>
-            <input type="text" id="searchGuruInput" placeholder="Ketik nama guru, mapel, TKJ, MPLB, atau BR..." oninput="renderDirektoriTable()" />
+            <label for="searchGuruInput">Cari Nama Guru, Mata Pelajaran, Kelas, atau Tugas Tambahan</label>
+            <input type="text" id="searchGuruInput" placeholder="Ketik nama guru (mis. Solihin, Zaki, Ery, Sukamti, Rochman)..." oninput="renderDirektoriTable()" />
           </div>
           <div class="form-group">
             <label for="filterJurusanDir">Filter Kelompok / Jurusan</label>
             <select id="filterJurusanDir" onchange="renderDirektoriTable()">
-              <option value="ALL">Semua Guru (31 Guru)</option>
-              <option value="UMUM">Mata Pelajaran Umum / Muatan Nasional</option>
+              <option value="ALL">Semua Guru (No. 1 – 31)</option>
+              <option value="UMUM">Mata Pelajaran Umum / Agama / BK</option>
               <option value="TKJ">Teknik Komputer & Jaringan (TKJ)</option>
               <option value="MPLB">Manajemen Perkantoran & Layanan Bisnis (MPLB)</option>
               <option value="BR">Bisnis Retail (BR)</option>
@@ -676,36 +778,54 @@
               <tr>
                 <th style="width: 44px;">No</th>
                 <th>Nama Guru & Gelar</th>
-                <th>Jabatan / Tugas Tambahan</th>
-                <th>Mata Pelajaran</th>
-                <th>Kelas / Rombel</th>
-                <th style="width: 85px;">Total JP</th>
+                <th>Tugas Tambahan</th>
+                <th>Mata Pelajaran & Rincian Kelas</th>
+                <th style="width: 90px;">JP KBM</th>
+                <th style="width: 95px;">Total SK</th>
                 <th style="width: 130px;">Aksi</th>
               </tr>
             </thead>
             <tbody id="direktoriTableBody"></tbody>
           </table>
         </div>
+
+        <h3 style="margin: 22px 0 10px; font-size: 1rem; color: var(--primary);">Daftar Tenaga Kependidikan & Staf Sekolah (No. 33 – 42)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 60px;">No</th>
+                <th>Nama Pegawai</th>
+                <th>Jabatan / Unit Kerja</th>
+              </tr>
+            </thead>
+            <tbody id="tendikTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- TAB 3: PROTA & PROMES DKI 2026/2027 -->
+    <!-- =====================================================================
+         [HTML-05] TAB 3: KALKULATOR MINGGU EFEKTIF PROTA & PROMES DKI JAKARTA
+         ===================================================================== -->
     <section id="tab-kaldik" class="tab-panel">
       <div class="card">
         <div class="card-title">
-          <span>Kalkulator Minggu Efektif, Prota & Promes Provinsi DKI Jakarta (SK Kadisdik No. 346 Tahun 2026)</span>
+          <span>Kalkulator Minggu Efektif, Prota & Matriks Promes Provinsi DKI Jakarta (SK Kadisdik No. 346 Tahun 2026)</span>
         </div>
         <div class="info-box">
           <strong>Acuan Kalender Pendidikan Provinsi DKI Jakarta TP 2026/2027:</strong><br />
-          • <strong>Semester Ganjil (Juli – Desember 2026):</strong> 19 Minggu Efektif KBM (termasuk MPLS, Asesmen Sumatif Tengah Semester, Sumatif Akhir Semester, dan Pengolahan Rapor).<br />
-          • <strong>Semester Genap (Januari – Juni 2027):</strong> 17 Minggu Efektif KBM (termasuk Ujian Sekolah/UKK Kelas XII, Libur Hari Raya Idul Fitri 1448 H, dan PAT).<br />
+          • <strong>Semester Ganjil (Juli – Desember 2026):</strong> 19 Minggu Efektif KBM (Juli: 2 minggu, Agustus: 4 minggu, September: 4 minggu, Oktober: 4 minggu, November: 4 minggu, Desember: 1 minggu efektif + ASAS/Rapor).<br />
+          • <strong>Semester Genap (Januari – Juni 2027):</strong> 17 Minggu Efektif KBM (Januari: 4 minggu, Februari: 4 minggu, Maret: 3 minggu, April: 3 minggu, Mei: 2 minggu, Juni: 1 minggu efektif + ASAT/Rapor).<br />
           • <strong>Total 1 Tahun Pelajaran:</strong> 36 Minggu Efektif.
         </div>
         <div id="kaldikSummaryContainer"></div>
       </div>
     </section>
 
-    <!-- TAB 4: REPOSITORY DRIVE & REGULASI -->
+    <!-- =====================================================================
+         [HTML-06] TAB 4: REPOSITORY REGULASI NASIONAL & PENGESAHAN DOKUMEN
+         ===================================================================== -->
     <section id="tab-drive" class="tab-panel">
       <div class="card">
         <div class="card-title">
@@ -726,13 +846,15 @@
           </div>
           <div class="info-box">
             <strong>4. Pengesahan Dokumen Supervisi Sekolah</strong><br />
-            Setiap perangkat pembelajaran yang dicetak dari portal ini otomatis mencantumkan kolom pengesahan resmi Kepala SMK TRIMULIA Jakarta (<strong>Juni Abdillah, S.Pd</strong>) dan Guru Mata Pelajaran.
+            Setiap perangkat pembelajaran yang dicetak dari portal ini otomatis mencantumkan kolom pengesahan resmi Kepala SMK TRIMULIA Jakarta (<strong>Juni Abdillah, S.Pd</strong>) dan Guru Mata Pelajaran sesuai SK Pembagian Jam Mengajar 8 Agustus 2026.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 5: JADWAL KBM GOOGLE SHEETS -->
+    <!-- =====================================================================
+         [HTML-07] TAB 5: INTEGRASI GOOGLE SHEETS & IMPOR MANUAL JADWAL KBM
+         ===================================================================== -->
     <section id="tab-sheets" class="tab-panel">
       <div class="card">
         <div class="card-title">
@@ -743,12 +865,12 @@
           </div>
         </div>
         <div class="warn-box">
-          <strong>Catatan Integrasi GitHub Pages:</strong> Seluruh data 31 guru, mata pelajaran, rombel kelas (X, XI, XII TKJ/MPLB/BR), dan jumlah JP di portal ini sudah disinkronkan dengan tabel pembagian jam mengajar di bawah ini. Jika ada perubahan baru pada Google Sheets, Anda juga dapat menempelkan baris tabel yang disalin dari spreadsheet pada kotak impor cepat di bawah.
+          <strong>Status Sinkronisasi:</strong> Seluruh data 31 guru, mata pelajaran spesifik, kelas/rombel, alokasi JP per rombel, dan tugas tambahan telah disinkronkan dengan dokumen resmi <em>Jadwal KBM SMK TM 2026-2027.xlsx — New of PEMBAGIAN JAM MENGAJAR GURU 2026-2027</em>.
         </div>
 
         <div class="form-group" style="margin-bottom: 14px;">
           <label for="pasteSheetInput">Impor Cepat / Pembaruan Manual dari Google Sheets (Opsional — tempel baris tabel & klik Proses):</label>
-          <textarea id="pasteSheetInput" placeholder="Contoh: Solihin, S.T. | Informatika / KKA | X TKJ, X MPLB, X BR | 12"></textarea>
+          <textarea id="pasteSheetInput" placeholder="Contoh: Solihin, S.T | Perencanaan dan Pengalamatan Jaringan | XI TKJ, XII TKJ | 4"></textarea>
           <div style="margin-top: 8px;">
             <button type="button" class="btn btn-outline" onclick="parsePastedSchedule()">⚙️ Proses Baris Tempelan ke Portal</button>
           </div>
@@ -767,14 +889,17 @@
   </main>
 
   <footer class="footer container">
-    Portal Generator Perangkat Pembelajaran & Prompting Guru — <strong>SMK TRIMULIA Jakarta</strong> • Dikembangkan untuk Kurikulum SMK TP 2026/2027 • Siap GitHub Pages.
+    Portal Generator Perangkat Pembelajaran & Prompting Guru — <strong>SMK TRIMULIA Jakarta</strong> • Tersinkron dengan SK Pembagian Jam Mengajar TP 2026/2027.
   </footer>
 
-  <div id="toastBox" class="toast" role="status" aria-live="polite"></div>
+  <!-- [HTML-08] NOTIFIKASI POP-UP MELAYANG (TOAST MESSAGE) -->
+  <div id="toastBox"  class="toast" role="status" aria-live="polite"></div>
 
   <script>
     // =========================================================================
-    // 1. SAFE STORAGE (BEBAS ERROR SANDBOX / IFRAME / GITHUB PAGES)
+    // [JS-01] SAFE STORAGE (PENYIMPANAN AMAN LOKAL / ANTI-ERROR SANDBOX)
+    // Fungsi: Menyimpan preferensi pengguna (guru terakhir dipilih, dark mode,
+    // mode teks besar) ke localStorage dengan fallback ke memori sementara.
     // =========================================================================
     const memoryStorage = {};
     const safeStorage = {
@@ -790,197 +915,578 @@
         try {
           window.localStorage.setItem(key, String(value));
         } catch (err) {
-          // Fallback diam-diam ke memoryStorage saat berada di sandbox ketat
+          // Fallback diam-diam ke memoryStorage
         }
       }
     };
 
     // =========================================================================
-    // 2. DATABASE CP RESMI (KEPKA BSKAP NO. 046/H/KR/2025)
+    // [JS-02] DATABASE CAPAIAN PEMBELAJARAN (CP) RESMI PER MATA PELAJARAN
+    // Catatan Edit: Pastikan nama key mapel di sini SAMA PERSIS dengan nama
+    // mapel di MASTER_GURU_LIST agar CP terisi otomatis saat guru dipilih.
     // =========================================================================
     const CP_DATABASE = {
-      "Pendidikan Agama Islam dan Budi Pekerti": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Al-Qur'an dan Hadis\n2. Akidah\n3. Akhlak\n4. Fikih\n5. Sejarah Peradaban Islam",
-        cp: "Peserta didik mampu menganalisis ayat Al-Qur'an dan hadis tentang perintah berkompetisi dalam kebaikan, etos kerja, serta toleransi; memahami cabang-cabang iman; membiasakan akhlak karimah dan menjauhi pergaulan bebas; menerapkan ketentuan muamalah ekonomi syariah; serta meneladani sejarah perkembangan Islam di Indonesia.",
-        tp: "1. Menganalisis pesan QS. Al-Maidah/5:48 dan QS. At-Taubah/9:105 terkait etos kerja profesional.\n2. Menerapkan prinsip transaksi ekonomi syariah dalam dunia usaha dan industri.\n3. Mengaktualisasikan perilaku toleran, jujur, dan tanggung jawab di lingkungan sekolah dan tempat PKL.",
-        atp: "Tahap 1: Kajian Teks & Kontekstualisasi Etos Kerja (6 JP) -> Tahap 2: Simulasi Muamalah Syariah & Etika Profesi (8 JP) -> Tahap 3: Proyek Kampanye Akhlak Mulia Digital (6 JP) menggunakan pendekatan Deep Learning & Problem-Based Learning."
+      "Dasar-Dasar Program Keahlian TKJ": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Proses Bisnis di Bidang TJKT\n2. Perkembangan Teknologi di Bidang TJKT\n3. Profesi dan Kewirausahaan (Technopreneur)\n4. Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH)\n5. Media dan Jaringan Telekomunikasi\n6. Penggunaan Alat Ukur Jaringan",
+        cp: "Peserta didik mampu memahami proses bisnis dan budaya kerja K3LH di bidang teknik jaringan komputer dan telekomunikasi, perkembangan teknologi jaringan modern, pengalamatan IP dasar, instalasi kabel UTP/Fiber Optik, serta penggunaan alat ukur jaringan (LAN Tester, OPM, OTDR).",
+        tp: "Menerapkan prosedur K3LH dan standar keselamatan kerja bengkel jaringan komputer.\nMembuat dan menguji konektivitas kabel UTP (Straight/Cross) serta terminasi dasar Fiber Optik.\nMengoperasikan alat ukur jaringan untuk mendiagnosis kualitas sinyal dan konektivitas.",
+        atp: "Tahap 1: Budaya Kerja Industri, K3LH & Technopreneur TJKT -> Tahap 2: Pengalamatan IP & Media Transmisi -> Tahap 3: Praktik Instalasi Kabel & Penggunaan Alat Ukur.",
+        pemantik: "Pemahaman Bermakna: Keandalan infrastruktur jaringan berawal dari kepatuhan terhadap standar instalasi fisik dan K3LH.\nPertanyaan Pemantik: Mengapa selisih urutan warna kabel UTP atau redaman fiber optik dapat melumpuhkan seluruh jaringan kantor?",
+        sarana: "PC/Laptop Praktikum, Crimping Tool, Kabel UTP Cat6, Konektor RJ45, LAN Tester, Optical Power Meter (OPM), Splicer Fiber Optik, Modul Praktik TKJ."
       },
-      "Pendidikan Agama Kristen dan Budi Pekerti": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Allah Berkarya\n2. Manusia dan Nilai-Nilai Kristiani\n3. Gereja dan Masyarakat Majemuk\n4. Alam dan Lingkungan Hidup",
-        cp: "Peserta didik memahami karya Allah dalam pertumbuhan diri menjadi dewasa, menerapkan nilai-nilai Kristiani dalam kehidupan bermasyarakat majemuk, menjunjung tinggi keadilan dan perdamaian, serta bertanggung jawab menjaga kelestarian alam ciptaan Tuhan.",
-        tp: "1. Mengidentifikasi prinsip kedewasaan iman dalam mengambil keputusan etis.\n2. Mewujudkan sikap inklusif dan kerja sama lintas budaya di dunia kerja.\n3. Merancang aksi nyata kepedulian lingkungan di sekolah.",
-        atp: "Tahap 1: Refleksi Iman & Kedewasaan Pribadi -> Tahap 2: Studi Kasus Toleransi Masyarakat Majemuk -> Tahap 3: Proyek Pelayanan Sosial & Ekologi berbasis PjBL."
+      "Perencanaan dan Pengalamatan Jaringan": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Perencanaan Topologi Jaringan\n2. Pengalamatan Jaringan (IPv4 & IPv6)\n3. Subnetting (FLSM & VLSM)\n4. Segmentasi Jaringan (VLAN)",
+        cp: "Peserta didik mampu merancang topologi jaringan logis dan fisik sesuai kebutuhan pengguna/perusahaan, menghitung kebutuhan pengalamatan IP (IPv4/IPv6), menerapkan teknik subnetting VLSM/CIDR secara efisien, serta merancang segmentasi jaringan menggunakan VLAN.",
+        tp: "Menganalisis kebutuhan jumlah host dan merancang topologi jaringan berskala gedung/perusahaan.\nMenghitung pembagian blok alamat IP menggunakan metode VLSM/CIDR tanpa pemborosan IP.\nMengonfigurasi segmentasi VLAN dan Trunking pada perangkat switch manageable.",
+        atp: "Tahap 1: Analisis Kebutuhan & Desain Topologi Jaringan -> Tahap 2: Perhitungan Subnetting VLSM & IPv6 -> Tahap 3: Implementasi VLAN & Simulasi Cisco Packet Tracer / Mikrotik.",
+        pemantik: "Pemahaman Bermakna: Perencanaan pengalamatan IP dan VLAN yang tepat mencegah broadcast storm serta memudahkan skalabilitas jaringan.\nPertanyaan Pemantik: Bagaimana cara membagi satu blok IP publik/privat ke 5 divisi kantor dengan jumlah perangkat berbeda secara efisien?",
+        sarana: "Router Mikrotik, Manageable Switch, PC/Laptop, Aplikasi Cisco Packet Tracer / GNS3, Lembar Kerja Perancangan Topologi."
       },
-      "Pendidikan Pancasila": {
+      "Teknologi Jaringan Kabel dan Nirkabel": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Instalasi Jaringan Kabel (Copper & Fiber Optic)\n2. Teknologi Jaringan Nirkabel (Wireless Indoor/Outdoor)\n3. Routing Statis dan Dinamis\n4. Manajemen Bandwidth & QoS",
+        cp: "Peserta didik mampu memasang dan mengonfigurasi jaringan berbasis kabel maupun nirkabel (Access Point, Point-to-Point, Point-to-Multipoint), mengatur frekuensi dan kanal nirkabel, serta mengonfigurasi routing statis dan dinamis antar-jaringan.",
+        tp: "Mengonfigurasi perangkat Access Point dan jembatan nirkabel (PtP/PtMP) dengan optimasi kanal.\nMenerapkan routing statis dan dinamis (OSPF) untuk menghubungkan beberapa segmen jaringan.\nMengatur manajemen bandwidth (Simple Queue/Queue Tree) untuk menjaga kualitas layanan (QoS).",
+        atp: "Tahap 1: Instalasi & Terminasi Jaringan Kabel -> Tahap 2: Konfigurasi Wireless & Manajemen Frekuensi -> Tahap 3: Routing Antar-Jaringan & Optimasi Bandwidth.",
+        pemantik: "Pemahaman Bermakna: Kombinasi jaringan kabel berkecepatan tinggi dan nirkabel yang tertata kanalnya menjamin mobilitas pengguna tanpa interferensi.\nPertanyaan Pemantik: Faktor apa saja yang menyebabkan sinyal Wi-Fi melemah di gedung bertingkat dan bagaimana solusinya?",
+        sarana: "Routerboard Mikrotik, Access Point Dual-Band, Antena Outdoor, Kabel UTP/FO, Wi-Fi Analyzer, Laptop Praktikum."
+      },
+      "Keamanan Jaringan": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Analisis Ancaman & Kerentanan Jaringan\n2. Konfigurasi Firewall & Filtering\n3. Virtual Private Network (VPN) & Enkripsi\n4. Sistem Deteksi Intrusi (IDS/IPS) & Hardening",
+        cp: "Peserta didik mampu mengidentifikasi potensi serangan siber pada jaringan, menerapkan kebijakan firewall (packet filtering, NAT, mangle), membangun jalur komunikasi aman menggunakan VPN, serta melakukan pengamanan (hardening) perangkat jaringan.",
+        tp: "Menganalisis jenis serangan jaringan (DDoS, MITM, port scanning) dan celah kerentanan sistem.\nMengonfigurasi aturan firewall untuk membatasi akses ilegal dan melindungi layanan server.\nMembangun koneksi terenkripsi antar-kantor menggunakan protokol VPN (WireGuard/IPsec/L2TP).",
+        atp: "Tahap 1: Audit Kerentanan & Etika Keamanan Siber -> Tahap 2: Implementasi Firewall Filtering -> Tahap 3: Konfigurasi VPN & Uji Penetrasi Terbatas.",
+        pemantik: "Pemahaman Bermakna: Keamanan jaringan bukan produk sekali pasang, melainkan proses berlapis untuk menjaga kerahasiaan, integritas, dan ketersediaan data.\nPertanyaan Pemantik: Bagaimana cara memastikan data transaksi cabang toko tetap aman saat dikirim melalui jaringan internet publik?",
+        sarana: "Router Mikrotik, Server Linux, VirtualBox/VMware, Wireshark, Nmap, Modul Praktikum Keamanan Jaringan."
+      },
+      "Administrasi Sistem Jaringan": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Instalasi & Konfigurasi Sistem Operasi Server\n2. Layanan Jaringan Dasar (DHCP, DNS, Web, FTP, Mail)\n3. Virtualisasi & Komputasi Awan (Cloud Server)\n4. Backup, Monitoring & Pemulihan Sistem",
+        cp: "Peserta didik mampu menginstal dan mengelola sistem operasi server berbasis Linux/Windows, membangun berbagai layanan jaringan (DHCP, DNS, Web Server, Database, Mail Server), mengelola mesin virtual/kontainer, serta melakukan pemantauan dan pencadangan data server.",
+        tp: "Menginstal sistem operasi server berbasis CLI dan mengatur konfigurasi antarmuka jaringan.\nMembangun dan menguji layanan DHCP Server, DNS Server, dan Web Server (Apache/Nginx).\nMelakukan otomasi backup dan pemantauan kinerja server secara berkala.",
+        atp: "Tahap 1: Instalasi OS Server & Manajemen Hak Akses -> Tahap 2: Konfigurasi Layanan DHCP, DNS & Web -> Tahap 3: Virtualisasi Server & Proyek Teaching Factory Hosting.",
+        pemantik: "Pemahaman Bermakna: Administrator sistem bertanggung jawab memastikan seluruh layanan aplikasi berjalan stabil 24/7 dengan cadangan data yang terjamin.\nPertanyaan Pemantik: Apa yang terjadi pada operasional perusahaan jika DNS Server mengalami gangguan dan bagaimana prosedur pemulihannya?",
+        sarana: "PC Server / Workstation, Proxmox / VirtualBox, ISO Debian/Ubuntu Server, Putty/SSH Client, Jaringan Lokal Lab TKJ."
+      },
+      "Pemasangan dan Konfigurasi Jaringan": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Survei & Persiapan Instalasi Perangkat\n2. Pemasangan Rack, Switch & Router\n3. Konfigurasi Integrasi Jaringan & Uji Fungsi\n4. Dokumentasi & Troubleshooting Jaringan",
+        cp: "Peserta didik mampu melaksanakan pemasangan fisik perangkat jaringan (rack server, patch panel, switch, router), mengonfigurasi integrasi seluruh perangkat sesuai cetak biru topologi, melakukan uji fungsi konektivitas menyeluruh, serta menyusun dokumentasi teknis jaringan.",
+        tp: "Melakukan perakitan dan penataan perangkat aktif/pasif pada wallmount rack secara rapi.\nMengonfigurasi integrasi router, switch VLAN, dan access point hingga terhubung ke internet.\nMendiagnosis gangguan jaringan secara sistematis dan menyusun laporan serah terima proyek.",
+        atp: "Tahap 1: Persiapan Perangkat & Perakitan Rack -> Tahap 2: Konfigurasi Integrasi Multi-Perangkat -> Tahap 3: Uji Fungsi, Troubleshooting & Dokumentasi Proyek.",
+        pemantik: "Pemahaman Bermakna: Penataan kabel (cable management) dan dokumentasi topologi yang rapi mempercepat penanganan gangguan di lapangan.\nPertanyaan Pemantik: Bagaimana langkah sistematis melacak penyebab satu lantai kantor kehilangan koneksi internet dalam waktu kurang dari 10 menit?",
+        sarana: "Wallmount Rack, Patch Panel, Switch, Router, Kabel UTP, Label Printer, Laptop Praktikum, Checklist Uji Fungsi."
+      },
+      "Koding dan Kecerdasan Artifisial": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Berpikir Komputasional & Algoritma\n2. Pemrograman Dasar (Python / Web)\n3. Konsep Dasar Kecerdasan Artifisial (AI) & Machine Learning\n4. Rekayasa Prompt & Etika Pemanfaatan AI",
+        cp: "Peserta didik mampu merancang algoritma dan menulis program terstruktur menggunakan bahasa pemrograman modern (Python), memahami cara kerja model Kecerdasan Artifisial (AI) dan pengolahan data latih, serta memanfaatkan AI generatif secara etis dan akurat untuk menyelesaikan masalah kejuruan.",
+        tp: "Menulis skrip program Python menggunakan struktur percabangan, perulangan, dan fungsi.\nMembangun model klasifikasi sederhana atau otomasi skrip berbasis pustaka AI.\nMenerapkan teknik prompt engineering dan verifikasi fakta untuk menghindari bias/halusinasi AI.",
+        atp: "Tahap 1: Logika Algoritma & Dasar Pemrograman Python -> Tahap 2: Pengenalan Data & Model Kecerdasan Artifisial -> Tahap 3: Proyek Aplikasi Otomasi / Asisten AI Sederhana.",
+        pemantik: "Pemahaman Bermakna: Kecerdasan Artifisial adalah alat pengungkit produktivitas yang memerlukan logika pemrograman dan verifikasi kritis manusia.\nPertanyaan Pemantik: Bagaimana kita melatih program sederhana agar mampu mengenali pola data secara otomatis?",
+        sarana: "PC/Laptop Lab, Python 3, VS Code / Google Colab, Dataset Latih Terbuka, Koneksi Internet."
+      },
+      "Informatika": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Berpikir Komputasional\n2. Teknologi Informasi dan Komunikasi (TIK)\n3. Sistem Komputer & Jaringan Internet\n4. Analisis Data & Algoritma Pemrograman\n5. Dampak Sosial Informatika",
+        cp: "Peserta didik mampu menerapkan berpikir komputasional untuk memecahkan persoalan, mengintegrasikan aplikasi perkantoran tingkat lanjut, memahami arsitektur sistem komputer dan keamanan berinternet, serta mengolah dan memvisualisasikan data secara informatif.",
+        tp: "Menerapkan strategi dekomposisi, abstraksi, pengenalan pola, dan algoritma dalam masalah sehari-hari.\nMengintegrasikan aplikasi pengolah kata, angka, dan presentasi untuk laporan profesional.\nMengolah dataset menggunakan fungsi logika dan grafik serta menjaga keamanan jejak digital.",
+        atp: "Tahap 1: Berpikir Komputasional & Integrasi Aplikasi Kantor -> Tahap 2: Sistem Komputer, Jaringan & Keamanan Digital -> Tahap 3: Analisis Data & Praktik Lintas Bidang.",
+        pemantik: "Pemahaman Bermakna: Penguasaan informatika membekali lulusan SMK kemampuan mengolah data menjadi keputusan yang akurat di era digital.\nPertanyaan Pemantik: Bagaimana cara mengolah ratusan baris data transaksi menjadi ringkasan grafik otomatis dalam hitungan menit?",
+        sarana: "Komputer Lab, Aplikasi Office / Google Workspace, Browser, Modul Praktik Informatika."
+      },
+      "Dasar-Dasar Program Keahlian BR": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Proses Bisnis Bidang Pemasaran & Ritel\n2. Perkembangan Teknologi & Isu Global Ritel\n3. Profil Pekerjaan & Kewirausahaan Ritel\n4. K3LH & Pelayanan Pelanggan Ritel\n5. Dasar-Dasar Pemasaran",
+        cp: "Peserta didik memahami proses bisnis ritel modern dan omnichannel, budaya kerja K3 di lingkungan toko, komunikasi persuasif dan pelayanan prima (service excellence) kepada pelanggan, serta konsep dasar segmentasi pasar dan bauran pemasaran.",
+        tp: "Menjelaskan alur rantai pasok dan operasional bisnis ritel konvensional maupun daring.\nMenerapkan standar pelayanan prima, sapaan pelanggan, dan penanganan keluhan di area toko.\nMenganalisis target pasar dan bauran pemasaran (4P) untuk produk ritel.",
+        atp: "Tahap 1: Ekosistem Bisnis Ritel & K3 Toko -> Tahap 2: Komunikasi Pelanggan & Service Excellence -> Tahap 3: Dasar Pemasaran & Simulasi Pelayanan Toko.",
+        pemantik: "Pemahaman Bermakna: Kepuasan dan loyalitas pelanggan ritel ditentukan oleh kecepatan layanan, keramahan, dan pemahaman kebutuhan pembeli.\nPertanyaan Pemantik: Apa yang membedakan pengalaman berbelanja di toko ritel modern yang sukses dibandingkan toko yang sepi pembeli?",
+        sarana: "Lab Business Center / Toko Praktik SMK, Produk Contoh, Modul Pelayanan Prima, Kartu Skenario Roleplay."
+      },
+      "Administrasi Transaksi dan Bisnis": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Alur & Bukti Transaksi Bisnis\n2. Operasional Mesin Kasir & Point of Sale (POS)\n3. Pembayaran Tunai, Nontunai & QRIS\n4. Pelaporan & Rekonsiliasi Kas Harian",
+        cp: "Peserta didik mampu memverifikasi kelengkapan berkas transaksi pembelian dan penjualan, mengoperasikan perangkat kasir Point of Sale (POS) dan pemindai kode batang (barcode scanner), memproses pembayaran tunai maupun nontunai, serta menyusun laporan penjualan harian.",
+        tp: "Mengidentifikasi keabsahan bukti transaksi (nota, faktur, kuitansi, bukti transfer/QRIS).\nMengoperasikan transaksi penjualan pada aplikasi kasir POS secara cepat dan akurat.\nMenghitung selisih kas (over/short) dan menyusun berita acara serah terima kasir.",
+        atp: "Tahap 1: Administrasi Dokumen Transaksi -> Tahap 2: Praktik Kasir POS & Pembayaran Digital -> Tahap 3: Rekonsiliasi Kas & Laporan Penjualan Harian.",
+        pemantik: "Pemahaman Bermakna: Ketelitian dalam administrasi transaksi menjaga akurasi arus kas dan mencegah kerugian finansial perusahaan ritel.\nPertanyaan Pemantik: Bagaimana prosedur menangani pembatalan barang (void) di kasir agar catatan stok dan uang tunai tetap klop?",
+        sarana: "Mesin Kasir POS, Barcode Scanner, Printer Struk Thermal, EDC Simulasi, Uang Mainan & Kertas Struk, Business Center SMK."
+      },
+      "Penataan dan Pendistribusian Produk": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Perencanaan Visual Merchandising & Planogram\n2. Penataan Produk (Window, Floor & Gondola Display)\n3. Perawatan, Pelabelan Harga & Keamanan Produk\n4. Pengelolaan Gudang & Pendistribusian Barang (FIFO/FEFO)",
+        cp: "Peserta didik mampu merancang dan menata display produk sesuai planogram dan prinsip estetika ritel, memasang label harga dan atribut promosi (POP), menjaga kebersihan serta keamanan barang pajangan, dan melaksanakan penerimaan serta distribusi stok gudang berbasis FIFO/FEFO.",
+        tp: "Menata produk pada rak gondola sesuai kategori, planogram, dan prinsip eye-level.\nMelakukan pelabelan harga (price tag) serta perawatan barang agar terhindar dari kerusakan/kedaluwarsa.\nMenerapkan pencatatan keluar-masuk barang gudang menggunakan metode FIFO/FEFO.",
+        atp: "Tahap 1: Konsep Visual Merchandising & Planogram -> Tahap 2: Praktik Penataan Rak & Pelabelan -> Tahap 3: Manajemen Stok Gudang & Distribusi Produk.",
+        pemantik: "Pemahaman Bermakna: Penataan produk yang menarik dan mudah dijangkau bertindak sebagai 'tenaga penjual diam' yang meningkatkan pembelian impulsif.\nPertanyaan Pemantik: Mengapa produk kebutuhan pokok dan produk promo diletakkan pada zona lorong yang berbeda di supermarket?",
+        sarana: "Rak Gondola Praktik, Dummy Produk Ritel, Price Tag Holder, Kartu Stok Gudang, Timbangan & Alat Ukur."
+      },
+      "Pemasaran Bisnis Retail": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Riset Pasar & Perilaku Konsumen Ritel\n2. Strategi Promosi & Customer Relationship Management (CRM)\n3. Pemasaran Digital (Social Media & Marketplace)\n4. Live Commerce & Konten Promosi Produk",
+        cp: "Peserta didik mampu melaksanakan riset pasar sederhana, merancang program loyalitas pelanggan (CRM), membuat konten promosi digital yang menarik, serta mengelola toko daring (marketplace) dan sesi live selling untuk meningkatkan omzet penjualan ritel.",
+        tp: "Menyusun strategi promosi musiman dan program retensi pelanggan untuk toko ritel.\nMembuat foto/video pendek katalog produk dan mengunggahnya ke media sosial serta marketplace.\nMelaksanakan simulasi siaran langsung penjualan (live commerce) dengan teknik komunikasi persuasif.",
+        atp: "Tahap 1: Analisis Konsumen & Program CRM -> Tahap 2: Produksi Konten Digital & Optimasi Marketplace -> Tahap 3: Praktik Live Commerce & Evaluasi Konversi Penjualan.",
+        pemantik: "Pemahaman Bermakna: Pemasaran ritel masa kini memadukan kekuatan toko fisik dengan jangkauan luas pemasaran digital.\nPertanyaan Pemantik: Konten promosi seperti apa yang mampu menarik perhatian calon pembeli dalam 3 detik pertama di media sosial?",
+        sarana: "Smartphone / Kamera, Ring Light, Tripod, Akun Simulasi Marketplace, Aplikasi Desain Grafis (Canva/CapCut)."
+      },
+      "Pengelolaan Ekonomi dan Keuangan": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Analisis Biaya, Harga Pokok Penjualan (HPP) & Margin\n2. Perencanaan Anggaran & Arus Kas Usaha Ritel\n3. Pencatatan Transaksi & Laporan Laba Rugi Sederhana\n4. Evaluasi Kinerja Keuangan & Titik Impas (BEP)",
+        cp: "Peserta didik mampu menghitung struktur biaya, harga pokok penjualan (HPP), mark-up harga jual, serta titik impas (Break-Even Point); menyusun anggaran kas operasional; dan menyusun laporan laba rugi sederhana untuk mengevaluasi kesehatan usaha bisnis ritel.",
+        tp: "Menghitung HPP, persentase margin keuntungan, dan harga jual kompetitif produk ritel.\nMenyusun proyeksi arus kas (cash flow) bulanan dan menghitung titik impas (BEP) unit maupun rupiah.\nMenyusun laporan laba rugi sederhana dari kegiatan praktik Business Center sekolah.",
+        atp: "Tahap 1: Perhitungan HPP, Margin & Harga Jual -> Tahap 2: Perencanaan Anggaran & Analisis BEP -> Tahap 3: Pencatatan Keuangan & Laporan Laba Rugi Usaha.",
+        pemantik: "Pemahaman Bermakna: Omzet penjualan yang besar tidak menjamin keuntungan apabila struktur biaya dan margin tidak dihitung secara cermat.\nPertanyaan Pemantik: Bagaimana menentukan besarnya diskon promosi agar tetap menarik pembeli tanpa membuat toko merugi?",
+        sarana: "PC/Laptop, Aplikasi Spreadsheet (Excel/Google Sheets), Kalkulator Bisnis, Studi Kasus Laporan Keuangan Ritel."
+      },
+      "Dasar - Dasar Program Keahlian MP": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Proses Bisnis Manajemen Perkantoran & Layanan Bisnis\n2. Perkembangan Teknologi Perkantoran Modern\n3. Profil Pekerjaan & Kewirausahaan Perkantoran\n4. Teknik Dasar Aktivitas Perkantoran & Pelayanan Prima\n5. Dokumen Berbasis Digital & Peralatan Kantor",
+        cp: "Peserta didik memahami proses bisnis perkantoran modern dan otomasi kantor, budaya kerja 5R/K3 perkantoran, teknik komunikasi dan pelayanan prima, serta pengelolaan dokumen digital dan pengoperasian peralatan kantor.",
+        tp: "Menerapkan prinsip kerja 5R (Ringkas, Rapi, Resik, Rawat, Rajin) dan K3 di lingkungan kantor.\nMelakukan komunikasi telepon kantor dan penerimaan tamu sesuai standar pelayanan prima.\nMengoperasikan mesin dan peralatan kantor serta aplikasi kolaborasi dokumen cloud.",
+        atp: "Tahap 1: Ekosistem Kantor Modern & Budaya 5R -> Tahap 2: Etika Komunikasi & Pelayanan Tamu/Telepon -> Tahap 3: Pengoperasian Peralatan Kantor & Dokumen Digital.",
+        pemantik: "Pemahaman Bermakna: Efisiensi operasional seluruh divisi perusahaan bergantung pada tata kelola administrasi perkantoran yang tertib dan responsif.\nPertanyaan Pemantik: Bagaimana kesan pertama tamu perusahaan terbentuk hanya dari cara resepsionis menerima telepon dan menyambut kedatangan?",
+        sarana: "Lab Perkantoran MPLB, Pesawat Telepon Kantor, Printer/Scanner, PC/Laptop, Aplikasi Google Workspace / Office."
+      },
+      "Pengelolaan Data Perkantoran": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Pengumpulan & Validasi Data Administrasi\n2. Pengolahan Data Menggunakan Spreadsheet\n3. Pengelolaan Kearsipan Fisik & Elektronik (E-Arsip)\n4. Penyajian Laporan Data Pimpinan",
+        cp: "Peserta didik mampu mengumpulkan, memvalidasi, dan mengolah data administrasi perkantoran menggunakan fungsi-fungsi spreadsheet tingkat lanjut; mengelola sistem penyimpanan arsip fisik maupun elektronik secara sistematis; serta menyajikan ringkasan data untuk pengambilan keputusan pimpinan.",
+        tp: "Mengolah database administrasi menggunakan fungsi lookup, logika, dan pivot table pada spreadsheet.\nMengklasifikasikan, mengindeks, dan menyimpan arsip surat masuk/keluar berbasis digital.\nMenyusun laporan rekapitulasi data perkantoran yang informatif dan bebas kesalahan ketik.",
+        atp: "Tahap 1: Validasi & Pengolahan Data Spreadsheet -> Tahap 2: Sistem Pengindeksan & E-Arsip -> Tahap 3: Visualisasi & Pelaporan Data Administrasi.",
+        pemantik: "Pemahaman Bermakna: Data perkantoran yang terstruktur dan terindeks rapi memungkinkan penemuan kembali dokumen dalam hitungan detik.\nPertanyaan Pemantik: Apa risiko yang dihadapi organisasi jika dokumen kontrak penting tidak memiliki sistem pengindeksan arsip digital?",
+        sarana: "PC/Laptop Lab MPLB, Map Ordner & Guide Arsip, Scanner Dokumen, Spreadsheet Software."
+      },
+      "Pengelolaan SDM dan Sarpras": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Administrasi Perencanaan & Rekrutmen SDM\n2. Pengelolaan Absensi, Cuti & Penilaian Kinerja Pegawai\n3. Perencanaan & Pengadaan Sarana Prasarana Kantor\n4. Inventarisasi, Pemeliharaan & Penghapusan Sarpras",
+        cp: "Peserta didik mampu menyusun dokumen administrasi kepegawaian (berkas lamaran, rekap kehadiran, cuti, mutasi) serta melaksanakan administrasi sarana dan prasarana kantor mulai dari analisis kebutuhan, pencatatan buku induk inventaris, distribusi, hingga perawatan barang.",
+        tp: "Menyusun rekapitulasi kehadiran pegawai, pengajuan cuti, dan berkas administrasi SDM.\nMembuat daftar usulan kebutuhan alat tulis kantor (ATK) dan peralatan kerja.\nMencatat kode inventaris barang dan kartu kendali pemeliharaan sarana prasarana kantor.",
+        atp: "Tahap 1: Administrasi Kepegawaian & Tata Usaha SDM -> Tahap 2: Pengadaan & Inventarisasi Sarpras Kantor -> Tahap 3: Pemeliharaan Aset & Simulasi Manajemen Kantor.",
+        pemantik: "Pemahaman Bermakna: Keseimbangan antara pengelolaan SDM yang tertib dan ketersediaan sarana prasarana menjamin kelancaran produktivitas kerja.\nPertanyaan Pemantik: Mengapa pencatatan nomor inventaris dan jadwal perawatan berkala aset kantor sangat penting bagi efisiensi anggaran?",
+        sarana: "Formulir Administrasi SDM, Buku Induk Inventaris, Label Kode Barang, PC/Laptop, Lab Perkantoran."
+      },
+      "Layanan Komunikasi dan Informasi": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Komunikasi Efektif Lisan & Tertulis di Tempat Kerja\n2. Korespondensi Bisnis & Tata Naskah Dinas\n3. Pengelolaan Informasi Publik & Hubungan Pelanggan\n4. Penyelenggaraan Rapat & Notulensi",
+        cp: "Peserta didik mampu melaksanakan komunikasi bisnis secara efektif baik tatap muka maupun melalui media digital, menyusun berbagai jenis surat niaga dan naskah dinas, mengelola alur informasi pelanggan, serta mempersiapkan agenda dan notula rapat.",
+        tp: "Menyusun surat bisnis (surat penawaran, pesanan, undangan rapat, dan surat edaran) sesuai standar.\nMelakukan komunikasi pelayanan informasi pelanggan secara empatik dan solutif.\nMenyiapkan kebutuhan rapat dan menyusun notula rapat secara ringkas dan akurat.",
+        atp: "Tahap 1: Prinsip Komunikasi Kantor & Tata Naskah -> Tahap 2: Praktik Korespondensi Bisnis -> Tahap 3: Manajemen Rapat, Notulensi & Layanan Informasi.",
+        pemantik: "Pemahaman Bermakna: Kejelasan pesan dalam surat bisnis dan informasi layanan membangun citra profesionalisme institusi.\nPertanyaan Pemantik: Bagaimana cara menyampaikan penolakan atau keterlambatan pengiriman kepada klien melalui surat bisnis agar hubungan kerja tetap harmonis?",
+        sarana: "PC/Laptop, Contoh Kop & Format Surat Niaga, Peralatan Simulasi Rapat, Modul Komunikasi Bisnis."
+      },
+      "Strategi Komunikasi Bisnis": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Analisis Audiens & Saluran Komunikasi Bisnis\n2. Teknik Presentasi & Pitching Bisnis\n3. Negosiasi Bisnis & Penanganan Konflik\n4. Komunikasi Lintas Budaya & Etika Digital",
+        cp: "Peserta didik mampu merancang strategi penyampaian pesan bisnis sesuai profil audiens, menyusun bahan presentasi persuasif, mempraktikkan teknik negosiasi win-win solution, serta menjaga etika komunikasi profesional pada platform digital.",
+        tp: "Merancang struktur presentasi bisnis yang meyakinkan menggunakan media visual efektif.\nMempraktikkan teknik negosiasi kerja sama bisnis dengan prinsip saling menguntungkan.\nMengelola komunikasi krisis dan keluhan pelanggan pada kanal digital perusahaan.",
+        atp: "Tahap 1: Strategi Pesan & Presentasi Bisnis -> Tahap 2: Simulasi Negosiasi & Komunikasi Persuasif -> Tahap 3: Etika Komunikasi Digital & Proyek Kampanye Bisnis.",
+        pemantik: "Pemahaman Bermakna: Strategi komunikasi yang tepat mampu mengubah calon mitra yang ragu menjadi pelanggan setia.\nPertanyaan Pemantik: Strategi apa yang perlu disiapkan sebelum melakukan negosiasi harga atau kontrak kerja sama dengan mitra baru?",
+        sarana: "Proyektor/LCD, Laptop, Slide Presentasi, Skenario Kasus Negosiasi Bisnis."
+      },
+      "Produk Kreatif dan KWH TKJ": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Peluang Usaha & Business Model Canvas (BMC) Bidang IT/Jaringan\n2. Perencanaan Biaya (HPP) & Desain Layanan/Produk IT\n3. Produksi Jasa/Produk Kreatif TKJ (Instalasi, Web, IoT, Servis)\n4. Pemasaran, Gelar Karya & Laporan Keuangan Usaha",
+        cp: "Peserta didik mampu mengidentifikasi peluang usaha berbasis teknologi jaringan komputer, menyusun perencanaan usaha (BMC & HPP), memproduksi produk/jasa kreatif IT siap jual, memasarkan layanan secara digital, dan menyusun laporan keuangan usaha.",
+        tp: "Menyusun Business Model Canvas (BMC) dan menghitung tarif jasa/HPP produk kreatif TKJ.\nMemproduksi prototipe produk atau layanan jasa IT (jasa rakit/servis PC, instalasi Wi-Fi, web UMKM).\nMelaksanakan pemasaran nyata dan menyusun laporan laba rugi kegiatan wirausaha.",
+        atp: "Tahap 1: Ideasi Peluang Usaha IT & BMC -> Tahap 2: Produksi Prototipe / Layanan Jasa TKJ -> Tahap 3: Pemasaran Digital, Gelar Karya & Laporan Keuangan.",
+        pemantik: "Pemahaman Bermakna: Keahlian teknis jaringan komputer dapat dikembangkan menjadi unit usaha mandiri yang bernilai ekonomi tinggi.\nPertanyaan Pemantik: Layanan IT apa yang paling dibutuhkan oleh UMKM dan sekolah di sekitar lingkungan kita saat ini?",
+        sarana: "Bengkel TKJ, Peralatan Jaringan & Komputer, Template BMC & Spreadsheet HPP, Media Promosi."
+      },
+      "Produk Kreatif dan KWH MP": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Peluang Usaha & BMC Layanan Administrasi/Perkantoran\n2. Perencanaan Produksi & Perhitungan HPP\n3. Produksi Barang/Jasa Kreatif Perkantoran (Percetakan, Event, Souvenir)\n4. Pemasaran & Laporan Keuangan Usaha",
+        cp: "Peserta didik mampu membaca peluang usaha bidang layanan bisnis dan perkantoran kreatif, merancang BMC dan HPP, menghasilkan produk/jasa berkualitas dengan kemasan menarik, memasarkan produk, serta menyusun pembukuan keuangan usaha.",
+        tp: "Merancang rencana usaha kreatif berbasis layanan perkantoran atau produk merchandise.\nMenghitung HPP, menetapkan harga jual, dan memproduksi barang/jasa sesuai standar mutu.\nMemasarkan produk secara luring/daring dan menyusun laporan keuangan sederhana.",
+        atp: "Tahap 1: Peluang Usaha Layanan Bisnis & BMC -> Tahap 2: Produksi Produk/Jasa & Pengemasan -> Tahap 3: Pemasaran, Gelar Karya & Laporan Laba Rugi.",
+        pemantik: "Pemahaman Bermakna: Ketelitian tata kelola administrasi menjadi keunggulan kompetitif dalam menjalankan usaha layanan bisnis kreatif.\nPertanyaan Pemantik: Bagaimana merancang paket layanan administrasi atau produk kreatif yang menarik minat konsumen dengan modal terukur?",
+        sarana: "Lab MPLB, Peralatan Desain & Percetakan Sederhana, Template BMC, Buku Kas Usaha."
+      },
+      "Produk Kreatif dan KWH BR": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Peluang Usaha & BMC Produk Ritel Kreatif\n2. Perencanaan Modal, HPP & Desain Kemasan/Merek\n3. Produksi & Kurasi Produk Ritel Siap Jual\n4. Strategi Pemasaran, Penjualan & Laporan Keuangan",
+        cp: "Peserta didik mampu menciptakan peluang usaha produk ritel inovatif, menyusun BMC dan perhitungan HPP, merancang merek dan kemasan produk yang menarik, melaksanakan penjualan langsung maupun daring, serta menyusun laporan keuangan usaha.",
+        tp: "Menyusun Business Model Canvas (BMC) dan analisis kelayakan produk ritel kreatif.\nMemproduksi dan mengemas produk kreatif dengan label merek yang informatif.\nMelaksanakan penjualan melalui Business Center/bazar/marketplace dan menyusun laporan laba rugi.",
+        atp: "Tahap 1: Riset Peluang Produk Ritel & BMC -> Tahap 2: Produksi, Branding & Pengemasan -> Tahap 3: Penjualan Nyata, Gelar Karya & Evaluasi Keuangan.",
+        pemantik: "Pemahaman Bermakna: Kemasan yang menarik, harga yang tepat, dan promosi yang konsisten menentukan daya saing produk ritel di pasar.\nPertanyaan Pemantik: Nilai tambah apa yang bisa kita berikan pada produk lokal agar memiliki daya tarik jual lebih tinggi?",
+        sarana: "Business Center SMK, Bahan Baku Praktik, Alat Pengemasan, Spreadsheet Perhitungan HPP."
+      },
+      "KKPI": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Pengoperasian Sistem Komputer & Manajemen File\n2. Pengolahan Kata & Dokumen Profesional\n3. Pengolahan Angka & Formula Bisnis\n4. Presentasi Multimedia & Kolaborasi Cloud",
+        cp: "Peserta didik mampu mengoperasikan perangkat komputer dan manajemen berkas secara efisien, menyusun dokumen bisnis menggunakan aplikasi pengolah kata, mengolah tabel perhitungan menggunakan aplikasi pengolah angka, serta membuat bahan presentasi dan berkolaborasi secara daring.",
+        tp: "Mengelola struktur folder kerja dan mengoperasikan utilitas sistem operasi secara tertib.\nMenyusun dokumen surat/laporan terformat rapi dengan mail merge dan daftar isi otomatis.\nMengolah data perhitungan menggunakan rumus aritmetika, statistik, dan fungsi logika.",
+        atp: "Tahap 1: Manajemen File & Pengolah Kata Lanjut -> Tahap 2: Pengolah Angka & Grafik -> Tahap 3: Presentasi Efektif & Kolaborasi Cloud.",
+        pemantik: "Pemahaman Bermakna: Keterampilan komputer perkantoran merupakan kompetensi dasar wajib di seluruh bidang pekerjaan modern.\nPertanyaan Pemantik: Bagaimana fitur Mail Merge mempercepat pembuatan ratusan surat undangan atau sertifikat dalam sekali klik?",
+        sarana: "Komputer Lab, Aplikasi Office / LibreOffice / Google Workspace, Modul Praktik KKPI."
+      },
+      "Pendidikan Agama & Budi Pekerti": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Al-Qur'an dan Hadis\n2. Akidah\n3. Akhlak\n4. Fikih Muamalah\n5. Sejarah Peradaban Islam",
+        cp: "Peserta didik mampu menganalisis ayat Al-Qur'an dan hadis tentang kompetisi dalam kebaikan, etos kerja, serta toleransi; memahami cabang-cabang iman; membiasakan akhlak karimah dan menjauhi pergaulan bebas; menerapkan prinsip muamalah ekonomi syariah; serta meneladani sejarah perkembangan Islam di Indonesia.",
+        tp: "Menganalisis pesan QS. Al-Maidah/5:48 dan QS. At-Taubah/9:105 tentang etos kerja profesional.\nMenerapkan prinsip kejujuran dan transaksi muamalah syariah dalam kehidupan sehari-hari.\nMengaktualisasikan sikap toleran, santun, dan tanggung jawab di sekolah maupun tempat PKL.",
+        atp: "Tahap 1: Tadabbur Ayat Etos Kerja & Kompetisi Kebaikan -> Tahap 2: Penguatan Akidah, Akhlak & Etika Pergaulan -> Tahap 3: Muamalah Syariah & Sejarah Peradaban Islam.",
+        pemantik: "Pemahaman Bermakna: Etos kerja unggul dan kejujuran merupakan wujud nyata keimanan seorang pelajar Muslim di dunia kerja.\nPertanyaan Pemantik: Bagaimana mengimplementasikan nilai amanah dan ihsan saat bekerja atau berwirausaha di era digital?",
+        sarana: "Al-Qur'an Terjemah, Kitab/Modul PAI SMK, Proyektor, Lembar Refleksi Akhlak."
+      },
+      "Fiqih": {
+        konsentrasi: "Semua Jurusan (Muatan Ciri Khas Yayasan)",
+        elemen: "1. Thaharah & Ibadah Mahdhah (Shalat, Puasa, Zakat)\n2. Fiqih Muamalah (Jual Beli, Sewa, Kerja Sama Usaha)\n3. Fiqih Munakahat & Mawaris Dasar\n4. Etika Profesi & Kehalalan Produk",
+        cp: "Peserta didik mampu memahami dan mempraktikkan ketentuan hukum Islam dalam ibadah keseharian secara benar, menerapkan kaidah fiqih muamalah dalam transaksi jual beli dan jasa yang halal bebas riba/gharar, serta memahami prinsip tanggung jawab keluarga dan sosial.",
+        tp: "Mempraktikkan tata cara thaharah dan shalat wajib/sunnah sesuai tuntunan syariat.\nMenganalisis syarat sah jual beli, akad kerja sama, dan larangan riba/penipuan dalam bisnis.\nMenerapkan prinsip kehalalan dan keberkahan harta dalam profesi kejuruan.",
+        atp: "Tahap 1: Pemantapan Fiqih Ibadah Sehari-hari -> Tahap 2: Fiqih Muamalah & Etika Transaksi Bisnis -> Tahap 3: Studi Kasus Hukum Islam Kontemporer.",
+        pemantik: "Pemahaman Bermakna: Pemahaman fiqih memastikan setiap ibadah diterima dan setiap aktivitas ekonomi berjalan sesuai aturan syariat.\nPertanyaan Pemantik: Apa saja syarat transaksi jual beli daring (e-commerce) agar sah menurut fiqih muamalah dan terhindar dari unsur gharar?",
+        sarana: "Modul Fiqih SMK Trimulia, Kitab Referensi Fiqih, Studi Kasus Muamalah."
+      },
+      "Tahsin Al Quran": {
+        konsentrasi: "Semua Jurusan (Muatan Ciri Khas Yayasan)",
+        elemen: "1. Makharijul Huruf & Shifatul Huruf\n2. Hukum Tajwid (Nun Sukun/Tanwin, Mim Sukun, Mad)\n3. Kelancaran & Kefasihan Tilawah (Tartil)\n4. Hafalan Surah Pilihan & Adab Membaca Al-Qur'an",
+        cp: "Peserta didik mampu melafalkan huruf-huruf hijaiyah sesuai makhraj dan sifatnya dengan tepat, menerapkan hukum-hukum ilmu tajwid dalam bacaan Al-Qur'an secara tartil, serta menghafal surah-surah pilihan Juz 30 dan ayat tematik dengan fasih.",
+        tp: "Melafalkan makharijul huruf dan hukum bacaan nun sukun/mim sukun dengan benar.\nMembaca ayat-ayat Al-Qur'an secara tartil memperhatikan hukum mad dan waqaf-ibtida.\nMenyetorkan hafalan surah pilihan Juz 30 dengan tajwid yang terjaga.",
+        atp: "Tahap 1: Pemetaan Kemampuan Baca & Makharijul Huruf -> Tahap 2: Praktik Hukum Tajwid & Talaqqi -> Tahap 3: Uji Tartil Tilawah & Setoran Hafalan.",
+        pemantik: "Pemahaman Bermakna: Membaca Al-Qur'an dengan tartil sesuai kaidah tajwid menjaga kemurnian makna ayat dan menenangkan jiwa.\nPertanyaan Pemantik: Mengapa perbedaan panjang pendek (mad) dan tempat keluarnya huruf dapat mengubah arti kata dalam bahasa Arab?",
+        sarana: "Mushaf Al-Qur'an, Buku Panduan Tahsin & Tajwid, Kartu Monitoring Setoran Hafalan."
+      },
+      "PPKn": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Pancasila\n2. Undang-Undang Dasar Negara Republik Indonesia Tahun 1945\n3. Bhinneka Tunggal Ika\n4. Negara Kesatuan Republik Indonesia (NKRI)",
-        cp: "Peserta didik mampu menganalisis cara pandang para pendiri negara tentang dasar negara, mengkaji penerapan Pancasila dalam kehidupan bernegara dan dunia kerja, menganalisis produk perundang-undangan serta hak dan kewajiban warga negara, mengelola kebinekaan sebagai modal sosial, dan menjaga keutuhan NKRI.",
-        tp: "1. Menganalisis implementasi nilai Pancasila dalam etika profesi dan kewirausahaan.\n2. Mengevaluasi kepatuhan hukum serta perlindungan hak warga negara berdasarkan UUD NRI 1945.\n3. Menyusun proyek kolaborasi kebinekaan di lingkungan sekolah.",
-        atp: "Tahap 1: Aktualisasi Ideologi Pancasila di Dunia Kerja -> Tahap 2: Konstitusi & Kesadaran Hukum Warga Negara -> Tahap 3: Proyek Harmoni Kebinekaan & Wawasan Nusantara."
+        cp: "Peserta didik mampu menganalisis penerapan nilai-nilai Pancasila dalam kehidupan bernegara dan dunia kerja, mengkaji hak dan kewajiban warga negara berdasarkan UUD NRI 1945, mengelola kebinekaan sebagai kekuatan bangsa, serta menjaga keutuhan wilayah dan kedaulatan NKRI.",
+        tp: "Menganalisis implementasi nilai Pancasila dalam etika profesi dan budaya kerja industri.\nMengevaluasi pelaksanaan hak dan kewajiban warga negara serta kesadaran taat hukum.\nMenyusun proyek kolaborasi kebinekaan dan wawasan nusantara di lingkungan sekolah.",
+        atp: "Tahap 1: Aktualisasi Ideologi Pancasila -> Tahap 2: Konstitusi UUD 1945 & Kesadaran Hukum -> Tahap 3: Harmoni Kebinekaan & Wawasan NKRI.",
+        pemantik: "Pemahaman Bermakna: Warga negara yang cerdas dan berkarakter Pancasila mampu menjaga persatuan di tengah keberagaman masyarakat global.\nPertanyaan Pemantik: Bagaimana wujud nyata pengamalan sila keadilan sosial saat berinteraksi di ruang digital dan tempat kerja?",
+        sarana: "UUD NRI 1945, Modul Pendidikan Pancasila, Studi Kasus Kebangsaan, Proyektor."
       },
       "Bahasa Indonesia": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Menyimak\n2. Membaca dan Memirsa\n3. Berbicara dan Mempresentasikan\n4. Menulis",
-        cp: "Peserta didik mampu mengevaluasi informasi dan gagasan dari teks laporan hasil observasi, teks eksplanasi, teks negosiasi, teks prosedur kompleks, surat lamaran pekerjaan, serta karya ilmiah; mempresentasikan gagasan secara logis dan persuasif; serta menulis teks profesional sesuai kaidah PUEBI/EYD V.",
-        tp: "1. Menganalisis struktur dan kaidah kebahasaan teks negosiasi bisnis dan surat lamaran kerja.\n2. Menyusun proposal kegiatan atau laporan proyek kejuruan secara sistematis.\n3. Mempresentasikan gagasan bisnis/teknologi secara efektif dengan bahasa Indonesia yang santun.",
-        atp: "Tahap 1: Literasi Teks Informasi & Prosedur Industri -> Tahap 2: Praktik Negosiasi & Komunikasi Bisnis -> Tahap 3: Penyusunan Laporan Proyek & Portofolio Karier."
+        cp: "Peserta didik mampu mengevaluasi informasi dan gagasan dari teks laporan hasil observasi, teks eksplanasi, teks negosiasi, teks prosedur kompleks, surat lamaran pekerjaan, serta karya ilmiah; mempresentasikan gagasan secara logis; dan menulis teks profesional sesuai kaidah EYD V.",
+        tp: "Menganalisis struktur dan kaidah kebahasaan teks laporan observasi, negosiasi, dan prosedur.\nMenyusun surat lamaran pekerjaan, daftar riwayat hidup, dan laporan proyek kejuruan secara sistematis.\nMempresentasikan gagasan atau hasil proyek secara komunikatif dan persuasif.",
+        atp: "Tahap 1: Literasi Teks Informasi & Prosedur -> Tahap 2: Komunikasi Negosiasi & Presentasi -> Tahap 3: Penulisan Surat Lamaran Kerja & Laporan Proyek.",
+        pemantik: "Pemahaman Bermakna: Kemampuan menyusun tulisan sistematis dan berbicara persuasif membuka peluang karier yang lebih luas bagi lulusan SMK.\nPertanyaan Pemantik: Unsur kebahasaan apa yang membuat sebuah surat lamaran kerja atau proposal usaha langsung menarik perhatian pembaca?",
+        sarana: "Buku Teks Bahasa Indonesia SMK, Contoh Surat Lamaran & Laporan PKL, Kamus KBBI/EYD V."
       },
       "Bahasa Inggris": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Menyimak - Berbicara (Listening - Speaking)\n2. Membaca - Memirsa (Reading - Viewing)\n3. Menulis - Mempresentasikan (Writing - Presenting)",
-        cp: "Peserta didik menggunakan bahasa Inggris untuk berkomunikasi dengan guru, teman sebaya, dan mitra dunia kerja dalam berbagai macam situasi formal dan informal; memahami teks deskriptif, prosedur, eksposisi, serta korespondensi bisnis/teknis; dan memproduksi teks lisan maupun tulisan dengan kosakata spesifik kejuruan.",
-        tp: "1. Memahami informasi rinci dari teks prosedur teknis dan korespondensi bisnis berbahasa Inggris.\n2. Melakukan simulasi wawancara kerja (job interview) dan layanan pelanggan secara komunikatif.\n3. Menyusun surat lamaran kerja (application letter) dan CV profesional dalam bahasa Inggris.",
-        atp: "Tahap 1: Workplace Communication & Technical Instructions -> Tahap 2: Business Correspondence & Presentation -> Tahap 3: Career Preparation (CV & Job Interview Simulation)."
+        cp: "Peserta didik menggunakan bahasa Inggris untuk berkomunikasi dalam situasi formal dan informal dunia kerja; memahami teks deskriptif, prosedur teknis, eksposisi, serta korespondensi bisnis; dan memproduksi teks lisan maupun tulisan dengan kosakata kejuruan yang tepat.",
+        tp: "Memahami informasi rinci dari manual prosedur teknis dan korespondensi bisnis berbahasa Inggris.\nMelakukan simulasi wawancara kerja (job interview) dan layanan pelanggan secara percaya diri.\nMenyusun application letter dan curriculum vitae (CV) profesional dalam bahasa Inggris.",
+        atp: "Tahap 1: Workplace Instructions & Descriptive Texts -> Tahap 2: Business Correspondence & Analytical Exposition -> Tahap 3: Career Portfolio (CV & Job Interview).",
+        pemantik: "Pemahaman Bermakna: Penguasaan bahasa Inggris kejuruan memperluas daya saing lulusan SMK di perusahaan multinasional dan industri digital.\nPertanyaan Pemantik: Bagaimana cara memperkenalkan kompetensi keahlian Anda secara meyakinkan dalam wawancara kerja berbahasa Inggris?",
+        sarana: "Audio Listening, Modul Bahasa Inggris SMK, Lembar Kerja CV & Job Interview, Proyektor."
+      },
+      "Conversation": {
+        konsentrasi: "Semua Jurusan (Muatan Ciri Khas Sekolah)",
+        elemen: "1. Daily & Workplace Greetings / Small Talk\n2. Customer Service & Telephone Handling\n3. Expressing Opinions & Presentation Speaking\n4. Job Interview & Professional Roleplay",
+        cp: "Peserta didik mampu berkomunikasi lisan dalam bahasa Inggris secara aktif, lancar, dan berterima pada berbagai situasi percakapan sehari-hari, pelayanan pelanggan di dunia kerja, diskusi kelompok, serta simulasi wawancara kerja.",
+        tp: "Mempraktikkan percakapan perkenalan, menanyakan arah, dan pelayanan pelanggan dasar dengan pelafalan jelas.\nMenyampaikan pendapat dan mempresentasikan produk/jasa secara lisan dalam bahasa Inggris.\nMelakukan simulasi tanya jawab wawancara kerja berpasangan secara spontan dan komunikatif.",
+        atp: "Tahap 1: Pronunciation & Daily Interaction -> Tahap 2: Workplace & Customer Service Roleplay -> Tahap 3: Product Pitching & Mock Job Interview.",
+        pemantik: "Pemahaman Bermakna: Keberanian berbicara aktif tanpa takut salah merupakan kunci utama kelancaran komunikasi bahasa asing.\nPertanyaan Pemantik: Ungkapan sopan apa yang digunakan saat membantu pelanggan yang kebingungan mencari produk atau layanan?",
+        sarana: "Kartu Skenario Percakapan (Roleplay Cards), Audio Speaker, Ruang Praktik / Kelas."
+      },
+      "Bahasa Jepang": {
+        konsentrasi: "Semua Jurusan (Muatan Bahasa Asing)",
+        elemen: "1. Menyimak & Berbicara Dasar (Choukai & Kaiwa)\n2. Membaca & Menulis Huruf Hiragana-Katakana\n3. Kosakata Aktivitas Sekolah & Dunia Kerja\n4. Pemahaman Budaya & Etos Kerja Jepang (Horenso & 5S)",
+        cp: "Peserta didik mampu melakukan salam sapaan, perkenalan diri (jikoshoukai), menyebutkan angka/waktu, dan percakapan dasar pelayanan dalam bahasa Jepang; membaca serta menulis huruf Hiragana dan Katakana; serta memahami budaya disiplin kerja Jepang.",
+        tp: "Melakukan perkenalan diri (jikoshoukai) dan salam sopan (aisatsu) dengan intonasi tepat.\nMembaca dan menulis kosakata dasar menggunakan huruf Hiragana dan Katakana.\nMengidentifikasi prinsip etos kerja Jepang (5S: Seiri, Seiton, Seiso, Seiketsu, Shitsuke).",
+        atp: "Tahap 1: Aisatsu, Jikoshoukai & Huruf Hiragana -> Tahap 2: Huruf Katakana, Angka & Waktu -> Tahap 3: Percakapan Pelayanan Dasar & Budaya Kerja Jepang.",
+        pemantik: "Pemahaman Bermakna: Mempelajari bahasa Jepang sekaligus melatih budaya disiplin, ketepatan waktu, dan penghormatan terhadap sesama.\nPertanyaan Pemantik: Mengapa budaya 5S (Seiri, Seiton, Seiso, Seiketsu, Shitsuke) dari Jepang diadopsi oleh hampir seluruh industri modern di dunia?",
+        sarana: "Kartu Huruf Hiragana & Katakana, Audio Kaiwa, Buku Nihongo Kira-Kira / Modul Bahasa Jepang."
       },
       "Matematika": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Bilangan\n2. Aljabar dan Fungsi\n3. Pengukuran\n4. Geometri\n5. Analisis Data dan Peluang",
-        cp: "Peserta didik mampu menggeneralisasi sifat-sifat bilangan berpangkat dan logaritma, menyelesaikan masalah barisan dan deret aritmetika/geometri dalam konteks bunga majemuk dan anuitas, memodelkan sistem persamaan dan pertidaksamaan linear (program linear), serta menganalisis data statistika dan peluang.",
-        tp: "1. Menyelesaikan permasalahan keuangan bisnis menggunakan konsep barisan, deret, bunga majemuk, dan anuitas.\n2. Menentukan nilai optimum keuntungan usaha menggunakan model program linear dua variabel.\n3. Menyajikan dan menafsirkan ukuran pemusatan serta penyebaran data industri.",
-        atp: "Tahap 1: Eksponen, Logaritma & Barisan Keuangan -> Tahap 2: Sistem Persamaan & Program Linear Terapan -> Tahap 3: Statistika Deskriptif & Peluang Kejadian."
+        cp: "Peserta didik mampu menyelesaikan masalah bilangan berpangkat dan logaritma, barisan dan deret dalam konteks bunga tunggal/majemuk dan anuitas, sistem persamaan dan program linear, trigonometri dasar, serta analisis data statistika dan peluang.",
+        tp: "Menyelesaikan masalah perhitungan keuangan bisnis menggunakan barisan, deret, bunga majemuk, dan anuitas.\nMenentukan nilai optimum keuntungan atau biaya minimum menggunakan model program linear.\nMenyajikan dan menafsirkan ukuran pemusatan serta penyebaran data dalam konteks kejuruan.",
+        atp: "Tahap 1: Eksponen, Logaritma & Matematika Keuangan -> Tahap 2: Sistem Persamaan & Program Linear -> Tahap 3: Statistika & Peluang Terapan.",
+        pemantik: "Pemahaman Bermakna: Pemodelan matematika membantu menghitung efisiensi biaya, bunga pinjaman, dan prediksi peluang secara objektif.\nPertanyaan Pemantik: Bagaimana menentukan kombinasi jumlah produksi dua jenis barang agar memperoleh keuntungan maksimum dengan bahan baku terbatas?",
+        sarana: "Buku Matematika SMK, Kalkulator Ilmiah, Aplikasi GeoGebra / Spreadsheet, LKPD Kontekstual."
       },
       "Sejarah": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Keterampilan Konsep Sejarah\n2. Keterampilan Berpikir Sejarah\n3. Kesadaran Sejarah\n4. Penelitian dan Penulisan Sejarah",
-        cp: "Peserta didik mampu memahami konsep dasar ilmu sejarah, menganalisis asal-usul nenek moyang dan jalur rempah Nusantara, mengevaluasi perjuangan pergerakan nasional hingga proklamasi kemerdekaan Indonesia, serta merefleksikan nilai kepahlawanan dalam pembangunan bangsa masa kini.",
-        tp: "1. Menganalisis keterkaitan jalur rempah Nusantara dengan jaringan perdagangan global.\n2. Mengevaluasi strategi perjuangan organisasi pergerakan nasional Indonesia.\n3. Menyajikan karya infografis/artikel sejarah lokal Jakarta.",
-        atp: "Tahap 1: Pengantar Ilmu Sejarah & Jalur Rempah -> Tahap 2: Kolonialisme & Pergerakan Nasional -> Tahap 3: Proklamasi Kemerdekaan & Proyek Sejarah Lokal."
+        elemen: "1. Keterampilan Konsep & Berpikir Sejarah\n2. Jalur Rempah & Kerajaan Nusantara\n3. Kolonialisme & Pergerakan Nasional Indonesia\n4. Proklamasi Kemerdekaan & Dinamika Bangsa",
+        cp: "Peserta didik mampu memahami konsep dasar ilmu sejarah, menganalisis interaksi Nusantara dalam jaringan jalur rempah global, mengevaluasi strategi perjuangan pergerakan nasional hingga proklamasi kemerdekaan, serta merefleksikan nilai kepahlawanan dalam pembangunan masa kini.",
+        tp: "Menganalisis peran strategis Nusantara dan bandar Sunda Kelapa/Jakarta dalam jalur perdagangan rempah.\nMengevaluasi lahirnya kesadaran kebangsaan melalui organisasi pergerakan nasional.\nMenyajikan karya linimasa atau artikel sejarah lokal DKI Jakarta.",
+        atp: "Tahap 1: Pengantar Ilmu Sejarah & Jalur Rempah -> Tahap 2: Pergerakan Nasional & Sumpah Pemuda -> Tahap 3: Proklamasi Kemerdekaan & Proyek Sejarah Lokal.",
+        pemantik: "Pemahaman Bermakna: Memahami sejarah perjuangan bangsa menumbuhkan jati diri, nasionalisme, dan kebijaksanaan dalam mengambil keputusan masa depan.\nPertanyaan Pemantik: Mengapa posisi geografis Jakarta (Sunda Kelapa/Batavia) menjadi pusat perdagangan strategis sejak berabad-abad lalu?",
+        sarana: "Peta Sejarah Nusantara, Arsip Foto/Dokumen Sejarah, Buku Teks Sejarah SMK, Proyektor."
       },
-      "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)": {
+      "Penjas Orkes": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Terampil Bergerak\n2. Belajar Melalui Gerak\n3. Bergaya Hidup Aktif\n4. Memilih Hidup yang Menyehatkan",
-        cp: "Peserta didik mampu merancang dan mempraktikkan keterampilan gerak spesifik dalam berbagai permainan olahraga, senam, dan aktivitas kebugaran jasmani; menunjukkan perilaku sportif dan kepemimpinan tim; serta menerapkan pola hidup sehat dan keselamatan kerja.",
-        tp: "1. Mempraktikkan teknik dasar dan strategi permainan bola besar/kecil dengan sportivitas tinggi.\n2. Menyusun program latihan kebugaran jasmani sesuai kebutuhan fisik dunia kerja.\n3. Menerapkan prinsip ergonomi dan pencegahan cedera kerja.",
-        atp: "Tahap 1: Permainan Olahraga & Kerja Sama Tim -> Tahap 2: Pengukuran & Peningkatan Kebugaran Jasmani -> Tahap 3: Ergonomi, P3K & Pola Hidup Sehat."
+        elemen: "1. Terampil Bergerak (Permainan & Olahraga)\n2. Belajar Melalui Gerak (Sportivitas & Kepemimpinan)\n3. Bergaya Hidup Aktif (Kebugaran Jasmani)\n4. Memilih Hidup yang Menyehatkan (Ergonomi & P3K)",
+        cp: "Peserta didik mampu merancang dan mempraktikkan keterampilan gerak spesifik dalam permainan olahraga, senam, dan latihan kebugaran jasmani; menunjukkan sportivitas dan kerja sama tim; serta menerapkan prinsip ergonomi kerja dan pencegahan cedera.",
+        tp: "Mempraktikkan teknik dasar dan strategi permainan bola besar/kecil secara sportif.\nMengukur dan menyusun program latihan kebugaran jasmani sesuai kebutuhan fisik.\nMenerapkan sikap tubuh ergonomis saat bekerja di depan komputer maupun mengangkat beban.",
+        atp: "Tahap 1: Keterampilan Permainan Olahraga & Kerja Sama Tim -> Tahap 2: Tes & Latihan Kebugaran Jasmani -> Tahap 3: Kesehatan Kerja, Ergonomi & P3K.",
+        pemantik: "Pemahaman Bermakna: Kebugaran fisik dan postur kerja yang ergonomis menjaga stamina serta mencegah penyakit akibat kerja.\nPertanyaan Pemantik: Bagaimana posisi duduk dan peregangan sederhana dapat mencegah nyeri punggung saat bekerja berjam-jam di kantor?",
+        sarana: "Lapangan Olahraga Sekolah, Bola Basket/Futsal/Voli, Matras Senam, Stopwatch, Peluit."
       },
       "Seni Budaya": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Mengalami\n2. Merefleksikan\n3. Berpikir dan Bekerja Artistik\n4. Menciptakan\n5. Berdampak",
-        cp: "Peserta didik mampu mengamati, mengevaluasi, dan menciptakan karya seni rupa/musik/tari/teater yang merefleksikan kearifan lokal Nusantara dan budaya Betawi serta mengintegrasikannya ke dalam desain kreatif dan estetika produk.",
-        tp: "1. Mengidentifikasi unsur dan prinsip estetika pada karya seni rupa terapan Nusantara.\n2. Merancang karya seni/desain visual kreatif berbasis kearifan lokal Jakarta.\n3. Mempresentasikan hasil karya seni melalui pameran kelas.",
-        atp: "Tahap 1: Apresiasi Seni & Budaya Lokal -> Tahap 2: Eksplorasi Medium & Desain Artistik -> Tahap 3: Produksi Karya & Pameran Apresiasi."
+        cp: "Peserta didik mampu mengamati, mengapresiasi, dan menciptakan karya seni rupa/musik/tari/teater yang merefleksikan kekayaan budaya Nusantara dan kearifan lokal Betawi serta menerapkannya dalam estetika desain dan produk kreatif.",
+        tp: "Mengidentifikasi unsur dan prinsip seni rupa pada karya seni tradisional dan modern.\nMerancang karya seni dekoratif atau desain visual bertema kearifan lokal Jakarta.\nMenampilkan dan mempresentasikan hasil karya dalam gelar apresiasi kelas.",
+        atp: "Tahap 1: Apresiasi Seni & Budaya Lokal Betawi/Nusantara -> Tahap 2: Eksplorasi Teknik & Perancangan Karya -> Tahap 3: Produksi Karya & Pameran Kelas.",
+        pemantik: "Pemahaman Bermakna: Kepekaan estetika seni memperkaya kreativitas dalam merancang kemasan produk, antarmuka digital, maupun tata ruang.\nPertanyaan Pemantik: Bagaimana motif batik atau ornamen khas Betawi dapat diadaptasi menjadi desain kemasan produk modern?",
+        sarana: "Alat Gambar/Lukis, Media Berkarya Seni, Referensi Budaya Nusantara, Ruang Kelas."
       },
-      "Informatika / Koding & Kecerdasan Artifisial (KKA)": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Berpikir Komputasional\n2. Literasi Digital\n3. Analisis Data\n4. Algoritma dan Pemrograman\n5. Etika & Pemanfaatan Kecerdasan Artifisial (AI)",
-        cp: "Peserta didik mampu menerapkan berpikir komputasional untuk memecahkan persoalan kompleks, mengelola data dan keamanan informasi digital, merancang algoritma pemrograman terstruktur, serta memanfaatkan kecerdasan artifisial (AI) secara etis, kritis, dan produktif.",
-        tp: "1. Menerapkan dekomposisi, pengenalan pola, abstraksi, dan algoritma dalam pemecahan masalah.\n2. Mengolah dan memvisualisasikan dataset menggunakan perangkat lunak pengolah angka.\n3. Merancang prompt dan prototipe aplikasi sederhana berbasis AI secara bertanggung jawab.",
-        atp: "Tahap 1: Berpikir Komputasional & Keamanan Digital -> Tahap 2: Analisis Data & Algoritma Dasar -> Tahap 3: Praktik Koding & Etika Kecerdasan Artifisial (KKA)."
-      },
-      "Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)": {
+      "Projek IPAS": {
         konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
         elemen: "1. Menjelaskan Fenomena Secara Ilmiah\n2. Mendesain dan Mengevaluasi Penyelidikan Ilmiah\n3. Menerjemahkan Data dan Bukti Secara Ilmiah",
-        cp: "Peserta didik mampu menjelaskan fenomena alam dan sosial di sekitarnya secara ilmiah meliputi makhluk hidup dan lingkungannya, zat dan perubahannya, energi dan perubahannya, bumi dan antariksa, serta interaksi sosial dan dinamika ekonomi masyarakat melalui metode ilmiah.",
-        tp: "1. Menganalisis dampak perubahan zat dan penggunaan energi terhadap kelestarian lingkungan kerja.\n2. Merancang penyelidikan ilmiah sederhana berbasis masalah lingkungan sekitar.\n3. Mengaitkan fenomena sosial ekonomi dengan peluang usaha berkelanjutan.",
-        atp: "Tahap 1: Ekosistem, Zat & Energi Ramah Lingkungan -> Tahap 2: Eksperimen & Pengolahan Data Ilmiah -> Tahap 3: Proyek Sosial-Ekonomi Berkelanjutan (PjBL)."
+        cp: "Peserta didik mampu menjelaskan fenomena alam dan sosial meliputi makhluk hidup dan lingkungannya, zat dan perubahannya, energi dan perubahannya, bumi dan antariksa, serta interaksi sosial dan dinamika ekonomi melalui metode penyelidikan ilmiah.",
+        tp: "Menganalisis dampak limbah dan penggunaan energi terhadap kelestarian lingkungan kerja.\nMerancang eksperimen atau observasi ilmiah sederhana berbasis persoalan lingkungan sekitar.\nMengaitkan fenomena sosial-ekonomi masyarakat perkotaan dengan solusi usaha berkelanjutan.",
+        atp: "Tahap 1: Makhluk Hidup, Zat & Energi Ramah Lingkungan -> Tahap 2: Penyelidikan Ilmiah & Pengolahan Data -> Tahap 3: Proyek Terapan Sosial-Ekonomi Berkelanjutan (PjBL).",
+        pemantik: "Pemahaman Bermakna: Setiap aktivitas teknologi dan bisnis berdampak pada keseimbangan ekosistem dan kehidupan sosial masyarakat.\nPertanyaan Pemantik: Bagaimana cara mengelola limbah elektronik atau sampah plastik di lingkungan sekolah menjadi produk bermanfaat?",
+        sarana: "Alat Praktikum Sains Sederhana, Timbangan, Termometer, Lembar Observasi Proyek IPAS."
       },
-      "Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi": {
-        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
-        elemen: "1. Proses Bisnis di Bidang TJKT\n2. Perkembangan Teknologi di Bidang TJKT\n3. Profesi dan Kewirausahaan (Technopreneur)\n4. Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH)\n5. Media dan Jaringan Telekomunikasi\n6. Penggunaan Alat Ukur",
-        cp: "Peserta didik memahami proses bisnis dan budaya kerja K3LH di bidang teknik jaringan komputer dan telekomunikasi, perkembangan teknologi 5G/IoT/Cloud, pengalamatan IP dasar, instalasi kabel UTP/Fiber Optik, serta penggunaan alat ukur jaringan seperti LAN Tester, OTDR, dan Optical Power Meter.",
-        tp: "1. Menerapkan prosedur K3LH dan standar operasional pemasangan perangkat jaringan.\n2. Membuat dan menguji konektivitas kabel jaringan UTP (Straight/Cross) serta terminasi Fiber Optik dasar.\n3. Mengoperasikan alat ukur jaringan untuk mendiagnosis redaman dan konektivitas.",
-        atp: "Tahap 1: Budaya Kerja Industri, K3LH & Technopreneur TJKT -> Tahap 2: Pengalamatan IP & Media Transmisi -> Tahap 3: Praktik Instalasi Kabel & Pengukuran Jaringan."
-      },
-      "Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)": {
-        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
-        elemen: "1. Perencanaan dan Pengalamatan Jaringan\n2. Teknologi Jaringan Kabel dan Nirkabel\n3. Keamanan Jaringan\n4. Pemasangan dan Konfigurasi Perangkat Jaringan\n5. Administrasi Sistem Jaringan",
-        cp: "Peserta didik mampu merancang topologi dan subnetting jaringan (VLSM/CIDR), mengonfigurasi routing statis dan dinamis (OSPF/BGP dasar), VLAN, wireless indoor/outdoor, firewall dan keamanan jaringan, serta mengelola administrasi server Linux/Windows (DHCP, DNS, Web, Mail, Cloud Server).",
-        tp: "1. Merancang pengalamatan IP dan VLAN pada switch serta router sesuai kebutuhan topologi perusahaan.\n2. Mengonfigurasi firewall, VPN, dan sistem keamanan jaringan terhadap ancaman siber.\n3. Membangun dan mengelola layanan server jaringan berbasis Linux secara mandiri.",
-        atp: "Tahap 1: Perencanaan Topologi, Subnetting & VLAN -> Tahap 2: Routing, Wireless & Keamanan Jaringan -> Tahap 3: Administrasi Sistem Server & Proyek Teaching Factory TKJ."
-      },
-      "Dasar-Dasar Manajemen Perkantoran dan Layanan Bisnis": {
-        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
-        elemen: "1. Proses Bisnis Manajemen Perkantoran dan Layanan Bisnis\n2. Perkembangan Teknologi Perkantoran Modern\n3. Profil Pekerjaan dan Kewirausahaan\n4. Teknik Dasar Aktivitas Perkantoran & Layanan Pelanggan\n5. Dokumen Berbasis Digital & Peralatan Kantor",
-        cp: "Peserta didik memahami proses bisnis perkantoran modern, otomatisasi kantor, budaya kerja 5R/K3 perkantoran, pelayanan prima (service excellence), pengelolaan dokumen digital dan kearsipan elektronik, serta pengoperasian aplikasi perkantoran.",
-        tp: "1. Menerapkan budaya kerja 5R, etika kantor, dan standar pelayanan prima kepada kolega maupun pelanggan.\n2. Mengelola arsip fisik dan dokumen digital menggunakan sistem pengindeksan standar.\n3. Mengoperasikan peralatan kantor dan aplikasi produktivitas cloud secara efisien.",
-        atp: "Tahap 1: Ekosistem Bisnis & Etika Kantor Modern -> Tahap 2: Pelayanan Prima & Komunikasi Telepon/Resepsionis -> Tahap 3: Pengelolaan Dokumen Digital & Otomatisasi Kantor."
-      },
-      "Konsentrasi Keahlian Manajemen Perkantoran (MPLB)": {
-        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
-        elemen: "1. Pengelolaan Administrasi Umum\n2. Komunikasi di Tempat Kerja\n3. Pengelolaan Kearsipan\n4. Teknologi Perkantoran\n5. Pengelolaan Rapat/Pertemuan\n6. Pengelolaan Keuangan Sederhana & SDM\n7. Pengelolaan Sarana dan Prasarana",
-        cp: "Peserta didik mampu melaksanakan korespondensi bisnis Indonesia dan Inggris, mengelola arsip berbasis elektronik, mempersiapkan dan membuat notula rapat/pertemuan bisnis, mengelola kas kecil (petty cash) sistem imprest dan fluktuasi, serta mengelola administrasi kepegawaian dan sarana prasarana kantor.",
-        tp: "1. Menyusun berbagai jenis surat bisnis dan mengelola agenda pimpinan secara akurat.\n2. Mengelola dana kas kecil (petty cash) dan menyusun laporan pertanggungjawaban keuangan kantor.\n3. Menyelenggarakan kegiatan rapat/pertemuan dari tahap persiapan hingga penyusunan notula.",
-        atp: "Tahap 1: Korespondensi & Kearsipan Elektronik -> Tahap 2: Manajemen Rapat & Administrasi Sarpras/SDM -> Tahap 3: Pengelolaan Kas Kecil & Simulasi Kantor Terpadu (TeFa)."
-      },
-      "Dasar-Dasar Pemasaran / Bisnis Retail": {
-        konsentrasi: "Bisnis Retail (BR)",
-        elemen: "1. Proses Bisnis Bidang Pemasaran\n2. Perkembangan Teknologi & Isu Global Pemasaran\n3. Profil Pekerjaan & Kewirausahaan Pemasaran\n4. Prosedur Kesehatan, Keselamatan, dan Keamanan Kerja\n5. Berkomunikasi dengan Pelanggan & Dasar Pemasaran",
-        cp: "Peserta didik memahami proses bisnis pemasaran dan ritel modern, segmentasi pasar (STP), bauran pemasaran (4P/7P), komunikasi persuasif dengan pelanggan, pelayanan prima di area penjualan, serta penerapan K3 di lingkungan toko ritel.",
-        tp: "1. Menganalisis perilaku konsumen dan menentukan segmentasi pasar produk ritel.\n2. Menerapkan teknik komunikasi persuasif dan penanganan keluhan pelanggan secara profesional.\n3. Menyusun strategi bauran pemasaran untuk produk lokal.",
-        atp: "Tahap 1: Konsep Bisnis Pemasaran & Perilaku Konsumen -> Tahap 2: Komunikasi Pelanggan & Service Excellence -> Tahap 3: Praktik Riset Pasar & Strategi Bauran Pemasaran."
-      },
-      "Konsentrasi Keahlian Bisnis Retail (BR)": {
-        konsentrasi: "Bisnis Retail (BR)",
-        elemen: "1. Marketing & Customer Relationship Management (CRM)\n2. Penataan Produk (Visual Merchandising)\n3. Pengelolaan Bisnis Ritel & Inventori\n4. Administrasi Transaksi & Point of Sale (POS)\n5. Digital Marketing & E-Commerce",
-        cp: "Peserta didik mampu merancang dan menata display produk (window display, floor display, planogram) sesuai standar ritel modern, mengelola persediaan barang (stock opname, FIFO/FEFO), mengoperasikan mesin kasir Point of Sale (POS), serta menjalankan pemasaran digital dan live commerce.",
-        tp: "1. Menata produk di rak toko berdasarkan planogram, estetika warna, dan keamanan barang.\n2. Mengoperasikan transaksi penjualan tunai maupun nontunai menggunakan sistem POS secara akurat.\n3. Merancang kampanye digital marketing dan konten promosi media sosial untuk meningkatkan penjualan.",
-        atp: "Tahap 1: Visual Merchandising & Manajemen Inventori Toko -> Tahap 2: Operasional Kasir POS & Layanan CRM -> Tahap 3: Digital Marketing, E-Commerce & Praktik Business Center."
-      },
-      "Projek Kreatif dan Kewirausahaan (PKK)": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Kegiatan Produksi (Perencanaan, Pembuatan Produk/Jasa, Pengemasan, Distribusi)\n2. Kewirausahaan (Peluang Usaha, Proposal Usaha/Business Model Canvas, Pemasaran, Laporan Keuangan)",
-        cp: "Peserta didik mampu membaca peluang usaha sesuai kompetensi keahliannya, menyusun perencanaan usaha (Business Model Canvas & HPP), memproduksi barang/jasa kreatif berkualitas industri, merancang kemasan dan merek, memasarkan produk secara luring maupun daring, serta menyusun laporan keuangan usaha.",
-        tp: "1. Menyusun Business Model Canvas (BMC) dan menghitung Harga Pokok Produksi (HPP) serta titik impas (BEP).\n2. Memproduksi barang atau layanan jasa kreatif berbasis kompetensi jurusan (TKJ/MPLB/BR).\n3. Melaksanakan pemasaran produk nyata dan menyusun laporan laba/rugi usaha.",
-        atp: "Tahap 1: Ideasi Peluang Usaha, BMC & Perhitungan HPP -> Tahap 2: Produksi Prototipe, Kemasan & Uji Kelayakan -> Tahap 3: Pemasaran Produk, Gelar Karya & Laporan Keuangan Usaha."
-      },
-      "Bimbingan dan Konseling (BK)": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Landasan Hidup Religius & Perilaku Etis\n2. Kematangan Emosi & Hubungan Sosial\n3. Pengembangan Pribadi & Kesiapan Belajar\n4. Wawasan dan Kesiapan Karier (BMW: Bekerja, Melanjutkan, Wirausaha)",
-        cp: "Peserta didik mampu mengenali potensi, minat, dan bakat diri; mengelola emosi dan kesehatan mental remaja; membangun relasi sosial sehat serta pencegahan perundungan; dan merencanakan pilihan karier setelah lulus SMK (Bekerja, Melanjutkan studi, atau Berwirausaha).",
-        tp: "1. Mengidentifikasi kekuatan diri, gaya belajar, dan kecerdasan majemuk.\n2. Menerapkan strategi manajemen stres dan komunikasi asertif anti-perundungan.\n3. Menyusun rencana karier BMW (Bekerja, Melanjutkan, Wirausaha) dan portofolio kesiapan PKL.",
-        atp: "Tahap 1: Layanan Dasar Pengembangan Pribadi & Sosial -> Tahap 2: Layanan Responsif & Kesehatan Mental -> Tahap 3: Perencanaan Karier BMW & Kesiapan Dunia Kerja."
-      },
-      "Muatan Lokal / Bahasa Jepang / Bahasa Mandarin": {
-        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
-        elemen: "1. Menyimak & Berbicara Dasar\n2. Membaca & Menulis Aksara/Kosakata Dasar\n3. Pemahaman Lintas Budaya & Etika Kerja Internasional",
-        cp: "Peserta didik mampu melakukan perkenalan diri, sapaan sopan, angka, waktu, serta percakapan pelayanan pelanggan dasar dalam bahasa asing pilihan, serta memahami etos kerja dan budaya disiplin industri global.",
-        tp: "1. Mempraktikkan salam, perkenalan diri, dan ungkapan pelayanan pelanggan dasar dengan pelafalan tepat.\n2. Membaca dan menulis kosakata dasar terkait aktivitas sekolah dan dunia kerja.\n3. Mengidentifikasi nilai budaya disiplin kerja.",
-        atp: "Tahap 1: Salam, Perkenalan & Angka -> Tahap 2: Percakapan Sehari-hari & Layanan Dasar -> Tahap 3: Simulasi Komunikasi Kerja & Lintas Budaya."
+      "Guru BK": {
+        konsentrasi: "Semua Jurusan (Layanan Bimbingan & Konseling)",
+        elemen: "1. Pengembangan Pribadi & Kesehatan Mental\n2. Hubungan Sosial & Pencegahan Perundungan\n3. Strategi & Kesiapan Belajar Efektif\n4. Perencanaan Karier BMW (Bekerja, Melanjutkan, Wirausaha)",
+        cp: "Peserta didik mampu mengenali potensi, minat, dan bakat diri; mengelola emosi dan stres remaja; membangun relasi sosial sehat anti-perundungan; serta menyusun rencana karier pasca-SMK (Bekerja, Melanjutkan studi, atau Berwirausaha) dan kesiapan PKL.",
+        tp: "Mengidentifikasi potensi diri, gaya belajar, dan kecerdasan majemuk melalui asesmen BK.\nMenerapkan komunikasi asertif dan strategi menjaga kesehatan mental di sekolah.\nMenyusun peta rencana karier BMW (Bekerja, Melanjutkan, Wirausaha) dan persiapan PKL.",
+        atp: "Tahap 1: Layanan Dasar Pengembangan Pribadi & Sosial -> Tahap 2: Layanan Responsif & Kesehatan Mental -> Tahap 3: Bimbingan Karier BMW & Kesiapan Dunia Kerja.",
+        pemantik: "Pemahaman Bermakna: Mengenali potensi diri sejak kelas X membantu siswa menentukan jalur karier yang tepat setelah lulus SMK.\nPertanyaan Pemantik: Jalur mana yang paling sesuai dengan potensi dan rencana Anda setelah lulus SMK: Bekerja, Melanjutkan kuliah, atau Berwirausaha?",
+        sarana: "Instrumen Asesmen Minat Bakat, Ruang Konseling BK, Modul Bimbingan Karier BMW."
       }
     };
 
     // =========================================================================
-    // 3. MASTER DATA 31 GURU SMK TRIMULIA JAKARTA (TP 2026/2027)
+    // [JS-03] DATABASE MASTER 31 GURU & 10 TENDIK (SK 8 AGUSTUS 2026)
+    // Catatan Edit: Jika ada perubahan jam mengajar, kelas, atau guru baru,
+    // ubah objek pada array MASTER_GURU_LIST atau TENDIK_LIST di bawah ini.
     // =========================================================================
     let MASTER_GURU_LIST = [
-      { no: 1, nama: "Juni Abdillah, S.Pd", jabatan: "Kepala Sekolah / Guru Mapel", kelompok: "UMUM", mapelList: ["Pendidikan Pancasila"], kelas: "XII TKJ, XII MPLB, XII BR", jp: 6 },
-      { no: 2, nama: "Solihin, S.T.", jabatan: "Wakasek Kurikulum / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)", "Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "XI TKJ, XII TKJ, X TKJ", jp: 24 },
-      { no: 3, nama: "Dra. Hj. Siti Aminah", jabatan: "Guru Senior / Wali Kelas", kelompok: "UMUM", mapelList: ["Pendidikan Agama Islam dan Budi Pekerti"], kelas: "X TKJ, X MPLB, X BR, XI TKJ", jp: 12 },
-      { no: 4, nama: "Ahmad Fauzi, S.Pd.I", jabatan: "Pembina Rohis / Guru Mapel", kelompok: "UMUM", mapelList: ["Pendidikan Agama Islam dan Budi Pekerti"], kelas: "XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 15 },
-      { no: 5, nama: "Maria Magdalena, S.Th", jabatan: "Guru Pendidikan Agama Kristen", kelompok: "UMUM", mapelList: ["Pendidikan Agama Kristen dan Budi Pekerti"], kelas: "X, XI, XII (Lintas Rombel)", jp: 9 },
-      { no: 6, nama: "Drs. Bambang Sutrisno", jabatan: "Guru PPKn / Pembina Paskibra", kelompok: "UMUM", mapelList: ["Pendidikan Pancasila"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 12 },
-      { no: 7, nama: "Rina Marlina, S.Pd", jabatan: "Koordinator Literasi / Wali Kelas", kelompok: "UMUM", mapelList: ["Bahasa Indonesia"], kelas: "X TKJ, X MPLB, X BR", jp: 12 },
-      { no: 8, nama: "Dewi Sartika, M.Pd", jabatan: "Guru Bahasa Indonesia", kelompok: "UMUM", mapelList: ["Bahasa Indonesia"], kelas: "XI TKJ, XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 18 },
-      { no: 9, nama: "Novianti Rahayu, S.Pd", jabatan: "Wali Kelas XI MPLB / Guru Bahasa Inggris", kelompok: "UMUM", mapelList: ["Bahasa Inggris"], kelas: "XI MPLB (2 JP), XI BR (2 JP), XI TKJ (2 JP), XII MPLB (4 JP)", jp: 16 },
-      { no: 10, nama: "Rizky Ramadhan, S.Pd", jabatan: "Pembina English Club / Guru Mapel", kelompok: "UMUM", mapelList: ["Bahasa Inggris"], kelas: "X TKJ, X MPLB, X BR, XII TKJ, XII BR", jp: 20 },
-      { no: 11, nama: "Hendra Wijaya, S.Pd", jabatan: "Wakasek Kesiswaan / Guru Matematika", kelompok: "UMUM", mapelList: ["Matematika"], kelas: "XI TKJ, XI MPLB, XI BR", jp: 12 },
-      { no: 12, nama: "Siti Nurhaliza, S.Pd", jabatan: "Wali Kelas X TKJ / Guru Matematika", kelompok: "UMUM", mapelList: ["Matematika"], kelas: "X TKJ, X MPLB, X BR, XII TKJ, XII MPLB, XII BR", jp: 21 },
-      { no: 13, nama: "Agus Salim, S.Pd", jabatan: "Guru Sejarah / Pembina Pramuka", kelompok: "UMUM", mapelList: ["Sejarah"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 12 },
-      { no: 14, nama: "Dedi Kurniawan, S.Or", jabatan: "Pembina OSIS & Olahraga / Guru PJOK", kelompok: "UMUM", mapelList: ["Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 15 },
-      { no: 15, nama: "Fitri Handayani, S.Sn", jabatan: "Pembina Ekskul Seni / Guru Seni Budaya", kelompok: "UMUM", mapelList: ["Seni Budaya"], kelas: "X TKJ, X MPLB, X BR", jp: 6 },
-      { no: 16, nama: "Irwan Setiawan, S.Kom", jabatan: "Kepala Bengkel TKJ / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi", "Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)"], kelas: "X TKJ (12 JP), XI TKJ (12 JP)", jp: 24 },
-      { no: 17, nama: "Dimas Pratama, S.Kom", jabatan: "Teknisi Jaringan / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII TKJ (18 JP), XI TKJ (5 JP)", jp: 23 },
-      { no: 18, nama: "Fajar Nugroho, S.T.", jabatan: "Guru Informatika & KKA", kelompok: "TKJ", mapelList: ["Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "X TKJ, X MPLB, X BR", jp: 12 },
-      { no: 19, nama: "Sri Wahyuni, S.E., M.M.", jabatan: "Kaprog MPLB / Guru Produktif MPLB", kelompok: "MPLB", mapelList: ["Konsentrasi Keahlian Manajemen Perkantoran (MPLB)"], kelas: "XI MPLB (12 JP), XII MPLB (12 JP)", jp: 24 },
-      { no: 20, nama: "Ratna Sari, S.Pd", jabatan: "Kepala Lab Perkantoran / Guru MPLB", kelompok: "MPLB", mapelList: ["Dasar-Dasar Manajemen Perkantoran dan Layanan Bisnis", "Konsentrasi Keahlian Manajemen Perkantoran (MPLB)"], kelas: "X MPLB (12 JP), XI MPLB (6 JP)", jp: 18 },
-      { no: 21, nama: "Lestari Indah, S.E.", jabatan: "Wali Kelas XII MPLB / Guru MPLB & PKK", kelompok: "MPLB", mapelList: ["Konsentrasi Keahlian Manajemen Perkantoran (MPLB)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII MPLB (10 JP), XI MPLB (5 JP)", jp: 15 },
-      { no: 22, nama: "Yudi Hartono, S.E., M.Pd", jabatan: "Kaprog Bisnis Retail / Guru Produktif BR", kelompok: "BR", mapelList: ["Konsentrasi Keahlian Bisnis Retail (BR)"], kelas: "XI BR (12 JP), XII BR (12 JP)", jp: 24 },
-      { no: 23, nama: "Maya Anggraini, S.E.", jabatan: "Pengelola Business Center / Guru BR", kelompok: "BR", mapelList: ["Dasar-Dasar Pemasaran / Bisnis Retail", "Konsentrasi Keahlian Bisnis Retail (BR)"], kelas: "X BR (12 JP), XI BR (6 JP)", jp: 18 },
-      { no: 24, nama: "Eko Prasetyo, S.M.", jabatan: "Wali Kelas XII BR / Guru BR & PKK", kelompok: "BR", mapelList: ["Konsentrasi Keahlian Bisnis Retail (BR)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII BR (10 JP), XI BR (5 JP)", jp: 15 },
-      { no: 25, nama: "Nurul Hidayah, S.Si", jabatan: "Kepala Lab IPA / Guru Projek IPAS", kelompok: "UMUM", mapelList: ["Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)"], kelas: "X TKJ, X MPLB, X BR", jp: 18 },
-      { no: 26, nama: "Budi Santoso, S.E.", jabatan: "Wakasek Humas & DUDI / Guru PKK", kelompok: "UMUM", mapelList: ["Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII TKJ, XII MPLB, XII BR", jp: 15 },
-      { no: 27, nama: "Wulan Dari, S.Psi", jabatan: "Koordinator BK / Konselor Kelas XI & XII", kelompok: "UMUM", mapelList: ["Bimbingan dan Konseling (BK)"], kelas: "XI TKJ, XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 12 },
-      { no: 28, nama: "Andi Saputra, S.Pd", jabatan: "Guru BK / Konselor Kelas X", kelompok: "UMUM", mapelList: ["Bimbingan dan Konseling (BK)"], kelas: "X TKJ, X MPLB, X BR", jp: 6 },
-      { no: 29, nama: "Melati Kusuma, S.S.", jabatan: "Guru Bahasa Jepang & Muatan Lokal", kelompok: "UMUM", mapelList: ["Muatan Lokal / Bahasa Jepang / Bahasa Mandarin"], kelas: "X TKJ, X MPLB, X BR, XI MPLB, XI BR", jp: 10 },
-      { no: 30, nama: "Taufik Hidayat, S.Pd", jabatan: "Wali Kelas X BR / Guru Mapel Pilihan", kelompok: "UMUM", mapelList: ["Projek Kreatif dan Kewirausahaan (PKK)", "Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "X BR, XI BR", jp: 10 },
-      { no: 31, nama: "Anisa Rahmawati, S.Pd", jabatan: "Staf Kurikulum / Guru Pendamping TeFa", kelompok: "UMUM", mapelList: ["Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)", "Bahasa Indonesia"], kelas: "X MPLB, X BR", jp: 10 }
+      {
+        no: 1, nama: "Juni Abdilah, S.Pd", tugasTambahan: "Kepala Sekolah", kelompok: "UMUM", jpKbm: 0, jpTotal: 0,
+        mapelDetails: [
+          { mapel: "PPKn", kelas: "XII TKJ, XII MPLB, XII BR (Supervisi & Pembinaan)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 2, nama: "Solihin, S.T", tugasTambahan: "Wakil Bidang Kurikulum", kelompok: "TKJ", jpKbm: 21, jpTotal: 23,
+        mapelDetails: [
+          { mapel: "Dasar-Dasar Program Keahlian TKJ", kelas: "X TKJ", jpPerRombel: 6 },
+          { mapel: "Perencanaan dan Pengalamatan Jaringan", kelas: "XI TKJ (3 JP), XII TKJ (4 JP)", jpPerRombel: 4 },
+          { mapel: "Teknologi Jaringan Kabel dan Nirkabel", kelas: "X TKJ", jpPerRombel: 2 },
+          { mapel: "Koding dan Kecerdasan Artifisial", kelas: "X TKJ (2 JP), XII TKJ (4 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 3, nama: "Zaki Fakaruddin, S.Sos", tugasTambahan: "Wakil Bidang Kesiswaan", kelompok: "BR", jpKbm: 15, jpTotal: 17,
+        mapelDetails: [
+          { mapel: "Dasar-Dasar Program Keahlian BR", kelas: "X BR", jpPerRombel: 6 },
+          { mapel: "Administrasi Transaksi dan Bisnis", kelas: "XI BR (4 JP), XII BR (5 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 4, nama: "Ery Fathoni, S.Pd", tugasTambahan: "Pembina OSIS", kelompok: "UMUM", jpKbm: 15, jpTotal: 18,
+        mapelDetails: [
+          { mapel: "Conversation", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (2 JP/rombel)", jpPerRombel: 2 },
+          { mapel: "Bahasa Inggris", kelas: "X TKJ (2 JP), XI MP, XI BR, XI TKJ, XII MP 1, XII MP 2, XII BR, XII TKJ (1 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 5, nama: "H. Masriki, S.Pd", tugasTambahan: "Guru BK", kelompok: "MPLB", jpKbm: 17, jpTotal: 19,
+        mapelDetails: [
+          { mapel: "Layanan Komunikasi dan Informasi", kelas: "XI MP (3 JP), XII MP 1 (5 JP)", jpPerRombel: 4 },
+          { mapel: "Strategi Komunikasi Bisnis", kelas: "XI MP (4 JP), XII MP 2 (5 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 6, nama: "Dra. Hj. Sukamti Ar. M.Pd", tugasTambahan: "Ka. Program MPLB", kelompok: "MPLB", jpKbm: 16, jpTotal: 16,
+        mapelDetails: [
+          { mapel: "Pengelolaan Data Perkantoran", kelas: "XI MP (2 JP), XII MP 1 (5 JP), XII MP 2 (5 JP)", jpPerRombel: 5 },
+          { mapel: "Dasar - Dasar Program Keahlian MP", kelas: "X MPLB 1 (2 JP), X MPLB 2 (2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 7, nama: "Rochman, S.Pd", tugasTambahan: "Ka. Program BR", kelompok: "BR", jpKbm: 34, jpTotal: 37,
+        mapelDetails: [
+          { mapel: "Pengelolaan Ekonomi dan Keuangan", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (2 JP), XI MP (4 JP), XII MP 1 (5 JP), XII MP 2 (5 JP)", jpPerRombel: 4 },
+          { mapel: "KKPI", kelas: "XI MP, XI BR, XII MP 1, XII MP 2, XII BR, XII TKJ (2 JP/rombel)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 8, nama: "R. Empu Cahyoari Yuwono, S.Kom", tugasTambahan: "Ka. Program TKJ", kelompok: "TKJ", jpKbm: 24, jpTotal: 25,
+        mapelDetails: [
+          { mapel: "Keamanan Jaringan", kelas: "XI TKJ (3 JP), XII TKJ (4 JP)", jpPerRombel: 3 },
+          { mapel: "Administrasi Sistem Jaringan", kelas: "XI TKJ (3 JP), XII TKJ (4 JP)", jpPerRombel: 3 },
+          { mapel: "Pemasangan dan Konfigurasi Jaringan", kelas: "XI TKJ (3 JP), XII TKJ (5 JP)", jpPerRombel: 3 },
+          { mapel: "KKPI", kelas: "XI TKJ (2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 9, nama: "Drs. H. Edi Sari", tugasTambahan: "-", kelompok: "BR", jpKbm: 8, jpTotal: 9,
+        mapelDetails: [
+          { mapel: "Penataan dan Pendistribusian Produk", kelas: "XI BR (3 JP), XII BR (5 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 10, nama: "Sugiyanto, S.Pd", tugasTambahan: "Walas X MP 1", kelompok: "UMUM", jpKbm: 19, jpTotal: 20,
+        mapelDetails: [
+          { mapel: "Matematika", kelas: "X TKJ (4 JP), X BR (4 JP), X MPLB 1 (4 JP), X MPLB 2 (4 JP), XI MP (3 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 11, nama: "Riswanto, S.Pd.MM", tugasTambahan: "-", kelompok: "BR", jpKbm: 15, jpTotal: 17,
+        mapelDetails: [
+          { mapel: "Pemasaran Bisnis Retail", kelas: "XI BR (4 JP), XII BR (6 JP)", jpPerRombel: 4 },
+          { mapel: "Strategi Komunikasi Bisnis", kelas: "XII BR (5 JP)", jpPerRombel: 5 }
+        ]
+      },
+      {
+        no: 12, nama: "Sri Hartati, S.Pd", tugasTambahan: "Walas XII MP 1", kelompok: "MPLB", jpKbm: 24, jpTotal: 27,
+        mapelDetails: [
+          { mapel: "Pengelolaan SDM dan Sarpras", kelas: "XI MP (4 JP), XII MP 1 (6 JP), XII MP 2 (6 JP)", jpPerRombel: 6 },
+          { mapel: "Produk Kreatif dan KWH MP", kelas: "XII MP 1 (4 JP), XII MP 2 (4 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 13, nama: "Drs. M. Sidik", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 12, jpTotal: 14,
+        mapelDetails: [
+          { mapel: "Pendidikan Agama & Budi Pekerti", kelas: "XII MP 1, XII MP 2, XII BR, XII TKJ (3 JP/rombel)", jpPerRombel: 3 }
+        ]
+      },
+      {
+        no: 14, nama: "Ratna Ayu W, S,Pd", tugasTambahan: "Walas XII TKJ", kelompok: "UMUM", jpKbm: 22, jpTotal: 25,
+        mapelDetails: [
+          { mapel: "Bahasa Jepang", kelas: "Semua Rombel Kelas X, XI, dan XII (11 Rombel x 2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 15, nama: "Sukaya, SS", tugasTambahan: "Walas XI MPLB", kelompok: "UMUM", jpKbm: 10, jpTotal: 13,
+        mapelDetails: [
+          { mapel: "Bahasa Inggris", kelas: "XI MP (2 JP), XI BR (2 JP), XI TKJ (2 JP)", jpPerRombel: 2 },
+          { mapel: "Conversation", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (1 JP/rombel)", jpPerRombel: 1 }
+        ]
+      },
+      {
+        no: 16, nama: "Syaprudin Yahya, S.Pd.I", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 14, jpTotal: 15,
+        mapelDetails: [
+          { mapel: "Fiqih", kelas: "Semua Rombel Kelas XI dan XII (7 Rombel x 2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 17, nama: "Riswati S.Pd", tugasTambahan: "-", kelompok: "MPLB", jpKbm: 10, jpTotal: 11,
+        mapelDetails: [
+          { mapel: "Dasar - Dasar Program Keahlian MP", kelas: "X MPLB 1 (4 JP), X MPLB 2 (4 JP)", jpPerRombel: 4 },
+          { mapel: "Pengelolaan Data Perkantoran", kelas: "X MPLB 2 (2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 18, nama: "Indah Wahyu W, SE", tugasTambahan: "Walas XI BR", kelompok: "UMUM", jpKbm: 22, jpTotal: 24,
+        mapelDetails: [
+          { mapel: "Sejarah", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2, XI MP, XI BR, XI TKJ (2 JP/rombel)", jpPerRombel: 2 },
+          { mapel: "Produk Kreatif dan KWH MP", kelas: "XI MP (4 JP)", jpPerRombel: 4 },
+          { mapel: "Produk Kreatif dan KWH BR", kelas: "XII BR (4 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 19, nama: "Yuni A. Ridwan, S.Ag", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 8, jpTotal: 9,
+        mapelDetails: [
+          { mapel: "Seni Budaya", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (2 JP/rombel)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 20, nama: "Ferry Agung W, S.Pd", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 14, jpTotal: 14,
+        mapelDetails: [
+          { mapel: "Penjas Orkes", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2, XI MP, XI BR, XI TKJ (2 JP/rombel)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 21, nama: "Bahrudin, S.Pd.I", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 20, jpTotal: 24,
+        mapelDetails: [
+          { mapel: "Fiqih", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (2 JP/rombel)", jpPerRombel: 2 },
+          { mapel: "Pendidikan Agama & Budi Pekerti", kelas: "X MPLB 2, XI MP, XI BR, XI TKJ (3 JP/rombel)", jpPerRombel: 3 },
+          { mapel: "Tahsin Al Quran", kelas: "X MPLB 2, XI MP, XI BR (1 JP/rombel)", jpPerRombel: 1 }
+        ]
+      },
+      {
+        no: 22, nama: "Rachmad Hadiansyah, S.IP", tugasTambahan: "Walas XII BR", kelompok: "UMUM", jpKbm: 22, jpTotal: 25,
+        mapelDetails: [
+          { mapel: "PPKn", kelas: "Semua Rombel Kelas X, XI, dan XII (11 Rombel x 2 JP)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 23, nama: "Ade Ernawati, S.Pd.I", tugasTambahan: "Walas X TKJ", kelompok: "UMUM", jpKbm: 16, jpTotal: 18,
+        mapelDetails: [
+          { mapel: "Tahsin Al Quran", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2, XII MP 1, XII MP 2, XII BR, XII TKJ (2 JP/rombel)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 24, nama: "Markiah, S.Ag", tugasTambahan: "Walas XI TKJ", kelompok: "UMUM", jpKbm: 21, jpTotal: 26,
+        mapelDetails: [
+          { mapel: "Bahasa Indonesia", kelas: "X MPLB 2, XI MP, XI BR, XI TKJ, XII MP 1, XII MP 2, XII BR, XII TKJ (3 JP/rombel)", jpPerRombel: 3 }
+        ]
+      },
+      {
+        no: 25, nama: "Neneng Irmawati, S.Pd", tugasTambahan: "Walas XII MP 2", kelompok: "UMUM", jpKbm: 18, jpTotal: 20,
+        mapelDetails: [
+          { mapel: "Matematika", kelas: "XI MP, XI BR, XI TKJ, XII MP 1, XII MP 2, XII BR, XII TKJ (3 JP/rombel)", jpPerRombel: 3 }
+        ]
+      },
+      {
+        no: 26, nama: "Sarah Afifah, S.Pd", tugasTambahan: "Guru BK", kelompok: "UMUM", jpKbm: 24, jpTotal: 26,
+        mapelDetails: [
+          { mapel: "Projek IPAS", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (6 JP/rombel)", jpPerRombel: 6 }
+        ]
+      },
+      {
+        no: 27, nama: "Siti Khairunnisa, S.Pd", tugasTambahan: "Walas X MPLB 2", kelompok: "UMUM", jpKbm: 16, jpTotal: 17,
+        mapelDetails: [
+          { mapel: "Bahasa Indonesia", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (4 JP/rombel)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 28, nama: "H. Hidayatullah, SE.I", tugasTambahan: "-", kelompok: "UMUM", jpKbm: 8, jpTotal: 8,
+        mapelDetails: [
+          { mapel: "Informatika", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (2 JP/rombel)", jpPerRombel: 2 }
+        ]
+      },
+      {
+        no: 29, nama: "Mulyadi, SE", tugasTambahan: "-", kelompok: "TKJ", jpKbm: 12, jpTotal: 14,
+        mapelDetails: [
+          { mapel: "Produk Kreatif dan KWH TKJ", kelas: "XI TKJ (4 JP), XII TKJ (4 JP)", jpPerRombel: 4 },
+          { mapel: "Produk Kreatif dan KWH BR", kelas: "XI BR (4 JP)", jpPerRombel: 4 }
+        ]
+      },
+      {
+        no: 30, nama: "Imron Junaidi, SS", tugasTambahan: "Walas X BR", kelompok: "UMUM", jpKbm: 24, jpTotal: 25,
+        mapelDetails: [
+          { mapel: "Pendidikan Agama & Budi Pekerti", kelas: "X TKJ, X BR, X MPLB 1, X MPLB 2 (3 JP/rombel)", jpPerRombel: 3 },
+          { mapel: "Bahasa Inggris", kelas: "XII MP 1, XII MP 2, XII BR, XII TKJ (3 JP/rombel)", jpPerRombel: 3 }
+        ]
+      },
+      {
+        no: 31, nama: "Aziz Suseno, S.Kom", tugasTambahan: "-", kelompok: "TKJ", jpKbm: 13, jpTotal: 13,
+        mapelDetails: [
+          { mapel: "Koding dan Kecerdasan Artifisial", kelas: "X BR, X MPLB 1, X MPLB 2, XI TKJ (2 JP/rombel)", jpPerRombel: 2 },
+          { mapel: "Teknologi Jaringan Kabel dan Nirkabel", kelas: "XI TKJ (3 JP)", jpPerRombel: 3 }
+        ]
+      }
+    ];
+
+    const TENDIK_LIST = [
+      { no: "33", nama: "Eviyah, S.Pd", jabatan: "Kepala Tata Usaha" },
+      { no: "34", nama: "Siswanto", jabatan: "Staf Tata Usaha" },
+      { no: "35", nama: "Septi Hoiriyah", jabatan: "Staf Tata Usaha" },
+      { no: "36", nama: "Dewi Nur'aini, SM", jabatan: "Staf Tata Usaha" },
+      { no: "37", nama: "Novri Ronald Fieterd", jabatan: "Laboran & Operator" },
+      { no: "38", nama: "Muhamad Raka Afla Damaris", jabatan: "Laboran & IT" },
+      { no: "39", nama: "Fahruroji", jabatan: "Petugas Kebersihan" },
+      { no: "40", nama: "Sirjan", jabatan: "Petugas Keamanan" },
+      { no: "41", nama: "Sanusi", jabatan: "Petugas Keamanan" },
+      { no: "42", nama: "Afriadi", jabatan: "Petugas Keamanan" }
     ];
 
     // =========================================================================
-    // 4. INISIALISASI & FUNGSI UTAMA PORTAL
+    // [JS-04] FUNGSI UTILITAS UI, NAVIGASI TAB & EVENT HANDLER FORMULIR
+    // Berisi: showToast(), escapeHtml(), switchTab(), toggleDarkMode(),
+    // populateGuruDropdown(), onSelectGuru(), onSelectMapel(), getFormState().
     // =========================================================================
+    // Menampilkan pesan notifikasi singkat di pojok kanan bawah
     function showToast(msg) {
       const box = document.getElementById("toastBox");
       if (!box) return;
@@ -1031,7 +1537,7 @@
       MASTER_GURU_LIST.forEach((g, idx) => {
         const opt = document.createElement("option");
         opt.value = String(idx);
-        opt.textContent = `${g.no}. ${g.nama} (${g.jp} JP)`;
+        opt.textContent = `${g.no}. ${g.nama} (${g.jpTotal} JP SK)`;
         sel.appendChild(opt);
       });
 
@@ -1039,7 +1545,7 @@
       if (savedIdx !== null && MASTER_GURU_LIST[Number(savedIdx)]) {
         sel.value = savedIdx;
       } else {
-        sel.value = "0";
+        sel.value = "1"; // Default ke No. 2 Solihin, S.T
       }
       onSelectGuru();
     }
@@ -1050,27 +1556,46 @@
       const guru = MASTER_GURU_LIST[idx] || MASTER_GURU_LIST[0];
       safeStorage.set("smktm_selected_guru_idx", String(idx));
 
-      document.getElementById("inputNip").value = guru.jabatan || "-";
-      document.getElementById("inputKelas").value = guru.kelas || "X, XI, XII";
-      document.getElementById("inputJpMinggu").value = guru.jp || 4;
+      document.getElementById("inputNip").value = guru.tugasTambahan && guru.tugasTambahan !== "-"
+        ? `Guru Mapel / ${guru.tugasTambahan}`
+        : "Guru Mata Pelajaran";
+
+      const hint = document.getElementById("guruTotalJpHint");
+      if (hint) {
+        hint.textContent = `Total SK: ${guru.jpKbm} JP Mengajar + ${Math.max(0, guru.jpTotal - guru.jpKbm)} JP Tugas Tambahan = ${guru.jpTotal} JP/Minggu`;
+      }
 
       const mapelSel = document.getElementById("selectMapel");
       mapelSel.innerHTML = "";
 
-      // Masukkan mapel utama guru di urutan teratas, diikuti seluruh daftar CP resmi
-      const allMapels = Array.from(new Set([...guru.mapelList, ...Object.keys(CP_DATABASE)]));
+      const assignedMapels = guru.mapelDetails.map(d => d.mapel);
+      const allMapels = Array.from(new Set([...assignedMapels, ...Object.keys(CP_DATABASE)]));
+
       allMapels.forEach(m => {
         const opt = document.createElement("option");
         opt.value = m;
-        opt.textContent = guru.mapelList.includes(m) ? `★ ${m}` : m;
+        const foundDetail = guru.mapelDetails.find(d => d.mapel === m);
+        opt.textContent = foundDetail ? `★ ${m} (${foundDetail.jpPerRombel} JP/Rombel)` : m;
         mapelSel.appendChild(opt);
       });
 
-      mapelSel.value = guru.mapelList[0] || Object.keys(CP_DATABASE)[0];
+      mapelSel.value = assignedMapels[0] || Object.keys(CP_DATABASE)[0];
       onSelectMapel();
     }
 
     function onSelectMapel() {
+      const guruIdx = Number(document.getElementById("selectGuru").value || 0);
+      const guru = MASTER_GURU_LIST[guruIdx] || MASTER_GURU_LIST[0];
+      const mapel = document.getElementById("selectMapel").value;
+      const detail = guru.mapelDetails.find(d => d.mapel === mapel);
+
+      if (detail) {
+        document.getElementById("inputKelas").value = detail.kelas;
+        document.getElementById("inputJpMinggu").value = detail.jpPerRombel;
+        const jpHint = document.getElementById("jpPerRombelHint");
+        if (jpHint) jpHint.textContent = `Alokasi per rombel sesuai SK untuk mapel ini: ${detail.jpPerRombel} JP/minggu`;
+      }
+
       loadOfficialCpForCurrentMapel();
       refreshAllOutputs();
     }
@@ -1083,13 +1608,15 @@
       document.getElementById("inputCp").value = data.cp;
       document.getElementById("inputTp").value = data.tp;
       document.getElementById("inputAtp").value = data.atp;
+      document.getElementById("inputPemantik").value = data.pemantik || "";
+      document.getElementById("inputSarana").value = data.sarana || "";
       refreshAllOutputs();
     }
 
     function getFormState() {
       const guruIdx = Number(document.getElementById("selectGuru").value || 0);
       const guruObj = MASTER_GURU_LIST[guruIdx] || MASTER_GURU_LIST[0];
-      const jpMinggu = Math.max(1, Number(document.getElementById("inputJpMinggu").value || 4));
+      const jpMinggu = Math.max(1, Number(document.getElementById("inputJpMinggu").value || 2));
       const mingguGanjil = Math.max(1, Number(document.getElementById("inputMingguGanjil").value || 19));
       const mingguGenap = Math.max(1, Number(document.getElementById("inputMingguGenap").value || 17));
       const jpGanjil = jpMinggu * mingguGanjil;
@@ -1098,11 +1625,13 @@
 
       return {
         guruNama: guruObj.nama,
+        tugasTambahan: guruObj.tugasTambahan,
         jabatan: document.getElementById("inputNip").value,
         mapel: document.getElementById("selectMapel").value,
         kelas: document.getElementById("inputKelas").value,
         konsentrasi: document.getElementById("inputKonsentrasi").value,
         semester: document.getElementById("selectSemester").value,
+        tanggalPengesahan: document.getElementById("inputTanggalPengesahan").value,
         jpMinggu,
         mingguGanjil,
         mingguGenap,
@@ -1113,31 +1642,41 @@
         cp: document.getElementById("inputCp").value,
         tp: document.getElementById("inputTp").value,
         atp: document.getElementById("inputAtp").value,
+        pemantik: document.getElementById("inputPemantik").value,
+        sarana: document.getElementById("inputSarana").value,
         tahap: document.getElementById("selectTahapDokumen").value
       };
     }
 
+    // Memperbarui seluruh output (Prompt AI, Lembar A4, Kaldik, dan Judul File PDF)
     function refreshAllOutputs() {
       updatePromptPreview();
       renderA4Document();
       renderKaldikSummary();
+
+      // Sinkronkan <title> halaman dengan nama guru & mapel secara real-time
+      // agar saat pengguna menekan Ctrl+P manual, nama file PDF otomatis sesuai.
+      const s = getFormState();
+      const safeGuruName = s.guruNama.replace(/[\/\\:*?"<>|]/g, "").trim();
+      const safeMapelName = s.mapel.replace(/[\/\\:*?"<>|]/g, "").trim();
+      document.title = `Perangkat_Ajar_${safeGuruName}_${safeMapelName}`;
     }
 
     function updatePromptPreview() {
       const s = getFormState();
       const lines = [
-        "Buatkan perangkat pembelajaran Kurikulum Merdeka SMK lengkap, terstruktur, dan siap supervisi untuk:",
+        "Buatkan perangkat pembelajaran Kurikulum Merdeka SMK lengkap, operasional, dan siap supervisi pengawas untuk:",
         `- Satuan Pendidikan: SMK TRIMULIA Jakarta`,
         `- Nama Guru / Jabatan: ${s.guruNama} (${s.jabatan})`,
         `- Konsentrasi Keahlian: ${s.konsentrasi}`,
         `- Mata Pelajaran: ${s.mapel}`,
-        `- Kelas / Fase / Rombel: ${s.kelas}`,
-        `- Semester / Tahun Pelajaran: ${s.semester}`,
-        `- Alokasi Waktu: ${s.jpMinggu} JP/minggu (Ganjil: ${s.mingguGanjil} Minggu = ${s.jpGanjil} JP; Genap: ${s.mingguGenap} Minggu = ${s.jpGenap} JP; Prota 1 Tahun = ${s.jpTotalTahun} JP)`,
+        `- Kelas / Rombel: ${s.kelas}`,
+        `- Tahun Pelajaran: 2026/2027 (Fokus: ${s.semester})`,
+        `- Alokasi Waktu Per Rombel: ${s.jpMinggu} JP/minggu (Ganjil: ${s.mingguGanjil} Minggu = ${s.jpGanjil} JP; Genap: ${s.mingguGenap} Minggu = ${s.jpGenap} JP; Prota 1 Tahun = ${s.jpTotalTahun} JP)`,
         `- Acuan Regulasi: Kepka BSKAP No. 046/H/KR/2025, Permendikdasmen No. 13/2025, dan Kaldik DKI Jakarta SK No. 346 Tahun 2026`,
         `- Pendekatan Pembelajaran: Deep Learning (Mindful, Meaningful, Joyful), Project-Based Learning (PjBL) & Teaching Factory (TeFa)`,
         "",
-        "Rincian Elemen & CP:",
+        "Capaian Pembelajaran (CP):",
         s.cp,
         "",
         "Tujuan Pembelajaran (TP):",
@@ -1146,43 +1685,55 @@
       document.getElementById("promptOutput").value = lines.join("\n");
     }
 
+    function cleanBulletPrefix(text) {
+      return String(text || "").replace(/^\s*\d+[\.\)]\s*/, "").trim();
+    }
+
+    // =========================================================================
+    // [JS-05] RENDERER DOKUMEN A4 (KOP SURAT, CP/TP/ATP, PROTA, PROMES, MODUL)
+    // Fungsi: Membangun HTML dokumen siap cetak di dalam #a4DocumentContent.
+    // Edit bagian ini jika ingin mengubah tata letak tabel A4 atau tanda tangan.
+    // =========================================================================
     function renderA4Document() {
       const s = getFormState();
       const container = document.getElementById("a4DocumentContent");
       if (!container) return;
 
-      const tpLines = s.tp.split(/\r?\n/).filter(Boolean);
+      const rawTpLines = s.tp.split(/\r?\n/).map(cleanBulletPrefix).filter(Boolean);
+      const tp1 = rawTpLines[0] || "Memahami konsep dasar, standar K3LH, dan prosedur operasional bidang keahlian";
+      const tp2 = rawTpLines[1] || "Menerapkan keterampilan teknis dan pemecahan masalah berbasis studi kasus industri";
+      const tp3 = rawTpLines[2] || "Menghasilkan produk/proyek terapan sesuai standar mutu dan etika profesi";
       const elemenLines = s.elemenCp.split(/\r?\n/).filter(Boolean);
 
       const kopHtml = `
         <div class="kop-surat">
-          <div style="font-size: 11pt; font-weight: bold;">YAYASAN PENDIDIKAN ISLAM TRIMULIA JAKARTA</div>
+          <div style="font-size: 10.5pt; font-weight: bold;">YAYASAN PENDIDIKAN ISLAM TRIMULIA JAKARTA</div>
           <div style="font-size: 15pt; font-weight: bold; letter-spacing: 0.5px;">SMK TRIMULIA JAKARTA</div>
-          <div style="font-size: 9.5pt;">Program Keahlian: Teknik Komputer & Jaringan (TKJ) • Manajemen Perkantoran & Layanan Bisnis (MPLB) • Bisnis Retail (BR)</div>
-          <div style="font-size: 9pt;">Jakarta • Terakreditasi • Tahun Pelajaran 2026/2027</div>
+          <div style="font-size: 9pt;">Kompetensi Keahlian: Teknik Komputer & Jaringan (TKJ) • Manajemen Perkantoran & Layanan Bisnis (MPLB) • Bisnis Retail (BR)</div>
+          <div style="font-size: 8.5pt;">Alamat: Jl. H. Sapri No. 10, Jakarta • Terakreditasi • Tahun Pelajaran 2026/2027</div>
         </div>
-        <div style="text-align: center; margin-bottom: 12px;">
-          <h2 style="font-size: 13pt; text-transform: uppercase; margin-bottom: 3px;">PERANGKAT PEMBELAJARAN KURIKULUM MERDEKA</h2>
-          <div style="font-size: 10.5pt; font-weight: bold;">Acuan Kepka BSKAP No. 046/H/KR/2025 & Kaldik DKI Jakarta SK No. 346 Tahun 2026</div>
+        <div style="text-align: center; margin-bottom: 10px;">
+          <h2 style="font-size: 12.5pt; text-transform: uppercase; margin-bottom: 2px;">PERANGKAT PEMBELAJARAN KURIKULUM MERDEKA</h2>
+          <div style="font-size: 9.5pt; font-weight: bold;">Kepka BSKAP No. 046/H/KR/2025 • Permendikdasmen No. 13/2025 • Kaldik DKI Jakarta SK No. 346 Tahun 2026</div>
         </div>
         <table>
           <tr>
-            <td style="width: 24%; font-weight: bold;">Satuan Pendidikan</td>
-            <td style="width: 26%;">SMK TRIMULIA Jakarta</td>
-            <td style="width: 24%; font-weight: bold;">Tahun Pelajaran</td>
-            <td style="width: 26%;">2026 / 2027 (${escapeHtml(s.semester)})</td>
+            <td style="width: 22%; font-weight: bold;">Satuan Pendidikan</td>
+            <td style="width: 28%;">SMK TRIMULIA Jakarta</td>
+            <td style="width: 22%; font-weight: bold;">Tahun Pelajaran</td>
+            <td style="width: 28%;">2026 / 2027 (${escapeHtml(s.semester)})</td>
           </tr>
           <tr>
             <td style="font-weight: bold;">Nama Guru</td>
             <td>${escapeHtml(s.guruNama)}</td>
-            <td style="font-weight: bold;">Kelas / Fase / Rombel</td>
+            <td style="font-weight: bold;">Kelas / Rombel</td>
             <td>${escapeHtml(s.kelas)}</td>
           </tr>
           <tr>
             <td style="font-weight: bold;">Mata Pelajaran</td>
-            <td>${escapeHtml(s.mapel)}</td>
+            <td><strong>${escapeHtml(s.mapel)}</strong></td>
             <td style="font-weight: bold;">Alokasi Waktu</td>
-            <td>${s.jpMinggu} JP/Minggu (${s.jpTotalTahun} JP/Tahun)</td>
+            <td><strong>${s.jpMinggu} JP/Minggu</strong> (${s.jpTotalTahun} JP/Tahun)</td>
           </tr>
           <tr>
             <td style="font-weight: bold;">Konsentrasi Keahlian</td>
@@ -1192,12 +1743,12 @@
       `;
 
       const sectionCpTpAtp = `
-        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">A. CAPAIAN PEMBELAJARAN (CP), TUJUAN PEMBELAJARAN (TP) & ATP</h3>
+        <h3>A. ANALISIS CAPAIAN PEMBELAJARAN (CP), TUJUAN PEMBELAJARAN (TP) & ALUR (ATP)</h3>
         <table>
           <thead>
             <tr>
-              <th style="width: 24%;">Elemen CP</th>
-              <th style="width: 38%;">Capaian Pembelajaran (Kepka 046/H/KR/2025)</th>
+              <th style="width: 23%;">Elemen CP</th>
+              <th style="width: 39%;">Capaian Pembelajaran (Kepka 046/H/KR/2025)</th>
               <th style="width: 38%;">Tujuan Pembelajaran (TP) & Alur (ATP)</th>
             </tr>
           </thead>
@@ -1206,8 +1757,10 @@
               <td>${elemenLines.map(l => escapeHtml(l)).join("<br/>")}</td>
               <td>${escapeHtml(s.cp)}</td>
               <td>
-                <strong>Tujuan Pembelajaran:</strong><br/>
-                ${tpLines.map(l => escapeHtml(l)).join("<br/>")}<br/><br/>
+                <strong>Tujuan Pembelajaran (TP):</strong><br/>
+                1. ${escapeHtml(tp1)}<br/>
+                2. ${escapeHtml(tp2)}<br/>
+                3. ${escapeHtml(tp3)}<br/><br/>
                 <strong>Alur Tujuan Pembelajaran (ATP):</strong><br/>
                 ${escapeHtml(s.atp)}
               </td>
@@ -1216,139 +1769,233 @@
         </table>
       `;
 
-      const jpUnit1 = Math.round(s.jpGanjil * 0.35);
-      const jpUnit2 = Math.round(s.jpGanjil * 0.35);
-      const jpUnit3 = Math.max(2, s.jpGanjil - jpUnit1 - jpUnit2);
-      const jpUnit4 = Math.round(s.jpGenap * 0.5);
-      const jpUnit5 = Math.max(2, s.jpGenap - jpUnit4);
+      // Distribusi JP yang presisi berdasarkan jpMinggu per rombel
+      const w1 = 6, w2 = 7, w3 = Math.max(1, s.mingguGanjil - 13);
+      const jpUnit1 = s.jpMinggu * w1;
+      const jpUnit2 = s.jpMinggu * w2;
+      const jpUnit3 = s.jpMinggu * w3;
+
+      const w4 = 9, w5 = Math.max(1, s.mingguGenap - 9);
+      const jpUnit4 = s.jpMinggu * w4;
+      const jpUnit5 = s.jpMinggu * w5;
 
       const sectionProtaPromes = `
-        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">B. PROGRAM TAHUNAN (PROTA) & PROGRAM SEMESTER (PROMES DKI JAKARTA)</h3>
+        <h3>B. PROGRAM TAHUNAN (PROTA) & MATRIKS PROGRAM SEMESTER (PROMES DKI JAKARTA 2026/2027)</h3>
         <table>
           <thead>
             <tr>
-              <th style="width: 12%;">Semester</th>
-              <th style="width: 48%;">Materi Pokok / Unit Kompetensi (TP)</th>
-              <th style="width: 15%;">Alokasi JP</th>
-              <th style="width: 25%;">Distribusi Bulan (Kaldik DKI)</th>
+              <th style="width: 10%;">Smt</th>
+              <th style="width: 52%;">Unit Kompetensi / Tujuan Pembelajaran</th>
+              <th style="width: 12%;">Pekan</th>
+              <th style="width: 12%;">Alokasi JP</th>
+              <th style="width: 14%;">Bulan</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Ganjil</td>
-              <td>Unit 1: ${escapeHtml(tpLines[0] || "Penguasaan Konsep Dasar & K3LH")}</td>
+              <td style="text-align: center;">Ganjil</td>
+              <td>Unit 1: ${escapeHtml(tp1)}</td>
+              <td style="text-align: center;">${w1} Mgg</td>
               <td style="text-align: center;">${jpUnit1} JP</td>
-              <td>Juli – Agustus 2026</td>
+              <td style="text-align: center;">Jul – Ags 2026</td>
             </tr>
             <tr>
-              <td>Ganjil</td>
-              <td>Unit 2: ${escapeHtml(tpLines[1] || "Implementasi Teknis & Studi Kasus Industri")}</td>
+              <td style="text-align: center;">Ganjil</td>
+              <td>Unit 2: ${escapeHtml(tp2)}</td>
+              <td style="text-align: center;">${w2} Mgg</td>
               <td style="text-align: center;">${jpUnit2} JP</td>
-              <td>September – Oktober 2026</td>
+              <td style="text-align: center;">Sep – Okt 2026</td>
             </tr>
             <tr>
-              <td>Ganjil</td>
-              <td>Unit 3: ${escapeHtml(tpLines[2] || "Proyek Terapan PjBL/TeFa & Sumatif Akhir Semester")}</td>
+              <td style="text-align: center;">Ganjil</td>
+              <td>Unit 3: ${escapeHtml(tp3)}</td>
+              <td style="text-align: center;">${w3} Mgg</td>
               <td style="text-align: center;">${jpUnit3} JP</td>
-              <td>November – Desember 2026</td>
+              <td style="text-align: center;">Nov – Des 2026</td>
             </tr>
             <tr>
-              <td colspan="2" style="font-weight: bold; text-align: right;">Jumlah Semester Ganjil (${s.mingguGanjil} Minggu Efektif)</td>
+              <td colspan="2" style="font-weight: bold; text-align: right;">Subtotal Semester Ganjil (SK Kadisdik DKI No. 346/2026)</td>
+              <td style="font-weight: bold; text-align: center;">${s.mingguGanjil} Mgg</td>
               <td style="font-weight: bold; text-align: center;">${s.jpGanjil} JP</td>
-              <td>SK Kadisdik DKI No. 346/2026</td>
+              <td style="text-align: center;">${s.jpMinggu} JP/Mgg</td>
             </tr>
             <tr>
-              <td>Genap</td>
-              <td>Unit 4: Pendalaman Kompetensi Lanjutan & Praktik Simulasi Industri</td>
+              <td style="text-align: center;">Genap</td>
+              <td>Unit 4: Pendalaman Kompetensi Lanjutan & Praktik Simulasi Dunia Kerja</td>
+              <td style="text-align: center;">${w4} Mgg</td>
               <td style="text-align: center;">${jpUnit4} JP</td>
-              <td>Januari – Maret 2027</td>
+              <td style="text-align: center;">Jan – Mar 2027</td>
             </tr>
             <tr>
-              <td>Genap</td>
-              <td>Unit 5: Uji Kompetensi / Gelar Karya Proyek & Sumatif Akhir Tahun</td>
+              <td style="text-align: center;">Genap</td>
+              <td>Unit 5: Uji Kompetensi / Gelar Karya Proyek TeFa & Sumatif Akhir</td>
+              <td style="text-align: center;">${w5} Mgg</td>
               <td style="text-align: center;">${jpUnit5} JP</td>
-              <td>April – Juni 2027</td>
+              <td style="text-align: center;">Apr – Jun 2027</td>
             </tr>
             <tr>
-              <td colspan="2" style="font-weight: bold; text-align: right;">Total Program Tahunan (36 Minggu Efektif)</td>
+              <td colspan="2" style="font-weight: bold; text-align: right;">Total Program Tahunan (Prota 1 Tahun Pelajaran 2026/2027)</td>
+              <td style="font-weight: bold; text-align: center;">${s.mingguGanjil + s.mingguGenap} Mgg</td>
               <td style="font-weight: bold; text-align: center;">${s.jpTotalTahun} JP</td>
-              <td>TP 2026/2027</td>
+              <td style="text-align: center;">100% Efektif</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="promes-matrix">
+          <thead>
+            <tr>
+              <th rowspan="2" style="width: 34%;">Matriks Distribusi Pekan Efektif (Promes)</th>
+              <th colspan="2">Jul 26</th>
+              <th colspan="4">Ags 26</th>
+              <th colspan="4">Sep 26</th>
+              <th colspan="4">Okt 26</th>
+              <th colspan="4">Nov 26</th>
+              <th colspan="1">Des</th>
+              <th colspan="4">Jan 27</th>
+              <th colspan="4">Feb 27</th>
+              <th colspan="3">Mar</th>
+              <th colspan="3">Apr</th>
+              <th colspan="2">Mei</th>
+              <th colspan="1">Jun</th>
+            </tr>
+            <tr>
+              <th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th>
+              <th>1</th><th>2</th><th>3</th>
+              <th>1</th><th>2</th><th>3</th>
+              <th>1</th><th>2</th>
+              <th>1</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="left-col">Unit 1 (${jpUnit1} JP)</td>
+              <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td class="left-col">Unit 2 (${jpUnit2} JP)</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td class="left-col">Unit 3 & Sumatif Ganjil (${jpUnit3} JP)</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td class="left-col">Unit 4 (${jpUnit4} JP)</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            <tr>
+              <td class="left-col">Unit 5 & Sumatif Genap (${jpUnit5} JP)</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+              <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td>
             </tr>
           </tbody>
         </table>
       `;
 
       const sectionModulAjar = `
-        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">C. KERANGKA MODUL AJAR DEEP LEARNING & TEACHING FACTORY (TeFa)</h3>
+        <h3>C. MODUL AJAR DEEP LEARNING & TEACHING FACTORY (TeFa)</h3>
         <table>
           <tr>
-            <td style="width: 28%; font-weight: bold;">8 Dimensi Profil Lulusan</td>
-            <td>Keimanan & Ketakwaan, Kewargaan, Penalaran Kritis, Kreativitas, Kolaborasi, Kemandirian, Kesehatan, Komunikasi.</td>
+            <td style="width: 26%; font-weight: bold;">8 Dimensi Profil Lulusan</td>
+            <td>Keimanan & Ketakwaan, Kewargaan, Penalaran Kritis, Kreativitas, Kolaborasi, Kemandirian, Kesehatan, dan Komunikasi.</td>
           </tr>
           <tr>
-            <td style="font-weight: bold;">Model & Strategi Pembelajaran</td>
-            <td><em>Deep Learning (Mindful, Meaningful, Joyful)</em> dipadukan dengan <em>Project-Based Learning (PjBL)</em> dan budaya kerja industri.</td>
+            <td style="font-weight: bold;">Pemahaman Bermakna & Pemantik</td>
+            <td>${escapeHtml(s.pemantik).replace(/\r?\n/g, "<br/>")}</td>
           </tr>
           <tr>
-            <td style="font-weight: bold;">Kegiatan Pendahuluan (15%)</td>
-            <td>Salam, doa, presensi, apersepsi kontekstual dunia kerja, asesmen diagnostik awal, dan penyampaian tujuan pembelajaran.</td>
+            <td style="font-weight: bold;">Sarana, Alat & Media Praktik</td>
+            <td>${escapeHtml(s.sarana)}</td>
           </tr>
           <tr>
-            <td style="font-weight: bold;">Kegiatan Inti (70%)</td>
-            <td><strong>Memahami:</strong> Eksplorasi konsep dan standar operasional.<br/><strong>Mengaplikasi:</strong> Praktik langsung / pengerjaan proyek kelompok berbasis kasus industri.<br/><strong>Merefleksi:</strong> Presentasi hasil karya, umpan balik sejawat, dan evaluasi mutu.</td>
+            <td style="font-weight: bold;">Model & Diferensiasi</td>
+            <td><em>Deep Learning (Mindful, Meaningful, Joyful)</em> + <em>Project-Based Learning (PjBL)</em> dengan diferensiasi proses pendampingan kelompok.</td>
           </tr>
           <tr>
-            <td style="font-weight: bold;">Kegiatan Penutup (15%)</td>
-            <td>Penyimpulan materi bersama peserta didik, refleksi pembelajaran, asesmen formatif singkat, dan tindak lanjut pertemuan berikutnya.</td>
+            <td style="font-weight: bold;">1. Pendahuluan (15%)</td>
+            <td>Salam, doa bersama, cek kesiapan K3LH, apersepsi dunia kerja, penyampaian tujuan pembelajaran, dan pertanyaan pemantik.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">2. Kegiatan Inti (70%)</td>
+            <td><strong>Memahami:</strong> Guru mendemonstrasikan konsep & SOP pada <em>${escapeHtml(s.mapel)}</em>.<br/><strong>Mengaplikasi:</strong> Peserta didik mengerjakan LKPD/proyek praktik secara kolaboratif sesuai target TP.<br/><strong>Merefleksi:</strong> Presentasi hasil kerja, uji fungsi bersama, dan umpan balik penguatan.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">3. Penutup (15%)</td>
+            <td>Refleksi capaian belajar, kesimpulan bersama, asesmen formatif singkat, pembersihan area kerja (5R), dan doa penutup.</td>
           </tr>
         </table>
       `;
 
       const sectionAsesmen = `
-        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">D. RANCANGAN ASESMEN & RUBRIK PENILAIAN OTENTIK</h3>
+        <h3>D. RUBRIK PENILAIAN OTENTIK (SKOR 1–4) & LEMBAR KERJA PESERTA DIDIK (LKPD)</h3>
         <table>
           <thead>
             <tr>
-              <th style="width: 25%;">Jenis Asesmen</th>
-              <th style="width: 40%;">Teknik & Instrumen</th>
-              <th style="width: 35%;">Kriteria Ketercapaian (KKTP)</th>
+              <th style="width: 22%;">Aspek Penilaian</th>
+              <th style="width: 20%;">Skor 4 (Sangat Mahir)</th>
+              <th style="width: 20%;">Skor 3 (Kompeten)</th>
+              <th style="width: 19%;">Skor 2 (Cukup)</th>
+              <th style="width: 19%;">Skor 1 (Perlu Bimbingan)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Asesmen Diagnostik</td>
-              <td>Kuis pemantik & observasi kesiapan belajar awal</td>
-              <td>Pemetaan profil kesiapan belajar peserta didik</td>
+              <td><strong>1. Persiapan & K3LH</strong></td>
+              <td>Menyiapkan alat lengkap & menerapkan K3LH tanpa diingatkan</td>
+              <td>Menyiapkan alat lengkap & menerapkan K3LH dengan tertib</td>
+              <td>Alat kurang lengkap namun tetap menjaga keselamatan kerja</td>
+              <td>Memerlukan pendampingan penuh dalam menyiapkan alat & K3LH</td>
             </tr>
             <tr>
-              <td>Asesmen Formatif (Proses)</td>
-              <td>Lembar Kerja Peserta Didik (LKPD), observasi praktikum & K3LH</td>
-              <td>Mampu melaksanakan prosedur sesuai SOP tanpa kesalahan fatal</td>
+              <td><strong>2. Proses & SOP Kerja</strong></td>
+              <td>Melaksanakan seluruh tahapan SOP dengan cepat, rapi, dan tepat</td>
+              <td>Melaksanakan tahapan SOP sesuai urutan tanpa kesalahan fatal</td>
+              <td>Melaksanakan tahapan dengan beberapa revisi minor</td>
+              <td>Belum mengikuti urutan SOP yang dipersyaratkan</td>
             </tr>
             <tr>
-              <td>Asesmen Sumatif (Produk/TeFa)</td>
-              <td>Penilaian proyek portofolio, uji unjuk kerja, dan tes tertulis</td>
-              <td>Skor minimal 75 (Kategori Cakap / Kompeten)</td>
+              <td><strong>3. Hasil Produk / Unjuk Kerja</strong></td>
+              <td>Hasil berfungsi 100% optimal + dokumentasi/presentasi sangat jelas</td>
+              <td>Hasil berfungsi baik sesuai kriteria minimum KKTP (Nilai ≥ 75)</td>
+              <td>Hasil berfungsi sebagian dan memerlukan perbaikan teknis</td>
+              <td>Hasil belum berfungsi sesuai tujuan pembelajaran</td>
             </tr>
           </tbody>
         </table>
       `;
 
       const ttdHtml = `
-        <div class="ttd-grid">
-          <div>
-            <div>Mengetahui,</div>
-            <div>Kepala SMK TRIMULIA Jakarta</div>
-            <div style="height: 58px;"></div>
-            <div style="font-weight: bold; text-decoration: underline;">Juni Abdillah, S.Pd</div>
-            <div>NIP. -</div>
-          </div>
-          <div>
-            <div>Jakarta, Juli 2026</div>
-            <div>Guru Mata Pelajaran</div>
-            <div style="height: 58px;"></div>
-            <div style="font-weight: bold; text-decoration: underline;">${escapeHtml(s.guruNama)}</div>
-            <div>${escapeHtml(s.jabatan)}</div>
+        <div class="ttd-block">
+          <div class="ttd-grid">
+            <div>
+              <div>Mengetahui,</div>
+              <div>Kepala SMK TRIMULIA Jakarta</div>
+              <div style="height: 54px;"></div>
+              <div style="font-weight: bold; text-decoration: underline;">Juni Abdilah, S.Pd</div>
+              <div>Kepala Sekolah</div>
+            </div>
+            <div>
+              <div>${escapeHtml(s.tanggalPengesahan)}</div>
+              <div>Guru Mata Pelajaran</div>
+              <div style="height: 54px;"></div>
+              <div style="font-weight: bold; text-decoration: underline;">${escapeHtml(s.guruNama)}</div>
+              <div>${escapeHtml(s.jabatan)}</div>
+            </div>
           </div>
         </div>
       `;
@@ -1370,37 +2017,57 @@
     }
 
     // =========================================================================
-    // 5. DIREKTORI 31 GURU & KALDIK DKI
+    // [JS-06] RENDERER TABEL DIREKTORI GURU (TAB 2) & REKAP KALDIK (TAB 3)
     // =========================================================================
     function renderDirektoriTable() {
       const tbody = document.getElementById("direktoriTableBody");
+      const tendikBody = document.getElementById("tendikTableBody");
       if (!tbody) return;
+
       const q = (document.getElementById("searchGuruInput")?.value || "").toLowerCase().trim();
       const filterKel = document.getElementById("filterJurusanDir")?.value || "ALL";
 
       const filtered = MASTER_GURU_LIST.filter(g => {
         const matchKel = filterKel === "ALL" || g.kelompok === filterKel;
-        const hay = `${g.nama} ${g.jabatan} ${g.mapelList.join(" ")} ${g.kelas}`.toLowerCase();
+        const mapelStr = g.mapelDetails.map(d => `${d.mapel} ${d.kelas}`).join(" ");
+        const hay = `${g.nama} ${g.tugasTambahan} ${mapelStr}`.toLowerCase();
         const matchQ = !q || hay.includes(q);
         return matchKel && matchQ;
       });
 
       tbody.innerHTML = filtered.map(g => {
         const realIdx = MASTER_GURU_LIST.findIndex(item => item.no === g.no);
+        const mapelHtml = g.mapelDetails.map(d => `
+          <div style="margin-bottom: 5px;">
+            <span class="badge">${escapeHtml(d.mapel)}</span>
+            <div style="font-size: 0.78rem; color: var(--muted); margin-top: 2px;">Kelas: ${escapeHtml(d.kelas)} (<strong>${d.jpPerRombel} JP/rombel</strong>)</div>
+          </div>
+        `).join("");
+
         return `
           <tr>
             <td style="text-align: center; font-weight: 700;">${g.no}</td>
             <td><strong>${escapeHtml(g.nama)}</strong></td>
-            <td>${escapeHtml(g.jabatan)}</td>
-            <td>${g.mapelList.map(m => `<span class="badge" style="margin-bottom: 3px;">${escapeHtml(m)}</span>`).join("<br/>")}</td>
-            <td>${escapeHtml(g.kelas)}</td>
-            <td style="text-align: center; font-weight: 800; color: var(--primary);">${g.jp} JP</td>
+            <td>${g.tugasTambahan && g.tugasTambahan !== "-" ? `<span class="badge badge-amber">${escapeHtml(g.tugasTambahan)}</span>` : "-"}</td>
+            <td>${mapelHtml}</td>
+            <td style="text-align: center; font-weight: 700;">${g.jpKbm} JP</td>
+            <td style="text-align: center; font-weight: 800; color: var(--primary);">${g.jpTotal} JP</td>
             <td>
               <button type="button" class="btn btn-primary" style="padding: 6px 10px; font-size: 0.8rem;" onclick="pilihGuruDariDirektori(${realIdx})">Buat Perangkat</button>
             </td>
           </tr>
         `;
       }).join("");
+
+      if (tendikBody) {
+        tendikBody.innerHTML = TENDIK_LIST.map(t => `
+          <tr>
+            <td style="text-align: center; font-weight: 700;">${t.no}</td>
+            <td><strong>${escapeHtml(t.nama)}</strong></td>
+            <td>${escapeHtml(t.jabatan)}</td>
+          </tr>
+        `).join("");
+      }
     }
 
     function pilihGuruDariDirektori(idx) {
@@ -1424,7 +2091,7 @@
             <thead>
               <tr>
                 <th>Guru & Mata Pelajaran Terpilih</th>
-                <th>JP / Minggu</th>
+                <th>JP / Minggu (Per Rombel)</th>
                 <th>Minggu Efektif Ganjil</th>
                 <th>Total JP Ganjil</th>
                 <th>Minggu Efektif Genap</th>
@@ -1434,7 +2101,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>${escapeHtml(s.guruNama)}</strong><br/>${escapeHtml(s.mapel)}</td>
+                <td><strong>${escapeHtml(s.guruNama)}</strong><br/>${escapeHtml(s.mapel)} (${escapeHtml(s.kelas)})</td>
                 <td style="text-align: center; font-weight: 700;">${s.jpMinggu} JP</td>
                 <td style="text-align: center;">${s.mingguGanjil} Minggu</td>
                 <td style="text-align: center; font-weight: 700;">${s.jpGanjil} JP</td>
@@ -1449,13 +2116,32 @@
     }
 
     // =========================================================================
-    // 6. CETAK PDF A4, UNDUH WORD/EXCEL, WHATSAPP, CLIPBOARD & IMPOR SHEETS
+    // [JS-07] EKSPOR DOKUMEN (CETAK PDF A4, WORD .DOC, EXCEL .XLS) & INTEGRASI
+    // Catatan PDF: Browser memakai document.title sebagai nama file default
+    // saat memilih "Save as PDF". Fungsi printA4Pdf() mengatur judul otomatis
+    // sesuai nama guru, lalu mengembalikannya setelah dialog cetak ditutup.
     // =========================================================================
     function printA4Pdf() {
       renderA4Document();
-      showToast("Membuka dialog cetak / Simpan sebagai PDF A4...");
+      const s = getFormState();
+      const originalTitle = document.title;
+      const safeGuruName = s.guruNama.replace(/[\/\\:*?"<>|]/g, "").trim();
+      const safeMapelName = s.mapel.replace(/[\/\\:*?"<>|]/g, "").trim();
+      document.title = `Perangkat_Ajar_${safeGuruName}_${safeMapelName}`;
+
+      showToast(`Membuka dialog cetak PDF: "${document.title}.pdf"...`);
+
+      const restoreTitle = () => {
+        document.title = originalTitle;
+        window.removeEventListener("afterprint", restoreTitle);
+      };
+      window.addEventListener("afterprint", restoreTitle);
+
       setTimeout(() => {
         window.print();
+        setTimeout(() => {
+          document.title = originalTitle;
+        }, 1500);
       }, 250);
     }
 
@@ -1467,9 +2153,9 @@
         <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
         <head><meta charset='utf-8'><title>Perangkat Pembelajaran ${escapeHtml(s.guruNama)}</title>
         <style>
-          body { font-family: 'Times New Roman', serif; font-size: 11.5pt; }
-          table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
-          th, td { border: 1px solid #000000; padding: 6px 8px; vertical-align: top; }
+          body { font-family: 'Times New Roman', serif; font-size: 11pt; }
+          table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+          th, td { border: 1px solid #000000; padding: 5px 7px; vertical-align: top; }
           th { background-color: #e2e8f0; }
         </style>
         </head><body>${content}</body></html>
@@ -1478,7 +2164,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Perangkat_Ajar_${s.guruNama.replace(/[^a-zA-Z0-9]/g, "_")}.doc`;
+      a.download = `Perangkat_Ajar_${s.guruNama.replace(/[^a-zA-Z0-9]/g, "_")}_${s.mapel.replace(/[^a-zA-Z0-9]/g, "_")}.doc`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1487,16 +2173,19 @@
     }
 
     function downloadExcelSchedule() {
-      const rowsHtml = MASTER_GURU_LIST.map(g => `
-        <tr>
-          <td>${g.no}</td>
-          <td>${escapeHtml(g.nama)}</td>
-          <td>${escapeHtml(g.jabatan)}</td>
-          <td>${escapeHtml(g.mapelList.join("; "))}</td>
-          <td>${escapeHtml(g.kelas)}</td>
-          <td>${g.jp}</td>
-        </tr>
-      `).join("");
+      const rowsHtml = MASTER_GURU_LIST.map(g => {
+        const mapelStr = g.mapelDetails.map(d => `${d.mapel} [${d.kelas}: ${d.jpPerRombel} JP/rombel]`).join("; ");
+        return `
+          <tr>
+            <td>${g.no}</td>
+            <td>${escapeHtml(g.nama)}</td>
+            <td>${escapeHtml(mapelStr)}</td>
+            <td>${g.jpKbm}</td>
+            <td>${g.jpTotal}</td>
+            <td>${escapeHtml(g.tugasTambahan)}</td>
+          </tr>
+        `;
+      }).join("");
 
       const excelHtml = `
         <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
@@ -1507,10 +2196,10 @@
               <tr>
                 <th>No</th>
                 <th>Nama Guru</th>
-                <th>Jabatan / Tugas Tambahan</th>
-                <th>Mata Pelajaran</th>
-                <th>Kelas / Rombel</th>
-                <th>Total JP / Minggu</th>
+                <th>Mata Pelajaran & Distribusi Kelas</th>
+                <th>JP Mengajar</th>
+                <th>Jumlah Total JP</th>
+                <th>Tugas Tambahan</th>
               </tr>
             </thead>
             <tbody>${rowsHtml}</tbody>
@@ -1522,12 +2211,12 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "Pembagian_Jam_Mengajar_31_Guru_SMK_TRIMULIA_2026_2027.xls";
+      a.download = "SK_Pembagian_Jam_Mengajar_31_Guru_SMK_TRIMULIA_2026_2027.xls";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast("File Excel Pembagian Jam Mengajar berhasil diunduh!");
+      showToast("File Excel SK Pembagian Jam Mengajar berhasil diunduh!");
     }
 
     function copyPromptToClipboard() {
@@ -1572,8 +2261,8 @@
       renderDirektoriTable();
       refreshAllOutputs();
       const badge = document.getElementById("syncStatusBadge");
-      if (badge) badge.textContent = `31 Guru Tersinkron (${new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })})`;
-      showToast("Sinkronisasi data 31 guru, mapel, kelas & JP selesai!");
+      if (badge) badge.textContent = `31 Guru Resmi SK (${new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })})`;
+      showToast("Sinkronisasi data resmi 31 guru SK 8 Agustus 2026 selesai!");
     }
 
     function parsePastedSchedule() {
@@ -1590,21 +2279,25 @@
           const namaInput = parts[0].trim().toLowerCase();
           const found = MASTER_GURU_LIST.find(g => g.nama.toLowerCase().includes(namaInput) || namaInput.includes(g.nama.toLowerCase().split(",")[0]));
           if (found) {
-            if (parts[1] && parts[1].trim()) found.mapelList[0] = parts[1].trim();
-            if (parts[2] && parts[2].trim()) found.kelas = parts[2].trim();
-            if (parts[3]) {
-              const numJp = parseInt(parts[3].replace(/\D/g, ""), 10);
-              if (!isNaN(numJp) && numJp > 0) found.jp = numJp;
-            }
+            const newMapel = parts[1] ? parts[1].trim() : found.mapelDetails[0].mapel;
+            const newKelas = parts[2] ? parts[2].trim() : found.mapelDetails[0].kelas;
+            const numJp = parts[3] ? parseInt(parts[3].replace(/\D/g, ""), 10) : found.mapelDetails[0].jpPerRombel;
+            found.mapelDetails[0] = {
+              mapel: newMapel,
+              kelas: newKelas,
+              jpPerRombel: (!isNaN(numJp) && numJp > 0) ? numJp : 2
+            };
             updatedCount++;
           }
         }
       });
       syncJadwalMaster();
-      showToast(updatedCount > 0 ? `${updatedCount} data guru berhasil diperbarui dari tempelan!` : "Format baris diproses, pilih guru untuk melihat perubahan.");
+      showToast(updatedCount > 0 ? `${updatedCount} data guru berhasil diperbarui!` : "Format baris diproses.");
     }
 
-    // Boot Portal
+    // =========================================================================
+    // [JS-08] INISIALISASI AWAL (BOOT APLIKASI SAAT HALAMAN SELESAI DIMUAT)
+    // =========================================================================
     window.addEventListener("DOMContentLoaded", () => {
       if (safeStorage.get("smktm_dark_mode") === "1") {
         document.body.classList.add("dark-mode");
