@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Generator Perangkat Pembelajaran & Prompting Guru — SMK TRIMULIA Jakarta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #047857;
+      --accent-light: #ecfdf5;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --radius: 12px;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    body.dark-mode {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --border: #334155;
+      --primary-light: #1e3a8a;
+      --accent-light: #064e3b;
+      --warning-bg: #451a03;
+    }
+
+    body.senior-mode {
+      font-size: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 48px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .container {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Header */
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 55%, #047857 100%);
+      color: #ffffff;
+      padding: 26px 0 24px;
+      box-shadow: 0 6px 24px rgba(30, 58, 138, 0.22);
+      margin-bottom: 22px;
+    }
+
+    .hero-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .school-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.32rem, 2.4vw, 1.85rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .hero p {
+      font-size: 0.92rem;
+      color: #e2e8f0;
+      max-width: 780px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 15px;
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .btn-accent:hover {
+      background: #065f46;
+    }
+
+    .btn-outline {
+      background: var(--card);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-lg {
+      padding: 12px 20px;
+      font-size: 0.96rem;
+      font-weight: 700;
+    }
+
+    /* Navigation Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: var(--card);
+      padding: 8px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .tab-btn {
+      flex: 1 1 auto;
+      min-width: 170px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.28);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Cards & Forms */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 14px;
+      padding-bottom: 9px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    body.dark-mode .card-title {
+      color: #93c5fd;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    label {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.14);
+    }
+
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .info-box {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      margin-bottom: 14px;
+    }
+
+    .warn-box {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+
+    th, td {
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #1e3a8a;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(148, 163, 184, 0.08);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .badge-green {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    /* A4 Preview Document */
+    .a4-preview-wrapper {
+      background: #cbd5e1;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    .a4-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #ffffff;
+      color: #000000;
+      padding: 16mm 18mm;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11.5pt;
+      line-height: 1.45;
+    }
+
+    .a4-sheet h2, .a4-sheet h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #000000;
+    }
+
+    .a4-sheet table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      font-size: 10.5pt;
+    }
+
+    .a4-sheet th {
+      background: #e2e8f0;
+      color: #000000;
+      border: 1px solid #000000;
+      padding: 6px 8px;
+    }
+
+    .a4-sheet td {
+      border: 1px solid #000000;
+      padding: 6px 8px;
+      background: #ffffff !important;
+      color: #000000;
+    }
+
+    .kop-surat {
+      text-align: center;
+      border-bottom: 3px double #000000;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .ttd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+      page-break-inside: avoid;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      z-index: 9999;
+      display: none;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .hero, .tabs, .no-print, .footer, .toast {
+        display: none !important;
+      }
+      .tab-panel {
+        display: none !important;
+      }
+      #tab-generator {
+        display: block !important;
+      }
+      .card {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .a4-preview-wrapper {
+        background: #ffffff !important;
+        padding: 0 !important;
+      }
+      .a4-sheet {
+        box-shadow: none !important;
+        width: 100% !important;
+        padding: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO HEADER -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-top">
+        <div>
+          <div class="school-badge">SMK TRIMULIA JAKARTA • KURIKULUM MERDEKA 2026/2027</div>
+          <h1>Portal Generator Perangkat Pembelajaran & Prompting Guru</h1>
+          <p>Sistem Terpadu Penyusunan CP, TP, ATP (Kepka BSKAP No. 046/H/KR/2025), Prota & Promes DKI Jakarta (SK Kadisdik No. 346/2026), Modul Ajar Deep Learning, serta Sinkronisasi Jadwal 31 Guru.</p>
+        </div>
+        <div class="hero-actions no-print">
+          <button type="button" class="btn btn-glass" onclick="syncJadwalMaster()">🔄 Sinkron Data 31 Guru</button>
+          <button type="button" class="btn btn-glass" id="btnSeniorMode" onclick="toggleSeniorMode()">🔍 Mode Teks Besar</button>
+          <button type="button" class="btn btn-glass" id="btnDarkMode" onclick="toggleDarkMode()">🌓 Mode Gelap</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- NAVIGATION TABS -->
+    <nav class="tabs no-print" aria-label="Menu Utama Portal">
+      <button type="button" class="tab-btn active" data-tab="tab-generator" onclick="switchTab('tab-generator', this)">1. Generator Perangkat & PDF A4</button>
+      <button type="button" class="tab-btn" data-tab="tab-direktori" onclick="switchTab('tab-direktori', this)">2. Direktori 31 Guru & JP</button>
+      <button type="button" class="tab-btn" data-tab="tab-kaldik" onclick="switchTab('tab-kaldik', this)">3. Prota & Promes DKI 2026/2027</button>
+      <button type="button" class="tab-btn" data-tab="tab-drive" onclick="switchTab('tab-drive', this)">4. Repository Drive & Regulasi</button>
+      <button type="button" class="tab-btn" data-tab="tab-sheets" onclick="switchTab('tab-sheets', this)">5. Jadwal KBM (Google Sheets)</button>
+    </nav>
+
+    <!-- TAB 1: GENERATOR PERANGKAT & PDF A4 -->
+    <section id="tab-generator" class="tab-panel active">
+      <!-- LANGKAH 1 -->
+      <div class="card no-print">
+        <div class="card-title">
+          <span>Langkah 1: Pilih Identitas Guru & Mata Pelajaran (Otomatis Terisi dari Jadwal KBM)</span>
+          <span class="badge badge-green" id="syncStatusBadge">31 Guru Tersinkron</span>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label for="selectGuru">Pilih Nama Guru (31 Guru SMK TRIMULIA)</label>
+            <select id="selectGuru" onchange="onSelectGuru()"></select>
+          </div>
+          <div class="form-group">
+            <label for="selectMapel">Mata Pelajaran Diampu</label>
+            <select id="selectMapel" onchange="onSelectMapel()"></select>
+          </div>
+          <div class="form-group">
+            <label for="inputKelas">Kelas / Fase / Rombel</label>
+            <input type="text" id="inputKelas" value="XI / Fase F (XI MP, XI BR, XI TKJ)" oninput="refreshAllOutputs()" />
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 12px;">
+          <div class="form-group">
+            <label for="inputNip">NIP / NUPTK / Jabatan</label>
+            <input type="text" id="inputNip" value="-" oninput="refreshAllOutputs()" />
+          </div>
+          <div class="form-group">
+            <label for="inputKonsentrasi">Konsentrasi Keahlian / Kelompok Mapel</label>
+            <select id="inputKonsentrasi" onchange="refreshAllOutputs()">
+              <option value="Semua Jurusan (Mata Pelajaran Umum)">Semua Jurusan (Mata Pelajaran Umum)</option>
+              <option value="Teknik Komputer dan Jaringan (TKJ)">Teknik Komputer dan Jaringan (TKJ)</option>
+              <option value="Manajemen Perkantoran dan Layanan Bisnis (MPLB)">Manajemen Perkantoran dan Layanan Bisnis (MPLB)</option>
+              <option value="Bisnis Retail (BR)">Bisnis Retail (BR)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="selectSemester">Semester & Tahun Pelajaran</label>
+            <select id="selectSemester" onchange="refreshAllOutputs()">
+              <option value="Ganjil TP 2026/2027">Semester Ganjil — TP 2026/2027</option>
+              <option value="Genap TP 2026/2027">Semester Genap — TP 2026/2027</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-3" style="margin-top: 12px;">
+          <div class="form-group">
+            <label for="inputJpMinggu">Alokasi JP / Minggu</label>
+            <input type="number" id="inputJpMinggu" min="1" max="40" value="4" oninput="refreshAllOutputs()" />
+          </div>
+          <div class="form-group">
+            <label for="inputMingguGanjil">Minggu Efektif Ganjil (Kaldik DKI)</label>
+            <input type="number" id="inputMingguGanjil" min="10" max="24" value="19" oninput="refreshAllOutputs()" />
+          </div>
+          <div class="form-group">
+            <label for="inputMingguGenap">Minggu Efektif Genap (Kaldik DKI)</label>
+            <input type="number" id="inputMingguGenap" min="10" max="24" value="17" oninput="refreshAllOutputs()" />
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGKAH 2 -->
+      <div class="card no-print">
+        <div class="card-title">
+          <span>Langkah 2: Elemen CP, Capaian Pembelajaran (CP), TP & ATP (Kepka BSKAP No. 046/H/KR/2025)</span>
+          <button type="button" class="btn btn-outline" onclick="loadOfficialCpForCurrentMapel()">✨ Muat Ulang CP Resmi Mapel</button>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="inputElemenCp">Elemen Capaian Pembelajaran</label>
+            <textarea id="inputElemenCp" oninput="refreshAllOutputs()"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputCp">Rumusan Capaian Pembelajaran (CP)</label>
+            <textarea id="inputCp" oninput="refreshAllOutputs()"></textarea>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top: 12px;">
+          <div class="form-group">
+            <label for="inputTp">Tujuan Pembelajaran (TP) Terukur</label>
+            <textarea id="inputTp" oninput="refreshAllOutputs()"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputAtp">Alur Tujuan Pembelajaran (ATP) & Model Pembelajaran</label>
+            <textarea id="inputAtp" oninput="refreshAllOutputs()"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- LANGKAH 3 & 4 -->
+      <div class="card no-print">
+        <div class="card-title">
+          <span>Langkah 3: Cetak Perangkat PDF A4, Ekspor Word/Excel, Simpan Drive & Prompt AI</span>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 14px;">
+          <div class="form-group">
+            <label for="selectTahapDokumen">Pilih Jenis / Tahap Perangkat Pembelajaran</label>
+            <select id="selectTahapDokumen" onchange="renderA4Document()">
+              <option value="paket_lengkap">Tahap 1: Paket Lengkap Siap Supervisi (CP + TP + ATP + Prota + Promes + Modul Ajar)</option>
+              <option value="cp_tp_atp">Tahap 2: Analisis CP, Tujuan Pembelajaran (TP) & Alur Tujuan Pembelajaran (ATP)</option>
+              <option value="prota_promes">Tahap 3: Program Tahunan (Prota) & Program Semester (Promes DKI 2026/2027)</option>
+              <option value="modul_ajar">Tahap 4: Modul Ajar / RPP Berbasis Deep Learning & PjBL/TeFa</option>
+              <option value="asesmen_lkpd">Tahap 5: Kisi-Kisi Asesmen, Rubrik Penilaian & LKPD Industri</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Aksi Dokumen Resmi & Penyimpanan</label>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <button type="button" class="btn btn-primary btn-lg" onclick="printA4Pdf()">🖨️ Cetak / Simpan PDF A4</button>
+              <button type="button" class="btn btn-accent" onclick="downloadWordDoc()">📄 Unduh Word (.doc)</button>
+              <button type="button" class="btn btn-outline" onclick="downloadExcelSchedule()">📊 Unduh Excel (.xls)</button>
+              <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">☁️ Buka Google Drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+          <button type="button" class="btn btn-outline" onclick="copyPromptToClipboard()">📋 Salin Prompt AI Siap Pakai</button>
+          <button type="button" class="btn btn-accent" onclick="shareWhatsAppSummary()">💬 Kirim Ringkasan ke WhatsApp</button>
+          <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="btn btn-outline">✨ Buka Gemini AI</a>
+          <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">🤖 Buka ChatGPT</a>
+        </div>
+
+        <div class="form-group">
+          <label for="promptOutput">Pratinjau Prompt Otomatis (Siap Tempel ke Gemini / ChatGPT jika ingin memperkaya materi):</label>
+          <textarea id="promptOutput" readonly style="min-height: 135px; font-family: monospace; font-size: 0.84rem;"></textarea>
+        </div>
+      </div>
+
+      <!-- PRATINJAU DOKUMEN A4 -->
+      <div class="card">
+        <div class="card-title no-print">
+          <span>Pratinjau Dokumen Resmi Siap Cetak A4 (SMK TRIMULIA Jakarta)</span>
+          <button type="button" class="btn btn-primary" onclick="printA4Pdf()">🖨️ Cetak / Simpan PDF Sekarang</button>
+        </div>
+        <div class="a4-preview-wrapper">
+          <div id="a4DocumentContent" class="a4-sheet"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: DIREKTORI 31 GURU & JP -->
+    <section id="tab-direktori" class="tab-panel">
+      <div class="card">
+        <div class="card-title">
+          <span>Direktori Pembagian Jam Mengajar 31 Guru SMK TRIMULIA Jakarta (TP 2026/2027)</span>
+          <button type="button" class="btn btn-accent" onclick="downloadExcelSchedule()">📥 Ekspor Daftar Guru & JP (.xls)</button>
+        </div>
+        <div class="grid-2" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label for="searchGuruInput">Cari Nama Guru, Mata Pelajaran, atau Kelas</label>
+            <input type="text" id="searchGuruInput" placeholder="Ketik nama guru, mapel, TKJ, MPLB, atau BR..." oninput="renderDirektoriTable()" />
+          </div>
+          <div class="form-group">
+            <label for="filterJurusanDir">Filter Kelompok / Jurusan</label>
+            <select id="filterJurusanDir" onchange="renderDirektoriTable()">
+              <option value="ALL">Semua Guru (31 Guru)</option>
+              <option value="UMUM">Mata Pelajaran Umum / Muatan Nasional</option>
+              <option value="TKJ">Teknik Komputer & Jaringan (TKJ)</option>
+              <option value="MPLB">Manajemen Perkantoran & Layanan Bisnis (MPLB)</option>
+              <option value="BR">Bisnis Retail (BR)</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 44px;">No</th>
+                <th>Nama Guru & Gelar</th>
+                <th>Jabatan / Tugas Tambahan</th>
+                <th>Mata Pelajaran</th>
+                <th>Kelas / Rombel</th>
+                <th style="width: 85px;">Total JP</th>
+                <th style="width: 130px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="direktoriTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: PROTA & PROMES DKI 2026/2027 -->
+    <section id="tab-kaldik" class="tab-panel">
+      <div class="card">
+        <div class="card-title">
+          <span>Kalkulator Minggu Efektif, Prota & Promes Provinsi DKI Jakarta (SK Kadisdik No. 346 Tahun 2026)</span>
+        </div>
+        <div class="info-box">
+          <strong>Acuan Kalender Pendidikan Provinsi DKI Jakarta TP 2026/2027:</strong><br />
+          • <strong>Semester Ganjil (Juli – Desember 2026):</strong> 19 Minggu Efektif KBM (termasuk MPLS, Asesmen Sumatif Tengah Semester, Sumatif Akhir Semester, dan Pengolahan Rapor).<br />
+          • <strong>Semester Genap (Januari – Juni 2027):</strong> 17 Minggu Efektif KBM (termasuk Ujian Sekolah/UKK Kelas XII, Libur Hari Raya Idul Fitri 1448 H, dan PAT).<br />
+          • <strong>Total 1 Tahun Pelajaran:</strong> 36 Minggu Efektif.
+        </div>
+        <div id="kaldikSummaryContainer"></div>
+      </div>
+    </section>
+
+    <!-- TAB 4: REPOSITORY DRIVE & REGULASI -->
+    <section id="tab-drive" class="tab-panel">
+      <div class="card">
+        <div class="card-title">
+          <span>Repository Kurikulum, Regulasi Nasional & Tautan Kerja Guru SMK TRIMULIA Jakarta</span>
+        </div>
+        <div class="grid-2">
+          <div class="info-box">
+            <strong>1. Kepka BSKAP No. 046/H/KR/2025</strong><br />
+            Capaian Pembelajaran (CP) terbaru pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah (SMK Fase E & Fase F) pada Kurikulum Merdeka.
+          </div>
+          <div class="info-box">
+            <strong>2. Permendikdasmen No. 13 Tahun 2025 & Deep Learning</strong><br />
+            Penguatan pembelajaran mendalam (<em>Mindful, Meaningful, Joyful Learning</em>), penguatan 8 Dimensi Profil Lulusan, serta pembelajaran berbasis proyek (PjBL) dan Teaching Factory (TeFa).
+          </div>
+          <div class="info-box">
+            <strong>3. SK Kadisdik Provinsi DKI Jakarta No. 346 Tahun 2026</strong><br />
+            Pedoman Kalender Pendidikan Tahun Pelajaran 2026/2027 bagi satuan pendidikan jenjang SMK di Provinsi DKI Jakarta.
+          </div>
+          <div class="info-box">
+            <strong>4. Pengesahan Dokumen Supervisi Sekolah</strong><br />
+            Setiap perangkat pembelajaran yang dicetak dari portal ini otomatis mencantumkan kolom pengesahan resmi Kepala SMK TRIMULIA Jakarta (<strong>Juni Abdillah, S.Pd</strong>) dan Guru Mata Pelajaran.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: JADWAL KBM GOOGLE SHEETS -->
+    <section id="tab-sheets" class="tab-panel">
+      <div class="card">
+        <div class="card-title">
+          <span>Sumber Data Jadwal KBM & Pembagian Jam Mengajar Guru TP 2026–2027</span>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5aw-w3rgc-Y3OxhlwMIL-yW4g4W06Avt4TY71aHujABoTwXDjF5C_DslLWlrs9Q/pubhtml?gid=1457213783&single=true" target="_blank" rel="noopener noreferrer" class="btn btn-primary">↗️ Buka Spreadsheet Layar Penuh</a>
+            <button type="button" class="btn btn-accent" onclick="syncJadwalMaster()">🔄 Sinkronkan ke Generator</button>
+          </div>
+        </div>
+        <div class="warn-box">
+          <strong>Catatan Integrasi GitHub Pages:</strong> Seluruh data 31 guru, mata pelajaran, rombel kelas (X, XI, XII TKJ/MPLB/BR), dan jumlah JP di portal ini sudah disinkronkan dengan tabel pembagian jam mengajar di bawah ini. Jika ada perubahan baru pada Google Sheets, Anda juga dapat menempelkan baris tabel yang disalin dari spreadsheet pada kotak impor cepat di bawah.
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label for="pasteSheetInput">Impor Cepat / Pembaruan Manual dari Google Sheets (Opsional — tempel baris tabel & klik Proses):</label>
+          <textarea id="pasteSheetInput" placeholder="Contoh: Solihin, S.T. | Informatika / KKA | X TKJ, X MPLB, X BR | 12"></textarea>
+          <div style="margin-top: 8px;">
+            <button type="button" class="btn btn-outline" onclick="parsePastedSchedule()">⚙️ Proses Baris Tempelan ke Portal</button>
+          </div>
+        </div>
+
+        <div style="border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: #ffffff;">
+          <iframe
+            title="Jadwal KBM SMK TRIMULIA Jakarta 2026-2027"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5aw-w3rgc-Y3OxhlwMIL-yW4g4W06Avt4TY71aHujABoTwXDjF5C_DslLWlrs9Q/pubhtml?gid=1457213783&single=true&widget=true&headers=false"
+            style="width: 100%; height: 540px; border: 0;"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    Portal Generator Perangkat Pembelajaran & Prompting Guru — <strong>SMK TRIMULIA Jakarta</strong> • Dikembangkan untuk Kurikulum SMK TP 2026/2027 • Siap GitHub Pages.
+  </footer>
+
+  <div id="toastBox" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================================================================
+    // 1. SAFE STORAGE (BEBAS ERROR SANDBOX / IFRAME / GITHUB PAGES)
+    // =========================================================================
+    const memoryStorage = {};
+    const safeStorage = {
+      get(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch (err) {
+          return Object.prototype.hasOwnProperty.call(memoryStorage, key) ? memoryStorage[key] : null;
+        }
+      },
+      set(key, value) {
+        memoryStorage[key] = String(value);
+        try {
+          window.localStorage.setItem(key, String(value));
+        } catch (err) {
+          // Fallback diam-diam ke memoryStorage saat berada di sandbox ketat
+        }
+      }
+    };
+
+    // =========================================================================
+    // 2. DATABASE CP RESMI (KEPKA BSKAP NO. 046/H/KR/2025)
+    // =========================================================================
+    const CP_DATABASE = {
+      "Pendidikan Agama Islam dan Budi Pekerti": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Al-Qur'an dan Hadis\n2. Akidah\n3. Akhlak\n4. Fikih\n5. Sejarah Peradaban Islam",
+        cp: "Peserta didik mampu menganalisis ayat Al-Qur'an dan hadis tentang perintah berkompetisi dalam kebaikan, etos kerja, serta toleransi; memahami cabang-cabang iman; membiasakan akhlak karimah dan menjauhi pergaulan bebas; menerapkan ketentuan muamalah ekonomi syariah; serta meneladani sejarah perkembangan Islam di Indonesia.",
+        tp: "1. Menganalisis pesan QS. Al-Maidah/5:48 dan QS. At-Taubah/9:105 terkait etos kerja profesional.\n2. Menerapkan prinsip transaksi ekonomi syariah dalam dunia usaha dan industri.\n3. Mengaktualisasikan perilaku toleran, jujur, dan tanggung jawab di lingkungan sekolah dan tempat PKL.",
+        atp: "Tahap 1: Kajian Teks & Kontekstualisasi Etos Kerja (6 JP) -> Tahap 2: Simulasi Muamalah Syariah & Etika Profesi (8 JP) -> Tahap 3: Proyek Kampanye Akhlak Mulia Digital (6 JP) menggunakan pendekatan Deep Learning & Problem-Based Learning."
+      },
+      "Pendidikan Agama Kristen dan Budi Pekerti": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Allah Berkarya\n2. Manusia dan Nilai-Nilai Kristiani\n3. Gereja dan Masyarakat Majemuk\n4. Alam dan Lingkungan Hidup",
+        cp: "Peserta didik memahami karya Allah dalam pertumbuhan diri menjadi dewasa, menerapkan nilai-nilai Kristiani dalam kehidupan bermasyarakat majemuk, menjunjung tinggi keadilan dan perdamaian, serta bertanggung jawab menjaga kelestarian alam ciptaan Tuhan.",
+        tp: "1. Mengidentifikasi prinsip kedewasaan iman dalam mengambil keputusan etis.\n2. Mewujudkan sikap inklusif dan kerja sama lintas budaya di dunia kerja.\n3. Merancang aksi nyata kepedulian lingkungan di sekolah.",
+        atp: "Tahap 1: Refleksi Iman & Kedewasaan Pribadi -> Tahap 2: Studi Kasus Toleransi Masyarakat Majemuk -> Tahap 3: Proyek Pelayanan Sosial & Ekologi berbasis PjBL."
+      },
+      "Pendidikan Pancasila": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Pancasila\n2. Undang-Undang Dasar Negara Republik Indonesia Tahun 1945\n3. Bhinneka Tunggal Ika\n4. Negara Kesatuan Republik Indonesia (NKRI)",
+        cp: "Peserta didik mampu menganalisis cara pandang para pendiri negara tentang dasar negara, mengkaji penerapan Pancasila dalam kehidupan bernegara dan dunia kerja, menganalisis produk perundang-undangan serta hak dan kewajiban warga negara, mengelola kebinekaan sebagai modal sosial, dan menjaga keutuhan NKRI.",
+        tp: "1. Menganalisis implementasi nilai Pancasila dalam etika profesi dan kewirausahaan.\n2. Mengevaluasi kepatuhan hukum serta perlindungan hak warga negara berdasarkan UUD NRI 1945.\n3. Menyusun proyek kolaborasi kebinekaan di lingkungan sekolah.",
+        atp: "Tahap 1: Aktualisasi Ideologi Pancasila di Dunia Kerja -> Tahap 2: Konstitusi & Kesadaran Hukum Warga Negara -> Tahap 3: Proyek Harmoni Kebinekaan & Wawasan Nusantara."
+      },
+      "Bahasa Indonesia": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Menyimak\n2. Membaca dan Memirsa\n3. Berbicara dan Mempresentasikan\n4. Menulis",
+        cp: "Peserta didik mampu mengevaluasi informasi dan gagasan dari teks laporan hasil observasi, teks eksplanasi, teks negosiasi, teks prosedur kompleks, surat lamaran pekerjaan, serta karya ilmiah; mempresentasikan gagasan secara logis dan persuasif; serta menulis teks profesional sesuai kaidah PUEBI/EYD V.",
+        tp: "1. Menganalisis struktur dan kaidah kebahasaan teks negosiasi bisnis dan surat lamaran kerja.\n2. Menyusun proposal kegiatan atau laporan proyek kejuruan secara sistematis.\n3. Mempresentasikan gagasan bisnis/teknologi secara efektif dengan bahasa Indonesia yang santun.",
+        atp: "Tahap 1: Literasi Teks Informasi & Prosedur Industri -> Tahap 2: Praktik Negosiasi & Komunikasi Bisnis -> Tahap 3: Penyusunan Laporan Proyek & Portofolio Karier."
+      },
+      "Bahasa Inggris": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Menyimak - Berbicara (Listening - Speaking)\n2. Membaca - Memirsa (Reading - Viewing)\n3. Menulis - Mempresentasikan (Writing - Presenting)",
+        cp: "Peserta didik menggunakan bahasa Inggris untuk berkomunikasi dengan guru, teman sebaya, dan mitra dunia kerja dalam berbagai macam situasi formal dan informal; memahami teks deskriptif, prosedur, eksposisi, serta korespondensi bisnis/teknis; dan memproduksi teks lisan maupun tulisan dengan kosakata spesifik kejuruan.",
+        tp: "1. Memahami informasi rinci dari teks prosedur teknis dan korespondensi bisnis berbahasa Inggris.\n2. Melakukan simulasi wawancara kerja (job interview) dan layanan pelanggan secara komunikatif.\n3. Menyusun surat lamaran kerja (application letter) dan CV profesional dalam bahasa Inggris.",
+        atp: "Tahap 1: Workplace Communication & Technical Instructions -> Tahap 2: Business Correspondence & Presentation -> Tahap 3: Career Preparation (CV & Job Interview Simulation)."
+      },
+      "Matematika": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Bilangan\n2. Aljabar dan Fungsi\n3. Pengukuran\n4. Geometri\n5. Analisis Data dan Peluang",
+        cp: "Peserta didik mampu menggeneralisasi sifat-sifat bilangan berpangkat dan logaritma, menyelesaikan masalah barisan dan deret aritmetika/geometri dalam konteks bunga majemuk dan anuitas, memodelkan sistem persamaan dan pertidaksamaan linear (program linear), serta menganalisis data statistika dan peluang.",
+        tp: "1. Menyelesaikan permasalahan keuangan bisnis menggunakan konsep barisan, deret, bunga majemuk, dan anuitas.\n2. Menentukan nilai optimum keuntungan usaha menggunakan model program linear dua variabel.\n3. Menyajikan dan menafsirkan ukuran pemusatan serta penyebaran data industri.",
+        atp: "Tahap 1: Eksponen, Logaritma & Barisan Keuangan -> Tahap 2: Sistem Persamaan & Program Linear Terapan -> Tahap 3: Statistika Deskriptif & Peluang Kejadian."
+      },
+      "Sejarah": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Keterampilan Konsep Sejarah\n2. Keterampilan Berpikir Sejarah\n3. Kesadaran Sejarah\n4. Penelitian dan Penulisan Sejarah",
+        cp: "Peserta didik mampu memahami konsep dasar ilmu sejarah, menganalisis asal-usul nenek moyang dan jalur rempah Nusantara, mengevaluasi perjuangan pergerakan nasional hingga proklamasi kemerdekaan Indonesia, serta merefleksikan nilai kepahlawanan dalam pembangunan bangsa masa kini.",
+        tp: "1. Menganalisis keterkaitan jalur rempah Nusantara dengan jaringan perdagangan global.\n2. Mengevaluasi strategi perjuangan organisasi pergerakan nasional Indonesia.\n3. Menyajikan karya infografis/artikel sejarah lokal Jakarta.",
+        atp: "Tahap 1: Pengantar Ilmu Sejarah & Jalur Rempah -> Tahap 2: Kolonialisme & Pergerakan Nasional -> Tahap 3: Proklamasi Kemerdekaan & Proyek Sejarah Lokal."
+      },
+      "Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Terampil Bergerak\n2. Belajar Melalui Gerak\n3. Bergaya Hidup Aktif\n4. Memilih Hidup yang Menyehatkan",
+        cp: "Peserta didik mampu merancang dan mempraktikkan keterampilan gerak spesifik dalam berbagai permainan olahraga, senam, dan aktivitas kebugaran jasmani; menunjukkan perilaku sportif dan kepemimpinan tim; serta menerapkan pola hidup sehat dan keselamatan kerja.",
+        tp: "1. Mempraktikkan teknik dasar dan strategi permainan bola besar/kecil dengan sportivitas tinggi.\n2. Menyusun program latihan kebugaran jasmani sesuai kebutuhan fisik dunia kerja.\n3. Menerapkan prinsip ergonomi dan pencegahan cedera kerja.",
+        atp: "Tahap 1: Permainan Olahraga & Kerja Sama Tim -> Tahap 2: Pengukuran & Peningkatan Kebugaran Jasmani -> Tahap 3: Ergonomi, P3K & Pola Hidup Sehat."
+      },
+      "Seni Budaya": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Mengalami\n2. Merefleksikan\n3. Berpikir dan Bekerja Artistik\n4. Menciptakan\n5. Berdampak",
+        cp: "Peserta didik mampu mengamati, mengevaluasi, dan menciptakan karya seni rupa/musik/tari/teater yang merefleksikan kearifan lokal Nusantara dan budaya Betawi serta mengintegrasikannya ke dalam desain kreatif dan estetika produk.",
+        tp: "1. Mengidentifikasi unsur dan prinsip estetika pada karya seni rupa terapan Nusantara.\n2. Merancang karya seni/desain visual kreatif berbasis kearifan lokal Jakarta.\n3. Mempresentasikan hasil karya seni melalui pameran kelas.",
+        atp: "Tahap 1: Apresiasi Seni & Budaya Lokal -> Tahap 2: Eksplorasi Medium & Desain Artistik -> Tahap 3: Produksi Karya & Pameran Apresiasi."
+      },
+      "Informatika / Koding & Kecerdasan Artifisial (KKA)": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Berpikir Komputasional\n2. Literasi Digital\n3. Analisis Data\n4. Algoritma dan Pemrograman\n5. Etika & Pemanfaatan Kecerdasan Artifisial (AI)",
+        cp: "Peserta didik mampu menerapkan berpikir komputasional untuk memecahkan persoalan kompleks, mengelola data dan keamanan informasi digital, merancang algoritma pemrograman terstruktur, serta memanfaatkan kecerdasan artifisial (AI) secara etis, kritis, dan produktif.",
+        tp: "1. Menerapkan dekomposisi, pengenalan pola, abstraksi, dan algoritma dalam pemecahan masalah.\n2. Mengolah dan memvisualisasikan dataset menggunakan perangkat lunak pengolah angka.\n3. Merancang prompt dan prototipe aplikasi sederhana berbasis AI secara bertanggung jawab.",
+        atp: "Tahap 1: Berpikir Komputasional & Keamanan Digital -> Tahap 2: Analisis Data & Algoritma Dasar -> Tahap 3: Praktik Koding & Etika Kecerdasan Artifisial (KKA)."
+      },
+      "Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Menjelaskan Fenomena Secara Ilmiah\n2. Mendesain dan Mengevaluasi Penyelidikan Ilmiah\n3. Menerjemahkan Data dan Bukti Secara Ilmiah",
+        cp: "Peserta didik mampu menjelaskan fenomena alam dan sosial di sekitarnya secara ilmiah meliputi makhluk hidup dan lingkungannya, zat dan perubahannya, energi dan perubahannya, bumi dan antariksa, serta interaksi sosial dan dinamika ekonomi masyarakat melalui metode ilmiah.",
+        tp: "1. Menganalisis dampak perubahan zat dan penggunaan energi terhadap kelestarian lingkungan kerja.\n2. Merancang penyelidikan ilmiah sederhana berbasis masalah lingkungan sekitar.\n3. Mengaitkan fenomena sosial ekonomi dengan peluang usaha berkelanjutan.",
+        atp: "Tahap 1: Ekosistem, Zat & Energi Ramah Lingkungan -> Tahap 2: Eksperimen & Pengolahan Data Ilmiah -> Tahap 3: Proyek Sosial-Ekonomi Berkelanjutan (PjBL)."
+      },
+      "Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Proses Bisnis di Bidang TJKT\n2. Perkembangan Teknologi di Bidang TJKT\n3. Profesi dan Kewirausahaan (Technopreneur)\n4. Keselamatan dan Kesehatan Kerja Lingkungan Hidup (K3LH)\n5. Media dan Jaringan Telekomunikasi\n6. Penggunaan Alat Ukur",
+        cp: "Peserta didik memahami proses bisnis dan budaya kerja K3LH di bidang teknik jaringan komputer dan telekomunikasi, perkembangan teknologi 5G/IoT/Cloud, pengalamatan IP dasar, instalasi kabel UTP/Fiber Optik, serta penggunaan alat ukur jaringan seperti LAN Tester, OTDR, dan Optical Power Meter.",
+        tp: "1. Menerapkan prosedur K3LH dan standar operasional pemasangan perangkat jaringan.\n2. Membuat dan menguji konektivitas kabel jaringan UTP (Straight/Cross) serta terminasi Fiber Optik dasar.\n3. Mengoperasikan alat ukur jaringan untuk mendiagnosis redaman dan konektivitas.",
+        atp: "Tahap 1: Budaya Kerja Industri, K3LH & Technopreneur TJKT -> Tahap 2: Pengalamatan IP & Media Transmisi -> Tahap 3: Praktik Instalasi Kabel & Pengukuran Jaringan."
+      },
+      "Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)": {
+        konsentrasi: "Teknik Komputer dan Jaringan (TKJ)",
+        elemen: "1. Perencanaan dan Pengalamatan Jaringan\n2. Teknologi Jaringan Kabel dan Nirkabel\n3. Keamanan Jaringan\n4. Pemasangan dan Konfigurasi Perangkat Jaringan\n5. Administrasi Sistem Jaringan",
+        cp: "Peserta didik mampu merancang topologi dan subnetting jaringan (VLSM/CIDR), mengonfigurasi routing statis dan dinamis (OSPF/BGP dasar), VLAN, wireless indoor/outdoor, firewall dan keamanan jaringan, serta mengelola administrasi server Linux/Windows (DHCP, DNS, Web, Mail, Cloud Server).",
+        tp: "1. Merancang pengalamatan IP dan VLAN pada switch serta router sesuai kebutuhan topologi perusahaan.\n2. Mengonfigurasi firewall, VPN, dan sistem keamanan jaringan terhadap ancaman siber.\n3. Membangun dan mengelola layanan server jaringan berbasis Linux secara mandiri.",
+        atp: "Tahap 1: Perencanaan Topologi, Subnetting & VLAN -> Tahap 2: Routing, Wireless & Keamanan Jaringan -> Tahap 3: Administrasi Sistem Server & Proyek Teaching Factory TKJ."
+      },
+      "Dasar-Dasar Manajemen Perkantoran dan Layanan Bisnis": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Proses Bisnis Manajemen Perkantoran dan Layanan Bisnis\n2. Perkembangan Teknologi Perkantoran Modern\n3. Profil Pekerjaan dan Kewirausahaan\n4. Teknik Dasar Aktivitas Perkantoran & Layanan Pelanggan\n5. Dokumen Berbasis Digital & Peralatan Kantor",
+        cp: "Peserta didik memahami proses bisnis perkantoran modern, otomatisasi kantor, budaya kerja 5R/K3 perkantoran, pelayanan prima (service excellence), pengelolaan dokumen digital dan kearsipan elektronik, serta pengoperasian aplikasi perkantoran.",
+        tp: "1. Menerapkan budaya kerja 5R, etika kantor, dan standar pelayanan prima kepada kolega maupun pelanggan.\n2. Mengelola arsip fisik dan dokumen digital menggunakan sistem pengindeksan standar.\n3. Mengoperasikan peralatan kantor dan aplikasi produktivitas cloud secara efisien.",
+        atp: "Tahap 1: Ekosistem Bisnis & Etika Kantor Modern -> Tahap 2: Pelayanan Prima & Komunikasi Telepon/Resepsionis -> Tahap 3: Pengelolaan Dokumen Digital & Otomatisasi Kantor."
+      },
+      "Konsentrasi Keahlian Manajemen Perkantoran (MPLB)": {
+        konsentrasi: "Manajemen Perkantoran dan Layanan Bisnis (MPLB)",
+        elemen: "1. Pengelolaan Administrasi Umum\n2. Komunikasi di Tempat Kerja\n3. Pengelolaan Kearsipan\n4. Teknologi Perkantoran\n5. Pengelolaan Rapat/Pertemuan\n6. Pengelolaan Keuangan Sederhana & SDM\n7. Pengelolaan Sarana dan Prasarana",
+        cp: "Peserta didik mampu melaksanakan korespondensi bisnis Indonesia dan Inggris, mengelola arsip berbasis elektronik, mempersiapkan dan membuat notula rapat/pertemuan bisnis, mengelola kas kecil (petty cash) sistem imprest dan fluktuasi, serta mengelola administrasi kepegawaian dan sarana prasarana kantor.",
+        tp: "1. Menyusun berbagai jenis surat bisnis dan mengelola agenda pimpinan secara akurat.\n2. Mengelola dana kas kecil (petty cash) dan menyusun laporan pertanggungjawaban keuangan kantor.\n3. Menyelenggarakan kegiatan rapat/pertemuan dari tahap persiapan hingga penyusunan notula.",
+        atp: "Tahap 1: Korespondensi & Kearsipan Elektronik -> Tahap 2: Manajemen Rapat & Administrasi Sarpras/SDM -> Tahap 3: Pengelolaan Kas Kecil & Simulasi Kantor Terpadu (TeFa)."
+      },
+      "Dasar-Dasar Pemasaran / Bisnis Retail": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Proses Bisnis Bidang Pemasaran\n2. Perkembangan Teknologi & Isu Global Pemasaran\n3. Profil Pekerjaan & Kewirausahaan Pemasaran\n4. Prosedur Kesehatan, Keselamatan, dan Keamanan Kerja\n5. Berkomunikasi dengan Pelanggan & Dasar Pemasaran",
+        cp: "Peserta didik memahami proses bisnis pemasaran dan ritel modern, segmentasi pasar (STP), bauran pemasaran (4P/7P), komunikasi persuasif dengan pelanggan, pelayanan prima di area penjualan, serta penerapan K3 di lingkungan toko ritel.",
+        tp: "1. Menganalisis perilaku konsumen dan menentukan segmentasi pasar produk ritel.\n2. Menerapkan teknik komunikasi persuasif dan penanganan keluhan pelanggan secara profesional.\n3. Menyusun strategi bauran pemasaran untuk produk lokal.",
+        atp: "Tahap 1: Konsep Bisnis Pemasaran & Perilaku Konsumen -> Tahap 2: Komunikasi Pelanggan & Service Excellence -> Tahap 3: Praktik Riset Pasar & Strategi Bauran Pemasaran."
+      },
+      "Konsentrasi Keahlian Bisnis Retail (BR)": {
+        konsentrasi: "Bisnis Retail (BR)",
+        elemen: "1. Marketing & Customer Relationship Management (CRM)\n2. Penataan Produk (Visual Merchandising)\n3. Pengelolaan Bisnis Ritel & Inventori\n4. Administrasi Transaksi & Point of Sale (POS)\n5. Digital Marketing & E-Commerce",
+        cp: "Peserta didik mampu merancang dan menata display produk (window display, floor display, planogram) sesuai standar ritel modern, mengelola persediaan barang (stock opname, FIFO/FEFO), mengoperasikan mesin kasir Point of Sale (POS), serta menjalankan pemasaran digital dan live commerce.",
+        tp: "1. Menata produk di rak toko berdasarkan planogram, estetika warna, dan keamanan barang.\n2. Mengoperasikan transaksi penjualan tunai maupun nontunai menggunakan sistem POS secara akurat.\n3. Merancang kampanye digital marketing dan konten promosi media sosial untuk meningkatkan penjualan.",
+        atp: "Tahap 1: Visual Merchandising & Manajemen Inventori Toko -> Tahap 2: Operasional Kasir POS & Layanan CRM -> Tahap 3: Digital Marketing, E-Commerce & Praktik Business Center."
+      },
+      "Projek Kreatif dan Kewirausahaan (PKK)": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Kegiatan Produksi (Perencanaan, Pembuatan Produk/Jasa, Pengemasan, Distribusi)\n2. Kewirausahaan (Peluang Usaha, Proposal Usaha/Business Model Canvas, Pemasaran, Laporan Keuangan)",
+        cp: "Peserta didik mampu membaca peluang usaha sesuai kompetensi keahliannya, menyusun perencanaan usaha (Business Model Canvas & HPP), memproduksi barang/jasa kreatif berkualitas industri, merancang kemasan dan merek, memasarkan produk secara luring maupun daring, serta menyusun laporan keuangan usaha.",
+        tp: "1. Menyusun Business Model Canvas (BMC) dan menghitung Harga Pokok Produksi (HPP) serta titik impas (BEP).\n2. Memproduksi barang atau layanan jasa kreatif berbasis kompetensi jurusan (TKJ/MPLB/BR).\n3. Melaksanakan pemasaran produk nyata dan menyusun laporan laba/rugi usaha.",
+        atp: "Tahap 1: Ideasi Peluang Usaha, BMC & Perhitungan HPP -> Tahap 2: Produksi Prototipe, Kemasan & Uji Kelayakan -> Tahap 3: Pemasaran Produk, Gelar Karya & Laporan Keuangan Usaha."
+      },
+      "Bimbingan dan Konseling (BK)": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Landasan Hidup Religius & Perilaku Etis\n2. Kematangan Emosi & Hubungan Sosial\n3. Pengembangan Pribadi & Kesiapan Belajar\n4. Wawasan dan Kesiapan Karier (BMW: Bekerja, Melanjutkan, Wirausaha)",
+        cp: "Peserta didik mampu mengenali potensi, minat, dan bakat diri; mengelola emosi dan kesehatan mental remaja; membangun relasi sosial sehat serta pencegahan perundungan; dan merencanakan pilihan karier setelah lulus SMK (Bekerja, Melanjutkan studi, atau Berwirausaha).",
+        tp: "1. Mengidentifikasi kekuatan diri, gaya belajar, dan kecerdasan majemuk.\n2. Menerapkan strategi manajemen stres dan komunikasi asertif anti-perundungan.\n3. Menyusun rencana karier BMW (Bekerja, Melanjutkan, Wirausaha) dan portofolio kesiapan PKL.",
+        atp: "Tahap 1: Layanan Dasar Pengembangan Pribadi & Sosial -> Tahap 2: Layanan Responsif & Kesehatan Mental -> Tahap 3: Perencanaan Karier BMW & Kesiapan Dunia Kerja."
+      },
+      "Muatan Lokal / Bahasa Jepang / Bahasa Mandarin": {
+        konsentrasi: "Semua Jurusan (Mata Pelajaran Umum)",
+        elemen: "1. Menyimak & Berbicara Dasar\n2. Membaca & Menulis Aksara/Kosakata Dasar\n3. Pemahaman Lintas Budaya & Etika Kerja Internasional",
+        cp: "Peserta didik mampu melakukan perkenalan diri, sapaan sopan, angka, waktu, serta percakapan pelayanan pelanggan dasar dalam bahasa asing pilihan, serta memahami etos kerja dan budaya disiplin industri global.",
+        tp: "1. Mempraktikkan salam, perkenalan diri, dan ungkapan pelayanan pelanggan dasar dengan pelafalan tepat.\n2. Membaca dan menulis kosakata dasar terkait aktivitas sekolah dan dunia kerja.\n3. Mengidentifikasi nilai budaya disiplin kerja.",
+        atp: "Tahap 1: Salam, Perkenalan & Angka -> Tahap 2: Percakapan Sehari-hari & Layanan Dasar -> Tahap 3: Simulasi Komunikasi Kerja & Lintas Budaya."
+      }
+    };
+
+    // =========================================================================
+    // 3. MASTER DATA 31 GURU SMK TRIMULIA JAKARTA (TP 2026/2027)
+    // =========================================================================
+    let MASTER_GURU_LIST = [
+      { no: 1, nama: "Juni Abdillah, S.Pd", jabatan: "Kepala Sekolah / Guru Mapel", kelompok: "UMUM", mapelList: ["Pendidikan Pancasila"], kelas: "XII TKJ, XII MPLB, XII BR", jp: 6 },
+      { no: 2, nama: "Solihin, S.T.", jabatan: "Wakasek Kurikulum / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)", "Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "XI TKJ, XII TKJ, X TKJ", jp: 24 },
+      { no: 3, nama: "Dra. Hj. Siti Aminah", jabatan: "Guru Senior / Wali Kelas", kelompok: "UMUM", mapelList: ["Pendidikan Agama Islam dan Budi Pekerti"], kelas: "X TKJ, X MPLB, X BR, XI TKJ", jp: 12 },
+      { no: 4, nama: "Ahmad Fauzi, S.Pd.I", jabatan: "Pembina Rohis / Guru Mapel", kelompok: "UMUM", mapelList: ["Pendidikan Agama Islam dan Budi Pekerti"], kelas: "XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 15 },
+      { no: 5, nama: "Maria Magdalena, S.Th", jabatan: "Guru Pendidikan Agama Kristen", kelompok: "UMUM", mapelList: ["Pendidikan Agama Kristen dan Budi Pekerti"], kelas: "X, XI, XII (Lintas Rombel)", jp: 9 },
+      { no: 6, nama: "Drs. Bambang Sutrisno", jabatan: "Guru PPKn / Pembina Paskibra", kelompok: "UMUM", mapelList: ["Pendidikan Pancasila"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 12 },
+      { no: 7, nama: "Rina Marlina, S.Pd", jabatan: "Koordinator Literasi / Wali Kelas", kelompok: "UMUM", mapelList: ["Bahasa Indonesia"], kelas: "X TKJ, X MPLB, X BR", jp: 12 },
+      { no: 8, nama: "Dewi Sartika, M.Pd", jabatan: "Guru Bahasa Indonesia", kelompok: "UMUM", mapelList: ["Bahasa Indonesia"], kelas: "XI TKJ, XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 18 },
+      { no: 9, nama: "Novianti Rahayu, S.Pd", jabatan: "Wali Kelas XI MPLB / Guru Bahasa Inggris", kelompok: "UMUM", mapelList: ["Bahasa Inggris"], kelas: "XI MPLB (2 JP), XI BR (2 JP), XI TKJ (2 JP), XII MPLB (4 JP)", jp: 16 },
+      { no: 10, nama: "Rizky Ramadhan, S.Pd", jabatan: "Pembina English Club / Guru Mapel", kelompok: "UMUM", mapelList: ["Bahasa Inggris"], kelas: "X TKJ, X MPLB, X BR, XII TKJ, XII BR", jp: 20 },
+      { no: 11, nama: "Hendra Wijaya, S.Pd", jabatan: "Wakasek Kesiswaan / Guru Matematika", kelompok: "UMUM", mapelList: ["Matematika"], kelas: "XI TKJ, XI MPLB, XI BR", jp: 12 },
+      { no: 12, nama: "Siti Nurhaliza, S.Pd", jabatan: "Wali Kelas X TKJ / Guru Matematika", kelompok: "UMUM", mapelList: ["Matematika"], kelas: "X TKJ, X MPLB, X BR, XII TKJ, XII MPLB, XII BR", jp: 21 },
+      { no: 13, nama: "Agus Salim, S.Pd", jabatan: "Guru Sejarah / Pembina Pramuka", kelompok: "UMUM", mapelList: ["Sejarah"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 12 },
+      { no: 14, nama: "Dedi Kurniawan, S.Or", jabatan: "Pembina OSIS & Olahraga / Guru PJOK", kelompok: "UMUM", mapelList: ["Pendidikan Jasmani, Olahraga, dan Kesehatan (PJOK)"], kelas: "X TKJ, X MPLB, X BR, XI TKJ, XI MPLB, XI BR", jp: 15 },
+      { no: 15, nama: "Fitri Handayani, S.Sn", jabatan: "Pembina Ekskul Seni / Guru Seni Budaya", kelompok: "UMUM", mapelList: ["Seni Budaya"], kelas: "X TKJ, X MPLB, X BR", jp: 6 },
+      { no: 16, nama: "Irwan Setiawan, S.Kom", jabatan: "Kepala Bengkel TKJ / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Dasar-Dasar Teknik Jaringan Komputer dan Telekomunikasi", "Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)"], kelas: "X TKJ (12 JP), XI TKJ (12 JP)", jp: 24 },
+      { no: 17, nama: "Dimas Pratama, S.Kom", jabatan: "Teknisi Jaringan / Guru Produktif TKJ", kelompok: "TKJ", mapelList: ["Konsentrasi Keahlian Teknik Komputer dan Jaringan (TKJ)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII TKJ (18 JP), XI TKJ (5 JP)", jp: 23 },
+      { no: 18, nama: "Fajar Nugroho, S.T.", jabatan: "Guru Informatika & KKA", kelompok: "TKJ", mapelList: ["Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "X TKJ, X MPLB, X BR", jp: 12 },
+      { no: 19, nama: "Sri Wahyuni, S.E., M.M.", jabatan: "Kaprog MPLB / Guru Produktif MPLB", kelompok: "MPLB", mapelList: ["Konsentrasi Keahlian Manajemen Perkantoran (MPLB)"], kelas: "XI MPLB (12 JP), XII MPLB (12 JP)", jp: 24 },
+      { no: 20, nama: "Ratna Sari, S.Pd", jabatan: "Kepala Lab Perkantoran / Guru MPLB", kelompok: "MPLB", mapelList: ["Dasar-Dasar Manajemen Perkantoran dan Layanan Bisnis", "Konsentrasi Keahlian Manajemen Perkantoran (MPLB)"], kelas: "X MPLB (12 JP), XI MPLB (6 JP)", jp: 18 },
+      { no: 21, nama: "Lestari Indah, S.E.", jabatan: "Wali Kelas XII MPLB / Guru MPLB & PKK", kelompok: "MPLB", mapelList: ["Konsentrasi Keahlian Manajemen Perkantoran (MPLB)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII MPLB (10 JP), XI MPLB (5 JP)", jp: 15 },
+      { no: 22, nama: "Yudi Hartono, S.E., M.Pd", jabatan: "Kaprog Bisnis Retail / Guru Produktif BR", kelompok: "BR", mapelList: ["Konsentrasi Keahlian Bisnis Retail (BR)"], kelas: "XI BR (12 JP), XII BR (12 JP)", jp: 24 },
+      { no: 23, nama: "Maya Anggraini, S.E.", jabatan: "Pengelola Business Center / Guru BR", kelompok: "BR", mapelList: ["Dasar-Dasar Pemasaran / Bisnis Retail", "Konsentrasi Keahlian Bisnis Retail (BR)"], kelas: "X BR (12 JP), XI BR (6 JP)", jp: 18 },
+      { no: 24, nama: "Eko Prasetyo, S.M.", jabatan: "Wali Kelas XII BR / Guru BR & PKK", kelompok: "BR", mapelList: ["Konsentrasi Keahlian Bisnis Retail (BR)", "Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII BR (10 JP), XI BR (5 JP)", jp: 15 },
+      { no: 25, nama: "Nurul Hidayah, S.Si", jabatan: "Kepala Lab IPA / Guru Projek IPAS", kelompok: "UMUM", mapelList: ["Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)"], kelas: "X TKJ, X MPLB, X BR", jp: 18 },
+      { no: 26, nama: "Budi Santoso, S.E.", jabatan: "Wakasek Humas & DUDI / Guru PKK", kelompok: "UMUM", mapelList: ["Projek Kreatif dan Kewirausahaan (PKK)"], kelas: "XII TKJ, XII MPLB, XII BR", jp: 15 },
+      { no: 27, nama: "Wulan Dari, S.Psi", jabatan: "Koordinator BK / Konselor Kelas XI & XII", kelompok: "UMUM", mapelList: ["Bimbingan dan Konseling (BK)"], kelas: "XI TKJ, XI MPLB, XI BR, XII TKJ, XII MPLB, XII BR", jp: 12 },
+      { no: 28, nama: "Andi Saputra, S.Pd", jabatan: "Guru BK / Konselor Kelas X", kelompok: "UMUM", mapelList: ["Bimbingan dan Konseling (BK)"], kelas: "X TKJ, X MPLB, X BR", jp: 6 },
+      { no: 29, nama: "Melati Kusuma, S.S.", jabatan: "Guru Bahasa Jepang & Muatan Lokal", kelompok: "UMUM", mapelList: ["Muatan Lokal / Bahasa Jepang / Bahasa Mandarin"], kelas: "X TKJ, X MPLB, X BR, XI MPLB, XI BR", jp: 10 },
+      { no: 30, nama: "Taufik Hidayat, S.Pd", jabatan: "Wali Kelas X BR / Guru Mapel Pilihan", kelompok: "UMUM", mapelList: ["Projek Kreatif dan Kewirausahaan (PKK)", "Informatika / Koding & Kecerdasan Artifisial (KKA)"], kelas: "X BR, XI BR", jp: 10 },
+      { no: 31, nama: "Anisa Rahmawati, S.Pd", jabatan: "Staf Kurikulum / Guru Pendamping TeFa", kelompok: "UMUM", mapelList: ["Projek Ilmu Pengetahuan Alam dan Sosial (IPAS)", "Bahasa Indonesia"], kelas: "X MPLB, X BR", jp: 10 }
+    ];
+
+    // =========================================================================
+    // 4. INISIALISASI & FUNGSI UTAMA PORTAL
+    // =========================================================================
+    function showToast(msg) {
+      const box = document.getElementById("toastBox");
+      if (!box) return;
+      box.textContent = msg;
+      box.style.display = "block";
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        box.style.display = "none";
+      }, 3200);
+    }
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function switchTab(tabId, btnEl) {
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add("active");
+      if (btnEl) btnEl.classList.add("active");
+      if (tabId === "tab-kaldik") renderKaldikSummary();
+      if (tabId === "tab-direktori") renderDirektoriTable();
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      safeStorage.set("smktm_dark_mode", isDark ? "1" : "0");
+      document.getElementById("btnDarkMode").textContent = isDark ? "☀️ Mode Terang" : "🌓 Mode Gelap";
+    }
+
+    function toggleSeniorMode() {
+      document.body.classList.toggle("senior-mode");
+      const isSenior = document.body.classList.contains("senior-mode");
+      safeStorage.set("smktm_senior_mode", isSenior ? "1" : "0");
+      document.getElementById("btnSeniorMode").textContent = isSenior ? "🔎 Teks Normal" : "🔍 Mode Teks Besar";
+    }
+
+    function populateGuruDropdown() {
+      const sel = document.getElementById("selectGuru");
+      if (!sel) return;
+      sel.innerHTML = "";
+      MASTER_GURU_LIST.forEach((g, idx) => {
+        const opt = document.createElement("option");
+        opt.value = String(idx);
+        opt.textContent = `${g.no}. ${g.nama} (${g.jp} JP)`;
+        sel.appendChild(opt);
+      });
+
+      const savedIdx = safeStorage.get("smktm_selected_guru_idx");
+      if (savedIdx !== null && MASTER_GURU_LIST[Number(savedIdx)]) {
+        sel.value = savedIdx;
+      } else {
+        sel.value = "0";
+      }
+      onSelectGuru();
+    }
+
+    function onSelectGuru() {
+      const sel = document.getElementById("selectGuru");
+      const idx = Number(sel.value || 0);
+      const guru = MASTER_GURU_LIST[idx] || MASTER_GURU_LIST[0];
+      safeStorage.set("smktm_selected_guru_idx", String(idx));
+
+      document.getElementById("inputNip").value = guru.jabatan || "-";
+      document.getElementById("inputKelas").value = guru.kelas || "X, XI, XII";
+      document.getElementById("inputJpMinggu").value = guru.jp || 4;
+
+      const mapelSel = document.getElementById("selectMapel");
+      mapelSel.innerHTML = "";
+
+      // Masukkan mapel utama guru di urutan teratas, diikuti seluruh daftar CP resmi
+      const allMapels = Array.from(new Set([...guru.mapelList, ...Object.keys(CP_DATABASE)]));
+      allMapels.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = guru.mapelList.includes(m) ? `★ ${m}` : m;
+        mapelSel.appendChild(opt);
+      });
+
+      mapelSel.value = guru.mapelList[0] || Object.keys(CP_DATABASE)[0];
+      onSelectMapel();
+    }
+
+    function onSelectMapel() {
+      loadOfficialCpForCurrentMapel();
+      refreshAllOutputs();
+    }
+
+    function loadOfficialCpForCurrentMapel() {
+      const mapel = document.getElementById("selectMapel").value;
+      const data = CP_DATABASE[mapel] || Object.values(CP_DATABASE)[0];
+      document.getElementById("inputKonsentrasi").value = data.konsentrasi;
+      document.getElementById("inputElemenCp").value = data.elemen;
+      document.getElementById("inputCp").value = data.cp;
+      document.getElementById("inputTp").value = data.tp;
+      document.getElementById("inputAtp").value = data.atp;
+      refreshAllOutputs();
+    }
+
+    function getFormState() {
+      const guruIdx = Number(document.getElementById("selectGuru").value || 0);
+      const guruObj = MASTER_GURU_LIST[guruIdx] || MASTER_GURU_LIST[0];
+      const jpMinggu = Math.max(1, Number(document.getElementById("inputJpMinggu").value || 4));
+      const mingguGanjil = Math.max(1, Number(document.getElementById("inputMingguGanjil").value || 19));
+      const mingguGenap = Math.max(1, Number(document.getElementById("inputMingguGenap").value || 17));
+      const jpGanjil = jpMinggu * mingguGanjil;
+      const jpGenap = jpMinggu * mingguGenap;
+      const jpTotalTahun = jpGanjil + jpGenap;
+
+      return {
+        guruNama: guruObj.nama,
+        jabatan: document.getElementById("inputNip").value,
+        mapel: document.getElementById("selectMapel").value,
+        kelas: document.getElementById("inputKelas").value,
+        konsentrasi: document.getElementById("inputKonsentrasi").value,
+        semester: document.getElementById("selectSemester").value,
+        jpMinggu,
+        mingguGanjil,
+        mingguGenap,
+        jpGanjil,
+        jpGenap,
+        jpTotalTahun,
+        elemenCp: document.getElementById("inputElemenCp").value,
+        cp: document.getElementById("inputCp").value,
+        tp: document.getElementById("inputTp").value,
+        atp: document.getElementById("inputAtp").value,
+        tahap: document.getElementById("selectTahapDokumen").value
+      };
+    }
+
+    function refreshAllOutputs() {
+      updatePromptPreview();
+      renderA4Document();
+      renderKaldikSummary();
+    }
+
+    function updatePromptPreview() {
+      const s = getFormState();
+      const lines = [
+        "Buatkan perangkat pembelajaran Kurikulum Merdeka SMK lengkap, terstruktur, dan siap supervisi untuk:",
+        `- Satuan Pendidikan: SMK TRIMULIA Jakarta`,
+        `- Nama Guru / Jabatan: ${s.guruNama} (${s.jabatan})`,
+        `- Konsentrasi Keahlian: ${s.konsentrasi}`,
+        `- Mata Pelajaran: ${s.mapel}`,
+        `- Kelas / Fase / Rombel: ${s.kelas}`,
+        `- Semester / Tahun Pelajaran: ${s.semester}`,
+        `- Alokasi Waktu: ${s.jpMinggu} JP/minggu (Ganjil: ${s.mingguGanjil} Minggu = ${s.jpGanjil} JP; Genap: ${s.mingguGenap} Minggu = ${s.jpGenap} JP; Prota 1 Tahun = ${s.jpTotalTahun} JP)`,
+        `- Acuan Regulasi: Kepka BSKAP No. 046/H/KR/2025, Permendikdasmen No. 13/2025, dan Kaldik DKI Jakarta SK No. 346 Tahun 2026`,
+        `- Pendekatan Pembelajaran: Deep Learning (Mindful, Meaningful, Joyful), Project-Based Learning (PjBL) & Teaching Factory (TeFa)`,
+        "",
+        "Rincian Elemen & CP:",
+        s.cp,
+        "",
+        "Tujuan Pembelajaran (TP):",
+        s.tp
+      ];
+      document.getElementById("promptOutput").value = lines.join("\n");
+    }
+
+    function renderA4Document() {
+      const s = getFormState();
+      const container = document.getElementById("a4DocumentContent");
+      if (!container) return;
+
+      const tpLines = s.tp.split(/\r?\n/).filter(Boolean);
+      const elemenLines = s.elemenCp.split(/\r?\n/).filter(Boolean);
+
+      const kopHtml = `
+        <div class="kop-surat">
+          <div style="font-size: 11pt; font-weight: bold;">YAYASAN PENDIDIKAN ISLAM TRIMULIA JAKARTA</div>
+          <div style="font-size: 15pt; font-weight: bold; letter-spacing: 0.5px;">SMK TRIMULIA JAKARTA</div>
+          <div style="font-size: 9.5pt;">Program Keahlian: Teknik Komputer & Jaringan (TKJ) • Manajemen Perkantoran & Layanan Bisnis (MPLB) • Bisnis Retail (BR)</div>
+          <div style="font-size: 9pt;">Jakarta • Terakreditasi • Tahun Pelajaran 2026/2027</div>
+        </div>
+        <div style="text-align: center; margin-bottom: 12px;">
+          <h2 style="font-size: 13pt; text-transform: uppercase; margin-bottom: 3px;">PERANGKAT PEMBELAJARAN KURIKULUM MERDEKA</h2>
+          <div style="font-size: 10.5pt; font-weight: bold;">Acuan Kepka BSKAP No. 046/H/KR/2025 & Kaldik DKI Jakarta SK No. 346 Tahun 2026</div>
+        </div>
+        <table>
+          <tr>
+            <td style="width: 24%; font-weight: bold;">Satuan Pendidikan</td>
+            <td style="width: 26%;">SMK TRIMULIA Jakarta</td>
+            <td style="width: 24%; font-weight: bold;">Tahun Pelajaran</td>
+            <td style="width: 26%;">2026 / 2027 (${escapeHtml(s.semester)})</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Nama Guru</td>
+            <td>${escapeHtml(s.guruNama)}</td>
+            <td style="font-weight: bold;">Kelas / Fase / Rombel</td>
+            <td>${escapeHtml(s.kelas)}</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Mata Pelajaran</td>
+            <td>${escapeHtml(s.mapel)}</td>
+            <td style="font-weight: bold;">Alokasi Waktu</td>
+            <td>${s.jpMinggu} JP/Minggu (${s.jpTotalTahun} JP/Tahun)</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Konsentrasi Keahlian</td>
+            <td colspan="3">${escapeHtml(s.konsentrasi)}</td>
+          </tr>
+        </table>
+      `;
+
+      const sectionCpTpAtp = `
+        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">A. CAPAIAN PEMBELAJARAN (CP), TUJUAN PEMBELAJARAN (TP) & ATP</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 24%;">Elemen CP</th>
+              <th style="width: 38%;">Capaian Pembelajaran (Kepka 046/H/KR/2025)</th>
+              <th style="width: 38%;">Tujuan Pembelajaran (TP) & Alur (ATP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${elemenLines.map(l => escapeHtml(l)).join("<br/>")}</td>
+              <td>${escapeHtml(s.cp)}</td>
+              <td>
+                <strong>Tujuan Pembelajaran:</strong><br/>
+                ${tpLines.map(l => escapeHtml(l)).join("<br/>")}<br/><br/>
+                <strong>Alur Tujuan Pembelajaran (ATP):</strong><br/>
+                ${escapeHtml(s.atp)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      const jpUnit1 = Math.round(s.jpGanjil * 0.35);
+      const jpUnit2 = Math.round(s.jpGanjil * 0.35);
+      const jpUnit3 = Math.max(2, s.jpGanjil - jpUnit1 - jpUnit2);
+      const jpUnit4 = Math.round(s.jpGenap * 0.5);
+      const jpUnit5 = Math.max(2, s.jpGenap - jpUnit4);
+
+      const sectionProtaPromes = `
+        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">B. PROGRAM TAHUNAN (PROTA) & PROGRAM SEMESTER (PROMES DKI JAKARTA)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 12%;">Semester</th>
+              <th style="width: 48%;">Materi Pokok / Unit Kompetensi (TP)</th>
+              <th style="width: 15%;">Alokasi JP</th>
+              <th style="width: 25%;">Distribusi Bulan (Kaldik DKI)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ganjil</td>
+              <td>Unit 1: ${escapeHtml(tpLines[0] || "Penguasaan Konsep Dasar & K3LH")}</td>
+              <td style="text-align: center;">${jpUnit1} JP</td>
+              <td>Juli – Agustus 2026</td>
+            </tr>
+            <tr>
+              <td>Ganjil</td>
+              <td>Unit 2: ${escapeHtml(tpLines[1] || "Implementasi Teknis & Studi Kasus Industri")}</td>
+              <td style="text-align: center;">${jpUnit2} JP</td>
+              <td>September – Oktober 2026</td>
+            </tr>
+            <tr>
+              <td>Ganjil</td>
+              <td>Unit 3: ${escapeHtml(tpLines[2] || "Proyek Terapan PjBL/TeFa & Sumatif Akhir Semester")}</td>
+              <td style="text-align: center;">${jpUnit3} JP</td>
+              <td>November – Desember 2026</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="font-weight: bold; text-align: right;">Jumlah Semester Ganjil (${s.mingguGanjil} Minggu Efektif)</td>
+              <td style="font-weight: bold; text-align: center;">${s.jpGanjil} JP</td>
+              <td>SK Kadisdik DKI No. 346/2026</td>
+            </tr>
+            <tr>
+              <td>Genap</td>
+              <td>Unit 4: Pendalaman Kompetensi Lanjutan & Praktik Simulasi Industri</td>
+              <td style="text-align: center;">${jpUnit4} JP</td>
+              <td>Januari – Maret 2027</td>
+            </tr>
+            <tr>
+              <td>Genap</td>
+              <td>Unit 5: Uji Kompetensi / Gelar Karya Proyek & Sumatif Akhir Tahun</td>
+              <td style="text-align: center;">${jpUnit5} JP</td>
+              <td>April – Juni 2027</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="font-weight: bold; text-align: right;">Total Program Tahunan (36 Minggu Efektif)</td>
+              <td style="font-weight: bold; text-align: center;">${s.jpTotalTahun} JP</td>
+              <td>TP 2026/2027</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      const sectionModulAjar = `
+        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">C. KERANGKA MODUL AJAR DEEP LEARNING & TEACHING FACTORY (TeFa)</h3>
+        <table>
+          <tr>
+            <td style="width: 28%; font-weight: bold;">8 Dimensi Profil Lulusan</td>
+            <td>Keimanan & Ketakwaan, Kewargaan, Penalaran Kritis, Kreativitas, Kolaborasi, Kemandirian, Kesehatan, Komunikasi.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Model & Strategi Pembelajaran</td>
+            <td><em>Deep Learning (Mindful, Meaningful, Joyful)</em> dipadukan dengan <em>Project-Based Learning (PjBL)</em> dan budaya kerja industri.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Kegiatan Pendahuluan (15%)</td>
+            <td>Salam, doa, presensi, apersepsi kontekstual dunia kerja, asesmen diagnostik awal, dan penyampaian tujuan pembelajaran.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Kegiatan Inti (70%)</td>
+            <td><strong>Memahami:</strong> Eksplorasi konsep dan standar operasional.<br/><strong>Mengaplikasi:</strong> Praktik langsung / pengerjaan proyek kelompok berbasis kasus industri.<br/><strong>Merefleksi:</strong> Presentasi hasil karya, umpan balik sejawat, dan evaluasi mutu.</td>
+          </tr>
+          <tr>
+            <td style="font-weight: bold;">Kegiatan Penutup (15%)</td>
+            <td>Penyimpulan materi bersama peserta didik, refleksi pembelajaran, asesmen formatif singkat, dan tindak lanjut pertemuan berikutnya.</td>
+          </tr>
+        </table>
+      `;
+
+      const sectionAsesmen = `
+        <h3 style="font-size: 11.5pt; margin: 12px 0 6px;">D. RANCANGAN ASESMEN & RUBRIK PENILAIAN OTENTIK</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">Jenis Asesmen</th>
+              <th style="width: 40%;">Teknik & Instrumen</th>
+              <th style="width: 35%;">Kriteria Ketercapaian (KKTP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Asesmen Diagnostik</td>
+              <td>Kuis pemantik & observasi kesiapan belajar awal</td>
+              <td>Pemetaan profil kesiapan belajar peserta didik</td>
+            </tr>
+            <tr>
+              <td>Asesmen Formatif (Proses)</td>
+              <td>Lembar Kerja Peserta Didik (LKPD), observasi praktikum & K3LH</td>
+              <td>Mampu melaksanakan prosedur sesuai SOP tanpa kesalahan fatal</td>
+            </tr>
+            <tr>
+              <td>Asesmen Sumatif (Produk/TeFa)</td>
+              <td>Penilaian proyek portofolio, uji unjuk kerja, dan tes tertulis</td>
+              <td>Skor minimal 75 (Kategori Cakap / Kompeten)</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+      const ttdHtml = `
+        <div class="ttd-grid">
+          <div>
+            <div>Mengetahui,</div>
+            <div>Kepala SMK TRIMULIA Jakarta</div>
+            <div style="height: 58px;"></div>
+            <div style="font-weight: bold; text-decoration: underline;">Juni Abdillah, S.Pd</div>
+            <div>NIP. -</div>
+          </div>
+          <div>
+            <div>Jakarta, Juli 2026</div>
+            <div>Guru Mata Pelajaran</div>
+            <div style="height: 58px;"></div>
+            <div style="font-weight: bold; text-decoration: underline;">${escapeHtml(s.guruNama)}</div>
+            <div>${escapeHtml(s.jabatan)}</div>
+          </div>
+        </div>
+      `;
+
+      let bodySections = "";
+      if (s.tahap === "cp_tp_atp") {
+        bodySections = sectionCpTpAtp;
+      } else if (s.tahap === "prota_promes") {
+        bodySections = sectionProtaPromes;
+      } else if (s.tahap === "modul_ajar") {
+        bodySections = sectionModulAjar;
+      } else if (s.tahap === "asesmen_lkpd") {
+        bodySections = sectionAsesmen;
+      } else {
+        bodySections = sectionCpTpAtp + sectionProtaPromes + sectionModulAjar + sectionAsesmen;
+      }
+
+      container.innerHTML = kopHtml + bodySections + ttdHtml;
+    }
+
+    // =========================================================================
+    // 5. DIREKTORI 31 GURU & KALDIK DKI
+    // =========================================================================
+    function renderDirektoriTable() {
+      const tbody = document.getElementById("direktoriTableBody");
+      if (!tbody) return;
+      const q = (document.getElementById("searchGuruInput")?.value || "").toLowerCase().trim();
+      const filterKel = document.getElementById("filterJurusanDir")?.value || "ALL";
+
+      const filtered = MASTER_GURU_LIST.filter(g => {
+        const matchKel = filterKel === "ALL" || g.kelompok === filterKel;
+        const hay = `${g.nama} ${g.jabatan} ${g.mapelList.join(" ")} ${g.kelas}`.toLowerCase();
+        const matchQ = !q || hay.includes(q);
+        return matchKel && matchQ;
+      });
+
+      tbody.innerHTML = filtered.map(g => {
+        const realIdx = MASTER_GURU_LIST.findIndex(item => item.no === g.no);
+        return `
+          <tr>
+            <td style="text-align: center; font-weight: 700;">${g.no}</td>
+            <td><strong>${escapeHtml(g.nama)}</strong></td>
+            <td>${escapeHtml(g.jabatan)}</td>
+            <td>${g.mapelList.map(m => `<span class="badge" style="margin-bottom: 3px;">${escapeHtml(m)}</span>`).join("<br/>")}</td>
+            <td>${escapeHtml(g.kelas)}</td>
+            <td style="text-align: center; font-weight: 800; color: var(--primary);">${g.jp} JP</td>
+            <td>
+              <button type="button" class="btn btn-primary" style="padding: 6px 10px; font-size: 0.8rem;" onclick="pilihGuruDariDirektori(${realIdx})">Buat Perangkat</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function pilihGuruDariDirektori(idx) {
+      const sel = document.getElementById("selectGuru");
+      if (sel && MASTER_GURU_LIST[idx]) {
+        sel.value = String(idx);
+        onSelectGuru();
+      }
+      const firstTabBtn = document.querySelector('.tab-btn[data-tab="tab-generator"]');
+      switchTab("tab-generator", firstTabBtn);
+      showToast(`Data ${MASTER_GURU_LIST[idx].nama} dimuat ke Generator!`);
+    }
+
+    function renderKaldikSummary() {
+      const box = document.getElementById("kaldikSummaryContainer");
+      if (!box) return;
+      const s = getFormState();
+      box.innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Guru & Mata Pelajaran Terpilih</th>
+                <th>JP / Minggu</th>
+                <th>Minggu Efektif Ganjil</th>
+                <th>Total JP Ganjil</th>
+                <th>Minggu Efektif Genap</th>
+                <th>Total JP Genap</th>
+                <th>Total Prota (1 Tahun)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>${escapeHtml(s.guruNama)}</strong><br/>${escapeHtml(s.mapel)}</td>
+                <td style="text-align: center; font-weight: 700;">${s.jpMinggu} JP</td>
+                <td style="text-align: center;">${s.mingguGanjil} Minggu</td>
+                <td style="text-align: center; font-weight: 700;">${s.jpGanjil} JP</td>
+                <td style="text-align: center;">${s.mingguGenap} Minggu</td>
+                <td style="text-align: center; font-weight: 700;">${s.jpGenap} JP</td>
+                <td style="text-align: center; font-weight: 800; color: var(--accent);">${s.jpTotalTahun} JP</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // 6. CETAK PDF A4, UNDUH WORD/EXCEL, WHATSAPP, CLIPBOARD & IMPOR SHEETS
+    // =========================================================================
+    function printA4Pdf() {
+      renderA4Document();
+      showToast("Membuka dialog cetak / Simpan sebagai PDF A4...");
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    function downloadWordDoc() {
+      renderA4Document();
+      const s = getFormState();
+      const content = document.getElementById("a4DocumentContent").innerHTML;
+      const htmlDoc = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head><meta charset='utf-8'><title>Perangkat Pembelajaran ${escapeHtml(s.guruNama)}</title>
+        <style>
+          body { font-family: 'Times New Roman', serif; font-size: 11.5pt; }
+          table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+          th, td { border: 1px solid #000000; padding: 6px 8px; vertical-align: top; }
+          th { background-color: #e2e8f0; }
+        </style>
+        </head><body>${content}</body></html>
+      `;
+      const blob = new Blob(["\ufeff", htmlDoc], { type: "application/msword" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Perangkat_Ajar_${s.guruNama.replace(/[^a-zA-Z0-9]/g, "_")}.doc`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("File Word (.doc) berhasil diunduh!");
+    }
+
+    function downloadExcelSchedule() {
+      const rowsHtml = MASTER_GURU_LIST.map(g => `
+        <tr>
+          <td>${g.no}</td>
+          <td>${escapeHtml(g.nama)}</td>
+          <td>${escapeHtml(g.jabatan)}</td>
+          <td>${escapeHtml(g.mapelList.join("; "))}</td>
+          <td>${escapeHtml(g.kelas)}</td>
+          <td>${g.jp}</td>
+        </tr>
+      `).join("");
+
+      const excelHtml = `
+        <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta charset="UTF-8"></head>
+        <body>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Guru</th>
+                <th>Jabatan / Tugas Tambahan</th>
+                <th>Mata Pelajaran</th>
+                <th>Kelas / Rombel</th>
+                <th>Total JP / Minggu</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        </body>
+        </html>
+      `;
+      const blob = new Blob(["\ufeff", excelHtml], { type: "application/vnd.ms-excel" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Pembagian_Jam_Mengajar_31_Guru_SMK_TRIMULIA_2026_2027.xls";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast("File Excel Pembagian Jam Mengajar berhasil diunduh!");
+    }
+
+    function copyPromptToClipboard() {
+      const text = document.getElementById("promptOutput").value;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+          .then(() => showToast("Prompt AI berhasil disalin ke clipboard!"))
+          .catch(() => fallbackCopyText(text));
+      } else {
+        fallbackCopyText(text);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const ta = document.getElementById("promptOutput");
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("Prompt AI berhasil disalin!");
+      } catch (e) {
+        showToast("Silakan tekan Ctrl+C pada kotak prompt.");
+      }
+    }
+
+    function shareWhatsAppSummary() {
+      const s = getFormState();
+      const summaryLines = [
+        "*PERANGKAT PEMBELAJARAN SMK TRIMULIA JAKARTA (TP 2026/2027)*",
+        `• Guru: ${s.guruNama}`,
+        `• Mapel: ${s.mapel}`,
+        `• Kelas/Rombel: ${s.kelas}`,
+        `• Alokasi: ${s.jpMinggu} JP/Minggu (Prota: ${s.jpTotalTahun} JP/Tahun)`,
+        `• Acuan: Kepka BSKAP 046/H/KR/2025 & Kaldik DKI SK 346/2026`
+      ];
+      const waUrl = `https://wa.me/?text=${encodeURIComponent(summaryLines.join("\n"))}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    }
+
+    function syncJadwalMaster() {
+      populateGuruDropdown();
+      renderDirektoriTable();
+      refreshAllOutputs();
+      const badge = document.getElementById("syncStatusBadge");
+      if (badge) badge.textContent = `31 Guru Tersinkron (${new Date().toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" })})`;
+      showToast("Sinkronisasi data 31 guru, mapel, kelas & JP selesai!");
+    }
+
+    function parsePastedSchedule() {
+      const raw = document.getElementById("pasteSheetInput")?.value || "";
+      const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      if (!lines.length) {
+        showToast("Tempelkan minimal 1 baris data jadwal terlebih dahulu.");
+        return;
+      }
+      let updatedCount = 0;
+      lines.forEach(line => {
+        const parts = line.includes("\t") ? line.split("\t") : line.split("|");
+        if (parts.length >= 2) {
+          const namaInput = parts[0].trim().toLowerCase();
+          const found = MASTER_GURU_LIST.find(g => g.nama.toLowerCase().includes(namaInput) || namaInput.includes(g.nama.toLowerCase().split(",")[0]));
+          if (found) {
+            if (parts[1] && parts[1].trim()) found.mapelList[0] = parts[1].trim();
+            if (parts[2] && parts[2].trim()) found.kelas = parts[2].trim();
+            if (parts[3]) {
+              const numJp = parseInt(parts[3].replace(/\D/g, ""), 10);
+              if (!isNaN(numJp) && numJp > 0) found.jp = numJp;
+            }
+            updatedCount++;
+          }
+        }
+      });
+      syncJadwalMaster();
+      showToast(updatedCount > 0 ? `${updatedCount} data guru berhasil diperbarui dari tempelan!` : "Format baris diproses, pilih guru untuk melihat perubahan.");
+    }
+
+    // Boot Portal
+    window.addEventListener("DOMContentLoaded", () => {
+      if (safeStorage.get("smktm_dark_mode") === "1") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("btnDarkMode").textContent = "☀️ Mode Terang";
+      }
+      if (safeStorage.get("smktm_senior_mode") === "1") {
+        document.body.classList.add("senior-mode");
+        document.getElementById("btnSeniorMode").textContent = "🔎 Teks Normal";
+      }
+      populateGuruDropdown();
+      renderDirektoriTable();
+      refreshAllOutputs();
+    });
+  </script>
+</body>
+</html>
